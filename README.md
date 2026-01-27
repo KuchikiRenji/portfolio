@@ -1,12 +1,22 @@
 # Kuchiki Renji Portfolio
 
-A modern, interactive developer portfolio featuring stunning 3D graphics, smooth animations, and a beautiful glassmorphism aesthetic.
+<p align="center">
+  <img src="public/profile.png" alt="Kuchiki Renji" width="150" height="150" style="border-radius: 50%;" />
+</p>
+
+<p align="center">
+  A modern, interactive developer portfolio featuring stunning 3D graphics, smooth animations, and a beautiful glassmorphism aesthetic.
+</p>
+
+<p align="center">
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.1-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwindcss)
 ![Three.js](https://img.shields.io/badge/Three.js-r182-black?logo=three.js)
+
+</p>
 
 ---
 
