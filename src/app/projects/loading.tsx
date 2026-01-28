@@ -1,3 +1,5 @@
+"use client";
+
 export default function ProjectsLoading() {
   return (
     <main className="min-h-screen bg-slate-950">

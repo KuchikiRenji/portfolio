@@ -12,8 +12,8 @@ import {
 import { HeroSection } from "@/components/hero";
 
 // Lazy load below-the-fold sections
-const NeuralGrid = dynamic(
-  () => import("@/components/projects").then((mod) => mod.NeuralGrid),
+const ProjectsShowcase = dynamic(
+  () => import("@/components/projects").then((mod) => mod.ProjectsShowcase),
   {
     loading: () => <ProjectsGridSkeleton />,
     ssr: false,
@@ -49,9 +49,9 @@ export function HomePage() {
       {/* Hero Section - eager loaded, above the fold */}
       <HeroSection />
 
-      {/* Neural Grid - Projects Showcase */}
+      {/* Projects Showcase - 24 Case Studies */}
       <Suspense fallback={<ProjectsGridSkeleton />}>
-        <NeuralGrid />
+        <ProjectsShowcase />
       </Suspense>
 
       {/* About Section */}

@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "@/components/providers";
+import Navbar from "@/components/Navbar";
 import { StructuredData, siteConfig } from "@/lib/structured-data";
 import "./globals.css";
 
@@ -141,7 +142,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${fontDisplay.variable} ${fontMono.variable} font-sans antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
 
         {/* Vercel Analytics */}
         <Analytics />
