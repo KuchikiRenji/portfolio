@@ -36,7 +36,7 @@ export function ProjectGallery({ images, alt = "Project image" }: ProjectGallery
       scale: 1,
       transition: {
         duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
     exit: (direction: number) => ({
@@ -45,7 +45,7 @@ export function ProjectGallery({ images, alt = "Project image" }: ProjectGallery
       scale: 0.95,
       transition: {
         duration: 0.3,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     }),
   };
