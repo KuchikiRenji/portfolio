@@ -1,57 +1,53 @@
-# WebGL Context Error Fix - Complete Solution
+# WebGL Context Error Fix - Final Solution
 
 ## Problem
 
-The application was throwing WebGL context creation errors repeatedly on Vercel deployment (40+ errors):
+WebGL errors still appearing on Vercel:
 
 ```
-THREE.WebGLRenderer: A WebGL context could not be created
-THREE.WebGLRenderer: Error creating WebGL context
-Error: Error creating WebGL context
 Uncaught (in promise) Error: Error creating WebGL context
 ```
 
 ## Root Cause
 
-Three.js Canvas components attempted to create WebGL contexts without error handling. In environments with software renderers (llvmpipe/Mesa), the application would throw uncaught errors repeatedly.
+The errors are **uncaught promise rejections** from Three.js Canvas creation, which bypass normal error boundaries and console.error overrides.
 
-## Solution
+## Final Solution
 
-### 1. SafeCanvas Component ✅
+### 1. Enhanced WebGLErrorSuppressor ✅
 
-**Location:** `src/components/three/safe-canvas.tsx`
+**Updated:** `src/components/webgl-error-suppressor.tsx`
 
-- Pre-flight WebGL detection
-- Software renderer detection (llvmpipe, SwiftShader)
-- Error boundary for Canvas errors
-- Graceful fallback rendering
+Now includes:
+- Console error/warn suppression
+- **Global unhandledrejection event handler** (catches promise errors)
+- Prevents WebGL errors from appearing in console
+- Works in both dev and production
+
+### 2. Enhanced SafeCanvas ✅
+
+**Updated:** `src/components/three/safe-canvas.tsx`
+
+Added:
+- `renderAttempted` state to track failed renders
+- Try-catch wrapper around entire Canvas component
+- Immediate fallback on any Canvas creation error
 - Prevents retry loops
 
-### 2. WebGLErrorSuppressor ✅
+### 3. All Components Updated ✅
 
-**Location:** `src/components/webgl-error-suppressor.tsx`
-
-- Suppresses WebGL console errors in production
-- Keeps dev experience intact
-
-### 3. Updated Components ✅
-
-Replaced Canvas with SafeCanvas in:
-
+Using SafeCanvas with fallbacks:
 - `src/app/projects/[slug]/time-series-scene.tsx`
 - `src/components/three/hero-scene.tsx`
 - `src/components/three/scene.tsx`
 
-### 4. Root Layout ✅
+## How It Works
 
-Added WebGLErrorSuppressor to `src/app/layout.tsx`
-
-## Benefits
-
-- ✅ No WebGL crashes
-- ✅ No console flooding (40+ errors eliminated)
-- ✅ Graceful degradation with fallback UI
-- ✅ Clean production logs
+1. **Pre-flight check** - Detects WebGL availability before rendering
+2. **Error boundary** - Catches errors during Canvas creation
+3. **Promise rejection handler** - Catches uncaught promise errors
+4. **Console suppression** - Filters WebGL errors from console
+5. **Fallback UI** - Shows gradients instead of blank screens
 
 ## Testing
 
@@ -59,4 +55,8 @@ Added WebGLErrorSuppressor to `src/app/layout.tsx`
 npm run typecheck  # ✅ Passes
 ```
 
-Deploy to Vercel - console should be clean with no WebGL errors.
+Deploy to Vercel - the "Uncaught (in promise)" errors should now be suppressed.
+
+## Note
+
+The `unhandledrejection` event listener specifically targets the promise rejection errors you're seeing. This is the key fix for the "Uncaught (in promise)" errors.

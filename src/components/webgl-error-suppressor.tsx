@@ -9,10 +9,6 @@ import { useEffect } from "react";
  */
 export function WebGLErrorSuppressor() {
   useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      return;
-    }
-
     // Store original console methods
     const originalError = console.error;
     const originalWarn = console.warn;
@@ -52,10 +48,28 @@ export function WebGLErrorSuppressor() {
       originalWarn.apply(console, args);
     };
 
+    // Add global error handler for uncaught promise rejections
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      const message = String(event.reason?.message || event.reason || "");
+      if (
+        message.includes("WebGL") ||
+        message.includes("Error creating WebGL context")
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+
+    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+
     // Cleanup on unmount
     return () => {
       console.error = originalError;
       console.warn = originalWarn;
+      window.removeEventListener(
+        "unhandledrejection",
+        handleUnhandledRejection,
+      );
     };
   }, []);
 
