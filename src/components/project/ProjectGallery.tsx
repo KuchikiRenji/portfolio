@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PROJECT_IMAGE_PLACEHOLDER } from "@/lib/placeholders";
 
 interface ProjectGalleryProps {
   images: string[];
@@ -14,6 +15,14 @@ interface ProjectGalleryProps {
 export function ProjectGallery({ images, alt = "Project image" }: ProjectGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [failedIndices, setFailedIndices] = useState<Set<number>>(new Set());
+
+  const getImageSrc = (index: number) =>
+    failedIndices.has(index) ? PROJECT_IMAGE_PLACEHOLDER : images[index];
+
+  const handleImageError = (index: number) => {
+    setFailedIndices((prev) => new Set(prev).add(index));
+  };
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -96,12 +105,14 @@ export function ProjectGallery({ images, alt = "Project image" }: ProjectGallery
             className="absolute inset-0 cursor-grab active:cursor-grabbing"
           >
             <Image
-              src={images[currentIndex]}
+              src={getImageSrc(currentIndex)}
               alt={`${alt} ${currentIndex + 1}`}
               fill
+              unoptimized
               sizes="(max-width: 768px) 100vw, 800px"
               className="object-cover"
               priority={currentIndex === 0}
+              onError={() => handleImageError(currentIndex)}
             />
           </motion.div>
         </AnimatePresence>
@@ -173,11 +184,13 @@ export function ProjectGallery({ images, alt = "Project image" }: ProjectGallery
               aria-label={`Go to image ${index + 1}`}
             >
               <Image
-                src={image}
+                src={getImageSrc(index)}
                 alt={`${alt} thumbnail ${index + 1}`}
                 fill
+                unoptimized
                 sizes="96px"
                 className="object-cover"
+                onError={() => handleImageError(index)}
               />
               {/* Active indicator overlay */}
               {index === currentIndex && (

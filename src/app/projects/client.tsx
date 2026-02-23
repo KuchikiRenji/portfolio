@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Sparkles, ArrowDown, Filter, X } from "lucide-react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { motion, useInView } from "framer-motion";
+import { Sparkles, ArrowDown, Search } from "lucide-react";
 import { ProjectCard } from "@/components/project";
 import type { Project } from "@/types/project";
 import { cn } from "@/lib/utils";
+
+const CATEGORY_PARAM = "category";
 
 interface ProjectsPageClientProps {
   projects: Project[];
@@ -18,27 +21,23 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.06,
+      staggerChildren: 0.03,
+      delayChildren: 0,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 100,
       damping: 15,
     },
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.9,
-    transition: { duration: 0.2 },
   },
 };
 
@@ -46,19 +45,47 @@ export function ProjectsPageClient({
   projects,
   categories,
 }: ProjectsPageClientProps) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const fullListRef = useRef<HTMLDivElement>(null);
   const isFullListInView = useInView(fullListRef, { once: true, margin: "-100px" });
 
-  // Featured projects (first 6)
-  const featuredProjects = useMemo(() => projects.slice(0, 6), [projects]);
+  // Sync URL ?category=... to state on mount and when URL changes
+  useEffect(() => {
+    const category = searchParams.get(CATEGORY_PARAM);
+    const valid = category && categories.includes(category) ? category : null;
+    setActiveFilter(valid);
+  }, [searchParams, categories]);
 
-  // Filtered projects
+  const handleCategoryChange = (category: string | null) => {
+    setActiveFilter(category);
+    const url = category
+      ? `/projects?${CATEGORY_PARAM}=${encodeURIComponent(category)}`
+      : "/projects";
+    router.replace(url, { scroll: false });
+  };
+
+  // Sort projects by year descending (newest first) so recent work (e.g. Zitro) is visible
+  const sortedProjects = useMemo(
+    () => [...projects].sort((a, b) => (b.year ?? 0) - (a.year ?? 0)),
+    [projects]
+  );
+
+  // Featured projects (first 6 by newest) – when filtering, show filtered set
+  const featuredProjects = useMemo(() => {
+    const base = activeFilter
+      ? sortedProjects.filter((p) => p.categories.includes(activeFilter))
+      : sortedProjects;
+    return base.slice(0, 6);
+  }, [sortedProjects, activeFilter]);
+
+  // Filtered projects (newest first)
   const filteredProjects = useMemo(() => {
-    if (!activeFilter) return projects;
-    return projects.filter((p) => p.categories.includes(activeFilter));
-  }, [projects, activeFilter]);
+    if (!activeFilter) return sortedProjects;
+    return sortedProjects.filter((p) => p.categories.includes(activeFilter));
+  }, [sortedProjects, activeFilter]);
 
   // Projects to display in grid (all or limited)
   const displayedProjects = useMemo(() => {
@@ -71,11 +98,11 @@ export function ProjectsPageClient({
   };
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen min-w-0 overflow-x-hidden bg-slate-950">
       {/* Hero Section */}
       <section className="relative overflow-hidden pb-16 pt-24 sm:pb-20 sm:pt-32">
         {/* Background */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-purple-950/10 to-slate-950" />
           <motion.div
             animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
@@ -89,7 +116,7 @@ export function ProjectsPageClient({
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="relative z-10 mx-auto min-w-0 max-w-7xl px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,6 +172,52 @@ export function ProjectsPageClient({
               <span>2020</span>
               <div className="h-px w-20 bg-gradient-to-r from-purple-500/50 to-cyan-500/50" />
               <span className="font-medium text-white/60">2026</span>
+            </motion.div>
+
+            {/* Search by category – visible in hero */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8"
+            >
+              <p className="mb-3 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wider text-white/50">
+                <Search className="h-3.5 w-3.5" />
+                Search by category
+              </p>
+              <div className="scrollbar-hide -mx-4 flex justify-center overflow-x-auto overflow-y-hidden px-4 sm:mx-0 sm:flex-wrap sm:gap-2 [contain:inline-size]">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => handleCategoryChange(null)}
+                  className={cn(
+                    "flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm",
+                    "border backdrop-blur-sm",
+                    !activeFilter
+                      ? "border-purple-500/50 bg-purple-500/20 text-purple-300"
+                      : "border-white/10 bg-black/30 text-white/60 hover:border-white/20 hover:text-white/80"
+                  )}
+                >
+                  All
+                </motion.button>
+                {categories.map((cat) => (
+                  <motion.button
+                    key={cat}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleCategoryChange(cat)}
+                    className={cn(
+                      "flex-shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:px-4 sm:py-2 sm:text-sm",
+                      "border backdrop-blur-sm",
+                      activeFilter === cat
+                        ? "border-purple-500/50 bg-purple-500/20 text-purple-300"
+                        : "border-white/10 bg-black/30 text-white/60 hover:border-white/20 hover:text-white/80"
+                    )}
+                  >
+                    {cat}
+                  </motion.button>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -245,29 +318,15 @@ export function ProjectsPageClient({
                     : `${projects.length} projects across all categories`}
                 </p>
               </div>
-
-              {/* Active Filter Clear */}
-              {activeFilter && (
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  onClick={() => setActiveFilter(null)}
-                  className="flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/20 px-4 py-2 text-sm text-purple-300 transition-colors hover:bg-purple-500/30"
-                >
-                  <Filter className="h-4 w-4" />
-                  {activeFilter}
-                  <X className="h-4 w-4" />
-                </motion.button>
-              )}
             </div>
 
             {/* Category Filters */}
-            <div className="scrollbar-hide -mx-4 overflow-x-auto px-4 sm:mx-0 sm:overflow-visible sm:px-0">
+            <div className="scrollbar-hide -mx-4 overflow-x-auto overflow-y-hidden px-4 sm:mx-0 sm:overflow-visible sm:px-0 [contain:inline-size]">
               <div className="flex min-w-max gap-2 pb-2 sm:flex-wrap sm:gap-2">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setActiveFilter(null)}
+                  onClick={() => handleCategoryChange(null)}
                   className={cn(
                     "rounded-full px-4 py-2 text-sm font-medium transition-all",
                     "border backdrop-blur-sm",
@@ -283,7 +342,7 @@ export function ProjectsPageClient({
                     key={category}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => setActiveFilter(category)}
+                    onClick={() => handleCategoryChange(category)}
                     className={cn(
                       "whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all",
                       "border backdrop-blur-sm",
@@ -299,23 +358,20 @@ export function ProjectsPageClient({
             </div>
           </motion.div>
 
-          {/* Projects Grid with AnimatePresence */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFilter || "all"}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              className="grid gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4"
-            >
-              {displayedProjects.map((project, index) => (
-                <motion.div key={project.slug} variants={itemVariants}>
-                  <ProjectCard project={project} variant="list" index={index} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          {/* Projects Grid – key only by filter so "Show All" just adds cards without remounting */}
+          <motion.div
+            key={activeFilter || "all"}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4"
+          >
+            {displayedProjects.map((project, index) => (
+              <motion.div key={project.slug} variants={itemVariants}>
+                <ProjectCard project={project} variant="list" index={index} />
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
@@ -334,7 +390,7 @@ export function ProjectsPageClient({
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveFilter(null)}
+                onClick={() => handleCategoryChange(null)}
                 className="mt-4 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 transition-colors hover:bg-white/10"
               >
                 Clear filter

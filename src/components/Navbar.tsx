@@ -2,17 +2,22 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, Github, FileText } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
-const navLinks = [
+type NavLink = {
+  href: string;
+  label: string;
+  isHash: boolean;
+};
+
+const navLinks: NavLink[] = [
   { href: "/", label: "Home", isHash: false },
-  { href: "/projects", label: "Projects", isHash: false },
+  { href: "#projects", label: "Projects", isHash: true },
   { href: "#about", label: "About", isHash: true },
   { href: "#contact", label: "Contact", isHash: true },
-] as const;
+];
 
 // Helper function to handle hash link navigation
 function handleHashLink(href: string, router: ReturnType<typeof useRouter>, pathname: string) {
@@ -75,68 +80,27 @@ const mobileLinkVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
 };
 
-function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  const currentTheme = (resolvedTheme ?? theme) === "dark" ? "dark" : "light";
-
-  const toggle = () => {
-    const next = currentTheme === "dark" ? "light" : "dark";
-    setTheme(next);
-  };
-
-  return (
-    <motion.button
-      whileTap={{ scale: 0.9, rotate: 20 }}
-      whileHover={{ scale: 1.05 }}
-      onClick={toggle}
-      aria-label="Toggle theme"
-      className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-white/15 bg-black/30 text-white/80 shadow-lg shadow-cyan-500/10 backdrop-blur-md transition-colors hover:border-cyan-400/60 hover:text-cyan-200"
-    >
-      <AnimatePresence initial={false} mode="wait">
-        {mounted && currentTheme === "dark" ? (
-          <motion.span
-            key="moon"
-            initial={{ opacity: 0, rotate: -20, y: -6 }}
-            animate={{ opacity: 1, rotate: 0, y: 0 }}
-            exit={{ opacity: 0, rotate: 20, y: 6 }}
-            transition={{ duration: 0.2 }}
-            className="flex"
-          >
-            <Moon className="h-4 w-4" />
-          </motion.span>
-        ) : (
-          <motion.span
-            key="sun"
-            initial={{ opacity: 0, rotate: 20, y: 6 }}
-            animate={{ opacity: 1, rotate: 0, y: 0 }}
-            exit={{ opacity: 0, rotate: -20, y: -6 }}
-            transition={{ duration: 0.2 }}
-            className="flex"
-          >
-            <Sun className="h-4 w-4" />
-          </motion.span>
-        )}
-      </AnimatePresence>
-      <span className="pointer-events-none absolute inset-0 rounded-full bg-cyan-500/10 blur-md" />
-    </motion.button>
-  );
-}
-
 const linkBaseClasses =
   "relative inline-flex items-center text-sm font-medium text-white/80 transition-colors duration-200 hover:text-cyan-300";
 
-function DesktopNavLinks({ pathname, router }: { pathname: string; router: ReturnType<typeof useRouter> }) {
+function DesktopNavLinks({ 
+  pathname, 
+  router, 
+  activeSection 
+}: { 
+  pathname: string; 
+  router: ReturnType<typeof useRouter>;
+  activeSection: string;
+}) {
   return (
     <nav className="hidden items-center gap-8 md:flex">
       {navLinks.map((link) => {
-        const isActive =
-          link.href === "/"
-            ? pathname === "/"
-            : !link.isHash && pathname === link.href;
+        // Determine if this link is active
+        const isActive = link.isHash 
+          ? activeSection === link.href 
+          : link.href === "/" 
+            ? activeSection === "/" && pathname === "/"
+            : pathname === link.href;
 
         if (link.isHash) {
           return (
@@ -146,6 +110,18 @@ function DesktopNavLinks({ pathname, router }: { pathname: string; router: Retur
               className={linkBaseClasses}
             >
               <span>{link.label}</span>
+              <AnimatePresence initial={false}>
+                {isActive && (
+                  <motion.span
+                    layoutId="navbar-active-underline"
+                    className="absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 to-purple-400 shadow-[0_0_12px_rgba(34,211,238,0.7)]"
+                    initial={{ opacity: 0, scaleX: 0.6 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    exit={{ opacity: 0, scaleX: 0.4 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                  />
+                )}
+              </AnimatePresence>
             </button>
           );
         }
@@ -177,16 +153,59 @@ export default function Navbar() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("/");
   const { scrollY } = useScroll();
+  const prevPathnameRef = useRef(pathname);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 8);
   });
 
+  // Track active section based on scroll position
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(pathname);
+      return;
+    }
+
+    const handleScroll = () => {
+      const sections = ["contact", "about", "projects"];
+      const scrollPosition = window.scrollY + 150; // Offset for navbar height
+
+      // Check if we're at the top (home section)
+      if (window.scrollY < 100) {
+        setActiveSection("/");
+        return;
+      }
+
+      // Check each section from bottom to top
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(`#${sectionId}`);
+            return;
+          }
+        }
+      }
+
+      // Default to home if no section matches
+      setActiveSection("/");
+    };
+
+    handleScroll(); // Initial check
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
   // Close mobile menu on route change
   useEffect(() => {
-    if (mobileOpen) setMobileOpen(false);
-  }, [pathname, mobileOpen]);
+    if (prevPathnameRef.current !== pathname) {
+      setMobileOpen(false);
+      prevPathnameRef.current = pathname;
+    }
+  }, [pathname]);
 
   // Handle hash links on mount if URL has hash
   useEffect(() => {
@@ -211,32 +230,61 @@ export default function Navbar() {
       >
         <div
           className={[
-            "mx-auto flex h-16 max-w-6xl items-center justify-between rounded-b-3xl border border-white/10 bg-black/30 px-6 shadow-lg shadow-black/40 backdrop-blur-md md:h-20 md:px-12",
-            "transition-all duration-300",
+            "mx-auto flex h-14 xs:h-16 max-w-6xl items-center justify-between gap-2 overflow-hidden rounded-b-3xl border border-white/10 bg-black/30 px-3 xs:px-4 shadow-lg shadow-black/40 backdrop-blur-md md:h-20 md:px-12",
+            "transition-all duration-300 min-w-0",
             scrolled ? "border-white/15 bg-black/40 shadow-md backdrop-blur-lg" : "",
           ].join(" ")}
         >
           {/* Left: Brand */}
-          <Link href="/" className="relative inline-flex items-center gap-2">
-            <span className="text-xs font-medium uppercase tracking-[0.35em] text-white/50 md:text-[0.7rem]">
+          <Link
+            href="/"
+            className="relative inline-flex min-w-0 flex-shrink items-center gap-1 xs:gap-1.5 overflow-hidden md:gap-2"
+          >
+            <span className="hidden shrink-0 text-[0.6rem] xs:text-xs font-medium uppercase tracking-[0.3em] xs:tracking-[0.35em] text-white/50 md:inline md:text-[0.7rem]">
               AI ENGINEER
             </span>
-            <span className="hidden h-4 w-px bg-gradient-to-b from-purple-500/40 via-white/40 to-cyan-400/40 md:block" />
-            <span className="bg-gradient-to-r from-purple-500 via-fuchsia-400 to-cyan-400 bg-clip-text text-xl font-bold tracking-tight text-transparent md:text-2xl">
+            <span className="hidden h-4 w-px shrink-0 bg-gradient-to-b from-purple-500/40 via-white/40 to-cyan-400/40 md:block" />
+            <span className="truncate bg-gradient-to-r from-purple-500 via-fuchsia-400 to-cyan-400 bg-clip-text text-base xs:text-lg font-bold tracking-tight text-transparent md:text-2xl">
               Kuchiki Renji
             </span>
           </Link>
 
           {/* Center: Links (desktop) */}
-          <DesktopNavLinks pathname={pathname} router={router} />
+          <DesktopNavLinks pathname={pathname} router={router} activeSection={activeSection} />
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-3 md:gap-4">
-            <ThemeToggle />
+          <div className="flex items-center gap-2 md:gap-3">
+            {/* GitHub Link - Desktop */}
+            <motion.a
+              href="https://github.com/kuchikirenji"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white/80 backdrop-blur-md transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white md:flex"
+              aria-label="GitHub Profile"
+            >
+              <Github className="h-4 w-4" />
+            </motion.a>
 
+            {/* Resume Link - Desktop */}
+            <motion.a
+              href="/resume/Kuchiki_Renji_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden items-center gap-2 rounded-full border border-purple-400/50 bg-purple-500/20 px-4 py-2 text-sm font-medium text-purple-200 backdrop-blur-sm transition-all hover:border-purple-400/70 hover:bg-purple-500/30 md:inline-flex"
+              aria-label="Download Resume"
+            >
+              <FileText className="h-4 w-4" />
+              <span>Resume</span>
+            </motion.a>
+
+            {/* Get in Touch - Desktop */}
             <button
               onClick={() => handleHashLink("#contact", router, pathname)}
-              className="hidden items-center gap-2 rounded-full border border-cyan-400/50 bg-cyan-500/20 px-5 py-2 text-sm font-medium text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-all duration-200 hover:bg-cyan-500/40 hover:text-cyan-50 md:inline-flex"
+              className="hidden items-center gap-2 rounded-full border border-cyan-400/50 bg-cyan-500/20 px-4 py-2 text-sm font-medium text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-all duration-200 hover:bg-cyan-500/40 hover:text-cyan-50 md:inline-flex"
             >
               <span>Get in Touch</span>
             </button>
@@ -325,7 +373,34 @@ export default function Navbar() {
                   )}
                 </motion.div>
               ))}
-              <motion.div variants={mobileLinkVariants} className="pt-4">
+              
+              {/* GitHub and Resume Links - Mobile */}
+              <motion.div variants={mobileLinkVariants} className="flex items-center gap-4 pt-4">
+                <a
+                  href="https://github.com/kuchikirenji"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2 text-base font-medium text-white/90 backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
+                  aria-label="GitHub Profile"
+                >
+                  <Github className="h-4 w-4" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="/resume/Kuchiki_Renji_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center gap-2 rounded-full border border-purple-400/50 bg-purple-500/20 px-5 py-2 text-base font-medium text-purple-200 backdrop-blur-md transition-all hover:border-purple-400/70 hover:bg-purple-500/30"
+                  aria-label="Download Resume"
+                >
+                  <FileText className="h-4 w-4" />
+                  <span>Resume</span>
+                </a>
+              </motion.div>
+
+              <motion.div variants={mobileLinkVariants} className="pt-2">
                 <button
                   onClick={() => {
                     handleHashLink("#contact", router, pathname);

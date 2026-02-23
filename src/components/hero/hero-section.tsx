@@ -124,9 +124,9 @@ export function HeroSection() {
 
   // Calculate particle count based on device capabilities
   const particleCount = useMemo(() => {
-    if (isLowEnd) return 200; // 80% reduction for low-end
-    if (isMobile) return 400; // 80% reduction for mobile
-    return 2000; // Full count for desktop
+    if (isLowEnd) return 150; // 92.5% reduction for low-end
+    if (isMobile) return 300; // 85% reduction for mobile
+    return 1000; // 50% reduction for desktop (still looks great)
   }, [isMobile, isLowEnd]);
 
   // Should we show the 3D scene?
@@ -157,7 +157,16 @@ export function HeroSection() {
   if (!mounted) {
     return (
       <section className="relative h-screen w-full overflow-hidden bg-slate-950">
-        <LoadingFallback />
+        {/* Fast static background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-950 via-slate-950 to-cyan-950" />
+        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-purple-600/20 blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-600/20 blur-[100px]" />
+        
+        {/* Show content immediately */}
+        <HeroContent
+          onScrollToProjects={handleScrollToProjects}
+          onContact={handleContact}
+        />
       </section>
     );
   }

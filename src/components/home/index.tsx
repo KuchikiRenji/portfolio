@@ -10,16 +10,12 @@ import {
 
 // Eager load hero (above the fold)
 import { HeroSection } from "@/components/hero";
+import { BackToTop } from "@/components/ui/back-to-top";
+
+// Eager load Projects section - it's critical content
+import { ProjectsShowcase } from "@/components/projects";
 
 // Lazy load below-the-fold sections
-const ProjectsShowcase = dynamic(
-  () => import("@/components/projects").then((mod) => mod.ProjectsShowcase),
-  {
-    loading: () => <ProjectsGridSkeleton />,
-    ssr: false,
-  }
-);
-
 const AboutSection = dynamic(
   () => import("@/components/about").then((mod) => mod.AboutSection),
   {
@@ -49,10 +45,8 @@ export function HomePage() {
       {/* Hero Section - eager loaded, above the fold */}
       <HeroSection />
 
-      {/* Projects Showcase - 24 Case Studies */}
-      <Suspense fallback={<ProjectsGridSkeleton />}>
-        <ProjectsShowcase />
-      </Suspense>
+      {/* Projects Showcase - eager loaded for fast display */}
+      <ProjectsShowcase />
 
       {/* About Section */}
       <Suspense fallback={<AboutSkeleton />}>
@@ -66,6 +60,9 @@ export function HomePage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Back to Top Button - appears after scrolling */}
+      <BackToTop />
     </>
   );
 }

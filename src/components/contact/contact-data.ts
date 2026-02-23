@@ -1,5 +1,5 @@
 export const contactInfo = {
-  email: "renji@kuchikirenji.dev",
+  email: "dt.analyst.py@gmail.com",
   location: "Fukuoka, Japan",
   timezone: "JST (UTC+9)",
   availability: "Open to opportunities",
@@ -8,13 +8,6 @@ export const contactInfo = {
 
 export const socialLinks = [
   {
-    name: "Twitter / X",
-    handle: "@Kuchiki010718",
-    url: "https://x.com/Kuchiki010718",
-    icon: "twitter",
-    color: "#1DA1F2",
-  },
-  {
     name: "GitHub",
     handle: "kuchikirenji",
     url: "https://github.com/kuchikirenji",
@@ -22,11 +15,18 @@ export const socialLinks = [
     color: "#ffffff",
   },
   {
-    name: "LinkedIn",
-    handle: "kuchikirenji",
-    url: "https://linkedin.com/in/kuchikirenji",
-    icon: "linkedin",
-    color: "#0A66C2",
+    name: "Email",
+    handle: "dt.analyst.py@gmail.com",
+    url: "mailto:dt.analyst.py@gmail.com",
+    icon: "mail",
+    color: "#EA4335",
+  },
+  {
+    name: "Telegram",
+    handle: "@kuchikirenji",
+    url: "https://t.me/kuchikirenji",
+    icon: "send",
+    color: "#0088cc",
   },
 ];
 

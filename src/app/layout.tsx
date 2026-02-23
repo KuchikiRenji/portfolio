@@ -13,24 +13,27 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  weight: ["400", "500", "600", "700"],
+  fallback: ["system-ui", "arial"],
 });
 
-// Display font for headings - using Inter with specific weights
-// In production, replace with actual Satoshi/General Sans font files
+// Display font for headings - reduced weights
 const fontDisplay = Inter({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["600", "700", "800"],
   preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
-// Monospace font for code
+// Monospace font for code - lazy load since it's not critical
 const fontMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  preload: true,
+  preload: false,
+  fallback: ["monospace"],
 });
 
 export const metadata: Metadata = {
@@ -41,20 +44,110 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
+    // AI & Machine Learning
     "AI Engineer",
-    "Machine Learning",
-    "Deep Learning",
+    "Machine Learning Engineer",
+    "Deep Learning Engineer",
+    "AI Developer",
+    "ML Engineer",
+    "MLOps Engineer",
+    "AI Specialist",
+    "Artificial Intelligence Engineer",
+    
+    // LLM & NLP
+    "LLM Engineer",
+    "Large Language Model Developer",
+    "ChatGPT Developer",
+    "OpenAI Developer",
+    "RAG Developer",
+    "Retrieval Augmented Generation",
+    "NLP Engineer",
+    "Natural Language Processing",
+    "Chatbot Developer",
+    "AI Chatbot Development",
+    "LangChain Developer",
+    
+    // Computer Vision
+    "Computer Vision Engineer",
+    "Image Recognition",
+    "Object Detection",
+    "CV Engineer",
+    
+    // Full-Stack Development
     "Full-Stack Developer",
+    "Full-Stack Engineer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Web Developer",
+    "Software Engineer",
+    "JavaScript Developer",
+    "TypeScript Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "Python Developer",
+    
+    // SaaS & Cloud
+    "SaaS Developer",
+    "SaaS Engineer",
+    "SaaS Architect",
+    "Cloud Engineer",
+    "Cloud Architect",
+    "AWS Developer",
+    "Azure Developer",
+    "Serverless Developer",
+    "Microservices Developer",
+    "API Developer",
+    "REST API",
+    "GraphQL",
+    
+    // Specific Technologies
     "PyTorch",
-    "LangChain",
-    "Next.js",
-    "TypeScript",
-    "Three.js",
-    "Computer Vision",
-    "NLP",
+    "TensorFlow",
+    "Keras",
+    "scikit-learn",
+    "Hugging Face",
+    "FastAPI",
+    "Flask",
+    "Django",
+    "Express.js",
+    "PostgreSQL",
+    "MongoDB",
+    "Redis",
+    "Docker",
+    "Kubernetes",
+    "CI/CD",
+    
+    // MLOps & Data
     "MLOps",
+    "DataOps",
+    "ML Pipeline",
+    "Model Deployment",
+    "Databricks",
+    "MLflow",
+    "Data Engineering",
+    "ETL Developer",
+    "Big Data",
+    
+    // Specialized AI
+    "Demand Forecasting",
+    "Time Series Forecasting",
+    "Predictive Analytics",
+    "Recommendation Systems",
+    "Anomaly Detection",
+    "Sentiment Analysis",
+    
+    // Location
     "Fukuoka",
     "Japan",
+    "Remote Developer",
+    "Freelance Developer",
+    
+    // Industry
+    "AI Consultant",
+    "Tech Consultant",
+    "Startup CTO",
+    "Technical Lead",
   ],
   authors: [{ name: "Kuchiki Renji", url: siteConfig.url }],
   creator: "Kuchiki Renji",
@@ -63,6 +156,17 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  icons: {
+    icon: [
+      { url: "/profile.png", type: "image/png", sizes: "any" },
+    ],
+    apple: [
+      { url: "/profile.png", type: "image/png", sizes: "180x180" },
+    ],
+    shortcut: [
+      { url: "/profile.png", type: "image/png" },
+    ],
   },
   openGraph: {
     type: "website",
@@ -128,6 +232,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+        
         {/* Preconnect to critical origins */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -135,9 +244,23 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        
+        {/* Preload critical assets */}
+        <link rel="preload" href="/profile.png" as="image" type="image/png" />
 
-        {/* Structured Data */}
-        <StructuredData />
+        {/* Minimal structured data - defer full schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Kuchiki Renji",
+              jobTitle: "AI Engineer & Full-Stack Developer",
+              url: siteConfig.url,
+            }),
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${fontDisplay.variable} ${fontMono.variable} font-sans antialiased`}

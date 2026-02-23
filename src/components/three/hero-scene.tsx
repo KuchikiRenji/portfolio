@@ -74,25 +74,24 @@ function AnimatedCamera({
   );
 }
 
-// Post-processing effects
+// Post-processing effects - simplified for better performance
 function Effects({ isLowEnd }: { isLowEnd: boolean }) {
-  if (isLowEnd) return null;
+  const { gl, scene, camera } = useThree();
+  
+  if (isLowEnd || !gl || !scene || !camera) return null;
 
   return (
     <EffectComposer multisampling={0}>
       <Bloom
-        intensity={0.5}
-        luminanceThreshold={0.2}
-        luminanceSmoothing={0.9}
+        intensity={0.4}
+        luminanceThreshold={0.3}
+        luminanceSmoothing={0.8}
         mipmapBlur
+        levels={5} // Reduced from default 8
       />
       <Vignette
         offset={0.3}
         darkness={0.5}
-        blendFunction={BlendFunction.NORMAL}
-      />
-      <ChromaticAberration
-        offset={new THREE.Vector2(0.0005, 0.0005)}
         blendFunction={BlendFunction.NORMAL}
       />
     </EffectComposer>
@@ -151,10 +150,15 @@ export function HeroScene({
   scrollProgress,
   isLowEnd,
 }: HeroSceneProps) {
+  // Safe device pixel ratio check
+  const dpr = typeof window !== 'undefined' 
+    ? (isLowEnd ? 1 : Math.min(window.devicePixelRatio, 1.5))
+    : 1;
+
   return (
     <div className="absolute inset-0">
       <Canvas
-        dpr={isLowEnd ? 1 : Math.min(window.devicePixelRatio, 2)}
+        dpr={dpr}
         gl={{
           antialias: !isLowEnd,
           alpha: true,
@@ -162,6 +166,7 @@ export function HeroScene({
           stencil: false,
           depth: true,
         }}
+        frameloop="demand" // Only render when needed
         style={{ background: "transparent" }}
       >
         <Suspense fallback={<LoadingFallback />}>

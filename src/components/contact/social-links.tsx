@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Twitter, Github, Linkedin, type LucideProps } from "lucide-react";
+import { Github, Send, Mail, type LucideProps } from "lucide-react";
 import { socialLinks } from "./contact-data";
 import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, React.ComponentType<LucideProps>> = {
-  twitter: Twitter,
   github: Github,
-  linkedin: Linkedin,
+  mail: Mail,
+  send: Send,
 };
 
 export function SocialLinks() {

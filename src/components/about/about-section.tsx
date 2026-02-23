@@ -7,9 +7,9 @@ import {
   MapPin,
   Mail,
   Github,
-  Linkedin,
-  Twitter,
+  Send,
   Sparkles,
+  Download,
 } from "lucide-react";
 import { bio } from "./about-data";
 import { CareerTimeline } from "./career-timeline";
@@ -62,8 +62,7 @@ const itemVariants: Variants = {
 // Social links
 const socialLinks = [
   { icon: Github, href: bio.github, label: "GitHub" },
-  { icon: Linkedin, href: bio.linkedin, label: "LinkedIn" },
-  { icon: Twitter, href: bio.twitter, label: "Twitter" },
+  { icon: Send, href: bio.telegram, label: "Telegram" },
   { icon: Mail, href: `mailto:${bio.email}`, label: "Email" },
 ];
 
@@ -109,7 +108,7 @@ export function AboutSection() {
       className="relative min-h-screen overflow-hidden bg-slate-950 py-24"
     >
       {/* Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-purple-950/5 to-slate-950" />
         <motion.div
           animate={{
@@ -117,7 +116,7 @@ export function AboutSection() {
             y: [0, -30, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-0 top-1/4 h-[600px] w-[600px] rounded-full bg-purple-600/5 blur-[150px]"
+          className="absolute left-0 top-1/4 h-[600px] w-[600px] rounded-full bg-purple-600/5 blur-[150px] pointer-events-none"
         />
         <motion.div
           animate={{
@@ -272,21 +271,40 @@ export function AboutSection() {
           <p className="mb-6 text-white/50">
             Interested in working together? Let&apos;s build something amazing.
           </p>
-          <motion.a
-            href={`mailto:${bio.email}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className={cn(
-              "inline-flex items-center gap-2 rounded-2xl px-8 py-4",
-              "bg-gradient-to-r from-purple-600 to-cyan-600",
-              "text-lg font-semibold text-white",
-              "shadow-lg shadow-purple-500/25",
-              "transition-all hover:shadow-xl hover:shadow-purple-500/30"
-            )}
-          >
-            <Mail className="h-5 w-5" />
-            Get in Touch
-          </motion.a>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <motion.a
+              href={`mailto:${bio.email}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className={cn(
+                "inline-flex items-center gap-2 rounded-2xl px-8 py-4",
+                "bg-gradient-to-r from-purple-600 to-cyan-600",
+                "text-lg font-semibold text-white",
+                "shadow-lg shadow-purple-500/25",
+                "transition-all hover:shadow-xl hover:shadow-purple-500/30"
+              )}
+            >
+              <Mail className="h-5 w-5" />
+              Get in Touch
+            </motion.a>
+            
+            <motion.a
+              href="/resume/Kuchiki_Renji_Resume.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className={cn(
+                "inline-flex items-center gap-2 rounded-2xl px-8 py-4",
+                "border border-white/20 bg-white/5",
+                "text-lg font-semibold text-white/90",
+                "backdrop-blur-sm",
+                "transition-all hover:border-white/30 hover:bg-white/10"
+              )}
+            >
+              <Download className="h-5 w-5" />
+              Download Resume
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>

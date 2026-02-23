@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Code2, Coffee } from "lucide-react";
+import { Heart, Coffee } from "lucide-react";
 import { SocialIconsFooter } from "./social-links";
 import { GradientText } from "@/components/ui";
 
@@ -57,26 +57,6 @@ export function Footer() {
             </p>
           </motion.div>
         </div>
-
-        {/* Bottom row - Tech stack */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 border-t border-white/5 pt-8 text-center"
-        >
-          <p className="flex flex-wrap items-center justify-center gap-1 text-sm text-white/30">
-            <Code2 className="h-4 w-4" />
-            Built with <span className="text-white/50">Next.js 16</span> •{" "}
-            <span className="text-white/50">Three.js</span> •{" "}
-            <span className="text-white/50">Framer Motion</span> •{" "}
-            <span className="text-white/50">Tailwind CSS</span>
-          </p>
-          <p className="mt-2 text-xs text-white/20">
-            Deployed on Vercel • Source on GitHub
-          </p>
-        </motion.div>
       </div>
     </footer>
   );

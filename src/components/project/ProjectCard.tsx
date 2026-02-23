@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/types/project";
 import { cn } from "@/lib/utils";
+import { PROJECT_IMAGE_PLACEHOLDER } from "@/lib/placeholders";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,21 +15,34 @@ interface ProjectCardProps {
   index?: number;
 }
 
-export function ProjectCard({
+function ProjectCardComponent({
   project,
   variant = "list",
   index = 0,
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [imgError, setImgError] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (variant === "timeline") return; // No tilt for timeline variant
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    // Limit rotation to ±10 degrees
-    setTilt({ x: Math.max(-10, Math.min(10, y * 15)), y: Math.max(-10, Math.min(10, -x * 15)) });
+    
+    // Capture values before async operation
+    const target = e.currentTarget;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    
+    // Use requestAnimationFrame to throttle tilt updates
+    requestAnimationFrame(() => {
+      // Check if element still exists
+      if (!target) return;
+      
+      const rect = target.getBoundingClientRect();
+      const x = (clientX - rect.left) / rect.width - 0.5;
+      const y = (clientY - rect.top) / rect.height - 0.5;
+      // Limit rotation to ±10 degrees
+      setTilt({ x: Math.max(-10, Math.min(10, y * 15)), y: Math.max(-10, Math.min(10, -x * 15)) });
+    });
   };
 
   const handleMouseLeave = () => {
@@ -39,15 +53,20 @@ export function ProjectCard({
   const isFeatured = variant === "featured";
   const isTimeline = variant === "timeline";
 
+  // List variant: no inner opacity 0 so cards below the fold after "Show All" stay visible
+  const useViewAnimation = variant !== "list";
+
   return (
     <Link href={`/projects/${project.slug}`} className="block">
       <motion.article
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
+        initial={
+          useViewAnimation ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }
+        }
+        whileInView={useViewAnimation ? { opacity: 1, y: 0 } : undefined}
+        viewport={useViewAnimation ? { once: true, margin: "-50px" } : undefined}
         transition={{
           duration: 0.5,
-          delay: index * 0.1,
+          delay: Math.min(index * 0.05, 0.5), // Cap delay to prevent long waits
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
         onMouseEnter={() => setIsHovered(true)}
@@ -57,6 +76,7 @@ export function ProjectCard({
           transform: isHovered && !isTimeline
             ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)`
             : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)",
+          willChange: isHovered ? "transform" : "auto",
         }}
         className={cn(
           "group relative overflow-hidden rounded-2xl border border-white/10",
@@ -81,7 +101,7 @@ export function ProjectCard({
           )}
         >
           <Image
-            src={project.defaultImage}
+            src={imgError ? PROJECT_IMAGE_PLACEHOLDER : project.defaultImage}
             alt={project.title}
             fill
             sizes={
@@ -92,6 +112,8 @@ export function ProjectCard({
                   : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             }
             priority={isFeatured && index < 2}
+            loading={isFeatured && index < 2 ? "eager" : "lazy"}
+            onError={() => setImgError(true)}
             className={cn(
               "object-cover transition-transform duration-500",
               "group-hover:scale-110"
@@ -208,3 +230,6 @@ export function ProjectCard({
     </Link>
   );
 }
+
+// Memoize to prevent unnecessary re-renders
+export const ProjectCard = memo(ProjectCardComponent);
