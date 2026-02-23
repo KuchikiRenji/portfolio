@@ -1,10 +1,11 @@
 "use client";
 /* eslint-disable react-hooks/immutability */
 
-import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useMemo, useEffect, useState } from "react";
+import { useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, Line } from "@react-three/drei";
 import * as THREE from "three";
+import { SafeCanvas } from "@/components/three/safe-canvas";
 
 interface TimeSeriesGraphProps {
   color: string;
@@ -291,15 +292,27 @@ function SceneContent({ color }: TimeSeriesGraphProps) {
 }
 
 export function TimeSeriesScene({ color }: TimeSeriesGraphProps) {
+  const fallback = (
+    <div className="absolute inset-0 flex items-center justify-center opacity-10">
+      <div
+        className="w-full h-full"
+        style={{
+          background: `radial-gradient(circle at 50% 50%, ${color}15 0%, transparent 70%)`,
+        }}
+      />
+    </div>
+  );
+
   return (
     <div className="absolute inset-0">
-      <Canvas
+      <SafeCanvas
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
+        fallback={fallback}
       >
         <SceneContent color={color} />
-      </Canvas>
+      </SafeCanvas>
     </div>
   );
 }

@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import type { ProjectDetails } from "@/lib/projects";
 import { cn } from "@/lib/utils";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 // Dynamically import 3D scene
 const TimeSeriesScene = dynamic(
@@ -241,7 +242,18 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
       >
         {/* 3D Background */}
         <div className="absolute inset-0">
-          <TimeSeriesScene color={project.color} />
+          <ErrorBoundary
+            fallback={
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: `radial-gradient(circle at 50% 50%, ${project.color}15 0%, transparent 70%)`,
+                }}
+              />
+            }
+          >
+            <TimeSeriesScene color={project.color} />
+          </ErrorBoundary>
         </div>
 
         {/* Gradient overlays */}
