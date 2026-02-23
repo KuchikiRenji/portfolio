@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useRef, useEffect } from "react";
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { Suspense, useRef, useEffect, useState } from "react";
+import { useThree, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import {
   EffectComposer,
@@ -12,6 +12,7 @@ import {
 import { BlendFunction } from "postprocessing";
 import * as THREE from "three";
 import { NeuralNetworkParticles } from "./neural-network-particles";
+import { SafeCanvas } from "./safe-canvas";
 
 interface HeroSceneProps {
   particleCount: number;
@@ -151,13 +152,22 @@ export function HeroScene({
   isLowEnd,
 }: HeroSceneProps) {
   // Safe device pixel ratio check
-  const dpr = typeof window !== 'undefined' 
-    ? (isLowEnd ? 1 : Math.min(window.devicePixelRatio, 1.5))
-    : 1;
+  const dpr =
+    typeof window !== "undefined"
+      ? isLowEnd
+        ? 1
+        : Math.min(window.devicePixelRatio, 1.5)
+      : 1;
+
+  const fallback = (
+    <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20" />
+    </div>
+  );
 
   return (
     <div className="absolute inset-0">
-      <Canvas
+      <SafeCanvas
         dpr={dpr}
         gl={{
           antialias: !isLowEnd,
@@ -166,8 +176,9 @@ export function HeroScene({
           stencil: false,
           depth: true,
         }}
-        frameloop="demand" // Only render when needed
+        frameloop="demand"
         style={{ background: "transparent" }}
+        fallback={fallback}
       >
         <Suspense fallback={<LoadingFallback />}>
           <SceneContent
@@ -177,7 +188,7 @@ export function HeroScene({
             isLowEnd={isLowEnd}
           />
         </Suspense>
-      </Canvas>
+      </SafeCanvas>
     </div>
   );
 }

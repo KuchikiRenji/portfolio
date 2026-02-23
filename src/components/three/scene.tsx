@@ -1,15 +1,15 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { GradientSphere } from "./gradient-sphere";
 import { FloatingParticles } from "./floating-particles";
+import { SafeCanvas } from "./safe-canvas";
 
 export function Scene() {
   return (
     <div className="fixed inset-0 -z-10">
-      <Canvas dpr={[1, 2]}>
+      <SafeCanvas dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={45} />
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -26,7 +26,7 @@ export function Scene() {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-      </Canvas>
+      </SafeCanvas>
     </div>
   );
 }
