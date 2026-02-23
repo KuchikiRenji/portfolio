@@ -4,7 +4,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Github, FileText } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 
 type NavLink = {
   href: string;
@@ -20,24 +25,29 @@ const navLinks: NavLink[] = [
 ];
 
 // Helper function to handle hash link navigation
-function handleHashLink(href: string, router: ReturnType<typeof useRouter>, pathname: string) {
+function handleHashLink(
+  href: string,
+  router: ReturnType<typeof useRouter>,
+  pathname: string
+) {
   const hash = href.replace("#", "");
-  
+
   const scrollToHash = () => {
     const element = document.getElementById(hash);
     if (element) {
       // Account for fixed navbar height
       const offset = 100;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
       });
     }
   };
-  
+
   if (pathname === "/") {
     // Already on home page, just scroll
     scrollToHash();
@@ -62,7 +72,11 @@ function handleHashLink(href: string, router: ReturnType<typeof useRouter>, path
 
 const navbarVariants = {
   initial: { y: -20, opacity: 0 },
-  animate: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const } },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+  },
 };
 
 const mobileMenuVariants = {
@@ -70,25 +84,38 @@ const mobileMenuVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.2, ease: "easeOut" as const, when: "beforeChildren" as const, staggerChildren: 0.06 },
+    transition: {
+      duration: 0.2,
+      ease: "easeOut" as const,
+      when: "beforeChildren" as const,
+      staggerChildren: 0.06,
+    },
   },
-  exit: { opacity: 0, scale: 0.98, transition: { duration: 0.15, ease: "easeIn" as const } },
+  exit: {
+    opacity: 0,
+    scale: 0.98,
+    transition: { duration: 0.15, ease: "easeIn" as const },
+  },
 };
 
 const mobileLinkVariants = {
   hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" as const } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.25, ease: "easeOut" as const },
+  },
 };
 
 const linkBaseClasses =
   "relative inline-flex items-center text-sm font-medium text-white/80 transition-colors duration-200 hover:text-cyan-300";
 
-function DesktopNavLinks({ 
-  pathname, 
-  router, 
-  activeSection 
-}: { 
-  pathname: string; 
+function DesktopNavLinks({
+  pathname,
+  router,
+  activeSection,
+}: {
+  pathname: string;
   router: ReturnType<typeof useRouter>;
   activeSection: string;
 }) {
@@ -96,9 +123,9 @@ function DesktopNavLinks({
     <nav className="hidden items-center gap-8 md:flex">
       {navLinks.map((link) => {
         // Determine if this link is active
-        const isActive = link.isHash 
-          ? activeSection === link.href 
-          : link.href === "/" 
+        const isActive = link.isHash
+          ? activeSection === link.href
+          : link.href === "/"
             ? activeSection === "/" && pathname === "/"
             : pathname === link.href;
 
@@ -183,7 +210,10 @@ export default function Navbar() {
         const element = document.getElementById(sectionId);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(`#${sectionId}`);
             return;
           }
@@ -232,7 +262,9 @@ export default function Navbar() {
           className={[
             "mx-auto flex h-14 xs:h-16 max-w-6xl items-center justify-between gap-2 overflow-hidden rounded-b-3xl border border-white/10 bg-black/30 px-3 xs:px-4 shadow-lg shadow-black/40 backdrop-blur-md md:h-20 md:px-12",
             "transition-all duration-300 min-w-0",
-            scrolled ? "border-white/15 bg-black/40 shadow-md backdrop-blur-lg" : "",
+            scrolled
+              ? "border-white/15 bg-black/40 shadow-md backdrop-blur-lg"
+              : "",
           ].join(" ")}
         >
           {/* Left: Brand */}
@@ -250,7 +282,11 @@ export default function Navbar() {
           </Link>
 
           {/* Center: Links (desktop) */}
-          <DesktopNavLinks pathname={pathname} router={router} activeSection={activeSection} />
+          <DesktopNavLinks
+            pathname={pathname}
+            router={router}
+            activeSection={activeSection}
+          />
 
           {/* Right: Actions */}
           <div className="flex items-center gap-2 md:gap-3">
@@ -295,7 +331,9 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               onClick={() => setMobileOpen((open) => !open)}
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white/80 shadow-md shadow-black/40 backdrop-blur-md md:hidden"
-              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={
+                mobileOpen ? "Close navigation menu" : "Open navigation menu"
+              }
             >
               <AnimatePresence initial={false} mode="wait">
                 {mobileOpen ? (
@@ -373,9 +411,12 @@ export default function Navbar() {
                   )}
                 </motion.div>
               ))}
-              
+
               {/* GitHub and Resume Links - Mobile */}
-              <motion.div variants={mobileLinkVariants} className="flex items-center gap-4 pt-4">
+              <motion.div
+                variants={mobileLinkVariants}
+                className="flex items-center gap-4 pt-4"
+              >
                 <a
                   href="https://github.com/kuchikirenji"
                   target="_blank"
@@ -429,4 +470,3 @@ export default function Navbar() {
     </>
   );
 }
-

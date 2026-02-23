@@ -12,7 +12,10 @@ interface ProjectGalleryProps {
   alt?: string;
 }
 
-export function ProjectGallery({ images, alt = "Project image" }: ProjectGalleryProps) {
+export function ProjectGallery({
+  images,
+  alt = "Project image",
+}: ProjectGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [failedIndices, setFailedIndices] = useState<Set<number>>(new Set());
@@ -63,10 +66,13 @@ export function ProjectGallery({ images, alt = "Project image" }: ProjectGallery
     [images.length]
   );
 
-  const goToSlide = useCallback((index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
-    setCurrentIndex(index);
-  }, [currentIndex]);
+  const goToSlide = useCallback(
+    (index: number) => {
+      setDirection(index > currentIndex ? 1 : -1);
+      setCurrentIndex(index);
+    },
+    [currentIndex]
+  );
 
   // Handle drag end
   const handleDragEnd = useCallback(

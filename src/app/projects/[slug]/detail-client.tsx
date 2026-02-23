@@ -37,9 +37,9 @@ function ProjectTechStack({ tech }: { tech: string[] }) {
 
 function ProjectGallery({ images, alt }: { images: string[]; alt: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
   if (!images || images.length === 0) return null;
-  
+
   return (
     <div className="space-y-4">
       {/* Main Image */}
@@ -52,7 +52,7 @@ function ProjectGallery({ images, alt }: { images: string[]; alt: string }) {
           sizes="(max-width: 768px) 100vw, 896px"
         />
       </div>
-      
+
       {/* Thumbnails */}
       {images.length > 1 && (
         <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
@@ -107,7 +107,8 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
     const currentIndex = projects.findIndex((p) => p.slug === project.slug);
     return {
       prevProject: currentIndex > 0 ? projects[currentIndex - 1] : null,
-      nextProject: currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null,
+      nextProject:
+        currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null,
     };
   }, [project.slug]);
 
@@ -137,7 +138,9 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src={heroImgError ? PROJECT_IMAGE_PLACEHOLDER : project.defaultImage}
+            src={
+              heroImgError ? PROJECT_IMAGE_PLACEHOLDER : project.defaultImage
+            }
             alt={project.title}
             fill
             priority
@@ -259,9 +262,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
             {/* Links */}
             {project.links && project.links.length > 0 && (
               <div>
-                <h2 className="mb-4 text-lg font-semibold text-white">
-                  Links
-                </h2>
+                <h2 className="mb-4 text-lg font-semibold text-white">Links</h2>
                 <div className="flex flex-wrap gap-3">
                   {project.links.map((link) => (
                     <a

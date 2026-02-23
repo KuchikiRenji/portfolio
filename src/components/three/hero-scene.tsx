@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useRef, useEffect, useState } from "react";
+import { Suspense, useRef, useEffect } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import {
@@ -78,7 +78,7 @@ function AnimatedCamera({
 // Post-processing effects - simplified for better performance
 function Effects({ isLowEnd }: { isLowEnd: boolean }) {
   const { gl, scene, camera } = useThree();
-  
+
   if (isLowEnd || !gl || !scene || !camera) return null;
 
   return (

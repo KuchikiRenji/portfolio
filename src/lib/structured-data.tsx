@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 export const siteConfig = {
   url: "https://kuchikirenji.dev",
   name: "Kuchiki Renji",
-  title: "Kuchiki Renji | AI Engineer, Full-Stack Developer & SaaS Architect Portfolio",
+  title:
+    "Kuchiki Renji | AI Engineer, Full-Stack Developer & SaaS Architect Portfolio",
   description:
     "Hire Kuchiki Renji - Senior AI Engineer & Full-Stack Developer in Japan specializing in production AI systems, LLM development, RAG, SaaS architecture, and MLOps. 8+ years building scalable AI applications with PyTorch, TensorFlow, Next.js, Python. Proven results: +20% forecasting accuracy, +15% model performance, $10M+ business value. Available for freelance AI consulting and full-stack development projects.",
   locale: "en_US",

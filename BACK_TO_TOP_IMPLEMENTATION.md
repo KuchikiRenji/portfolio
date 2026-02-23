@@ -1,6 +1,7 @@
 # Back to Top Button Implementation
 
 ## Overview
+
 A mobile-optimized back-to-top button has been implemented across the portfolio, appearing in the bottom right corner after scrolling down.
 
 ## Implementation Details
@@ -8,6 +9,7 @@ A mobile-optimized back-to-top button has been implemented across the portfolio,
 ### 1. Reusable Component (`src/components/ui/back-to-top.tsx`)
 
 #### Features
+
 - **Smooth scroll animation** to top of page
 - **Fade in/out** based on scroll position
 - **Mobile-optimized sizing** - larger touch targets on mobile
@@ -16,16 +18,19 @@ A mobile-optimized back-to-top button has been implemented across the portfolio,
 - **Pulse animation** on hover for visual feedback
 
 #### Responsive Sizing
+
 - **Mobile (< 375px)**: 48px × 48px
-- **Small mobile (375px+)**: 56px × 56px  
+- **Small mobile (375px+)**: 56px × 56px
 - **Desktop (768px+)**: 48px × 48px
 
 #### Positioning
+
 - **Mobile**: `bottom-6 right-6` (24px from edges)
 - **Small mobile**: `bottom-8 right-8` (32px from edges)
 - **Desktop**: `bottom-10 right-10` (40px from edges)
 
 #### Styling
+
 - Gradient background: `from-purple-600 to-cyan-600`
 - Shadow with purple glow: `shadow-purple-500/30`
 - Border: `border-white/10`
@@ -34,6 +39,7 @@ A mobile-optimized back-to-top button has been implemented across the portfolio,
 - Active state: scale down for tactile feedback
 
 #### Accessibility
+
 - Minimum touch target: 48px × 48px (WCAG 2.1 Level AAA)
 - Focus ring: 2px purple ring with offset
 - ARIA label: "Back to top"
@@ -50,7 +56,7 @@ export function HomePage() {
   return (
     <>
       {/* ... other sections ... */}
-      
+
       {/* Back to Top Button - appears after scrolling */}
       <BackToTop />
     </>
@@ -63,6 +69,7 @@ export function HomePage() {
 Project detail pages already have a built-in back-to-top button implementation in `src/app/projects/[slug]/detail-client.tsx`:
 
 #### Features
+
 - Appears after scrolling 500px down
 - Mobile-optimized: 56px × 56px on mobile, 48px × 48px on desktop
 - Solid purple background with stronger border
@@ -70,6 +77,7 @@ Project detail pages already have a built-in back-to-top button implementation i
 - Includes tap animation for mobile feedback
 
 #### Styling
+
 ```tsx
 className={cn(
   "fixed bottom-6 right-6 z-50 md:bottom-8 md:right-8",
@@ -84,6 +92,7 @@ className={cn(
 ## Usage
 
 ### Basic Usage
+
 ```tsx
 import { BackToTop } from "@/components/ui/back-to-top";
 
@@ -98,6 +107,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ```
 
 ### Props
+
 - `showAfter?: number` - Scroll position (in pixels) after which button appears (default: 300)
 - `className?: string` - Additional CSS classes to apply
 
@@ -127,6 +137,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
    - Provides tactile feedback on mobile
 
 ### Animation Details
+
 - **Entrance**: Fade in with scale and slide up (300ms)
 - **Exit**: Fade out with scale and slide down (300ms)
 - **Easing**: `[0.25, 0.46, 0.45, 0.94]` (smooth ease-out)
@@ -135,17 +146,20 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ## Mobile Optimizations
 
 ### Touch Targets
+
 - **Minimum size**: 48px × 48px (WCAG AAA)
 - **Recommended size**: 56px × 56px on mobile
 - **Adequate spacing**: 24-32px from screen edges
 
 ### Performance
+
 - **Passive scroll listener**: Doesn't block scrolling
 - **Cleanup on unmount**: Removes event listeners
 - **Smooth scroll**: Uses native `behavior: 'smooth'`
 - **GPU acceleration**: Uses transform for animations
 
 ### iOS Specific
+
 - **Tap highlight**: Custom purple color with 20% opacity
 - **Active state**: Scale down for tactile feedback
 - **Safe area**: Respects safe-area-inset-bottom
@@ -153,18 +167,21 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ## Browser Support
 
 ### Fully Supported
+
 - Chrome/Edge 90+
 - Safari 14+
 - Firefox 90+
 - Samsung Internet 14+
 
 ### Graceful Degradation
+
 - Older browsers: Button still works, animations may be simplified
 - No JavaScript: Button won't appear (progressive enhancement)
 
 ## Accessibility Features
 
 ### WCAG 2.1 Compliance
+
 - ✅ **Level AAA touch target size** (48px minimum)
 - ✅ **Keyboard accessible** (can be focused and activated)
 - ✅ **Focus indicator** (2px purple ring with offset)
@@ -172,11 +189,13 @@ import { BackToTop } from "@/components/ui/back-to-top";
 - ✅ **Color contrast** (white on purple gradient)
 
 ### Screen Reader Support
+
 - Proper ARIA label announces button purpose
 - Button role is implicit (native button element)
 - Focus management works correctly
 
 ### Keyboard Navigation
+
 - **Tab**: Focus the button
 - **Enter/Space**: Activate scroll to top
 - **Escape**: (handled by browser) blur focus
@@ -184,6 +203,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ## Testing Checklist
 
 ### Functional Testing
+
 - [ ] Button appears after scrolling threshold
 - [ ] Button disappears when scrolling back up
 - [ ] Clicking button scrolls smoothly to top
@@ -191,6 +211,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 - [ ] Animations are smooth and performant
 
 ### Mobile Testing (375x667)
+
 - [ ] Button is easily tappable (56px × 56px)
 - [ ] Button doesn't overlap content
 - [ ] Button respects safe areas on notched devices
@@ -198,6 +219,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 - [ ] Button doesn't interfere with scrolling
 
 ### Accessibility Testing
+
 - [ ] Button is keyboard accessible
 - [ ] Focus indicator is visible
 - [ ] Screen reader announces button correctly
@@ -205,6 +227,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 - [ ] Color contrast is sufficient
 
 ### Cross-Browser Testing
+
 - [ ] Works in Chrome Mobile
 - [ ] Works in Safari iOS
 - [ ] Works in Samsung Internet
@@ -214,12 +237,14 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ## Performance Metrics
 
 ### Target Metrics
+
 - **Scroll listener overhead**: < 1ms per frame
 - **Animation frame rate**: 60 FPS
 - **Button render time**: < 16ms
 - **Memory usage**: < 1MB
 
 ### Optimizations Applied
+
 - Passive scroll listener (doesn't block scrolling)
 - RequestAnimationFrame for smooth animations
 - CSS transforms (GPU accelerated)
@@ -229,6 +254,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ## Future Enhancements
 
 ### Potential Improvements
+
 1. **Progress indicator**: Show scroll progress as circular ring
 2. **Haptic feedback**: Vibration on tap (iOS/Android)
 3. **Customizable position**: Allow left/right positioning
@@ -237,6 +263,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 6. **Smooth scroll polyfill**: For older browsers
 
 ### Advanced Features
+
 - **Scroll spy**: Highlight current section
 - **Mini navigation**: Show section links on hover
 - **Scroll velocity**: Faster scroll for long pages
@@ -245,6 +272,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 ## Summary
 
 The back-to-top button is now fully implemented with:
+
 - ✅ Mobile-optimized sizing (56px × 56px)
 - ✅ Smooth animations and transitions
 - ✅ Accessibility compliance (WCAG 2.1 Level AAA)

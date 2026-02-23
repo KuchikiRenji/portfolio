@@ -3,18 +3,20 @@
 ## Changes Made
 
 ### 1. Back to Top Button ✅
+
 - **Location**: Fixed position at bottom-right corner
-- **Behavior**: 
+- **Behavior**:
   - Appears when user scrolls down more than 500px
   - Smooth scroll animation to top
   - Fade in/out animation with scale effect
-- **Styling**: 
+- **Styling**:
   - Purple gradient background matching site theme
   - Hover effects with scale and shadow
   - Accessible with keyboard focus states
   - ARIA label for screen readers
 
 ### 2. Previous/Next Project Navigation ✅
+
 - **Location**: Above the "Back to All Projects" buttons
 - **Features**:
   - Shows previous project on the left
@@ -29,6 +31,7 @@
   - Gracefully handles first project (no previous) and last project (no next)
 
 ### 3. Removed "N" Mark
+
 - **Note**: The "N" mark in the screenshot appears to be from a browser extension or notification
 - It's not part of the application code
 - Users can disable browser extensions or notifications to remove it
@@ -36,6 +39,7 @@
 ## Implementation Details
 
 ### New Imports:
+
 ```typescript
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -44,16 +48,19 @@ import { projects } from "@/data/projects";
 ```
 
 ### New State:
+
 ```typescript
 const [showBackToTop, setShowBackToTop] = useState(false);
 ```
 
 ### New Logic:
+
 ```typescript
 // Find adjacent projects
 const currentIndex = projects.findIndex((p) => p.slug === project.slug);
 const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+const nextProject =
+  currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
 // Back to top visibility
 useEffect(() => {
@@ -72,12 +79,14 @@ const scrollToTop = () => {
 ## UI/UX Improvements
 
 ### Navigation Flow:
+
 1. **Previous/Next Cards**: Quick navigation between related projects
 2. **Back to All Projects**: Return to project grid
 3. **Get in Touch**: Direct CTA to contact section
 4. **Back to Top**: Quick return to page top
 
 ### Visual Hierarchy:
+
 ```
 ┌─────────────────────────────────────┐
 │  [← Previous]      [Next →]         │  ← New: Adjacent project navigation
@@ -89,6 +98,7 @@ const scrollToTop = () => {
 ```
 
 ### Responsive Design:
+
 - **Desktop**: Previous/Next side by side
 - **Mobile**: Previous/Next stacked vertically
 - **Back to Top**: Always visible when scrolled (all devices)

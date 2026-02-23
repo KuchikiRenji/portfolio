@@ -59,15 +59,15 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
 ## Scripts
 
-| Command              | Description                              |
-| -------------------- | ---------------------------------------- |
-| `npm run dev`        | Start development server with Turbopack  |
-| `npm run build`      | Build for production                     |
-| `npm start`          | Start production server                  |
-| `npm run lint`       | Run ESLint and auto-fix issues           |
-| `npm run lint:check` | Check for linting errors                 |
-| `npm run format`     | Format code with Prettier                |
-| `npm run typecheck`  | Run TypeScript type checking             |
+| Command              | Description                             |
+| -------------------- | --------------------------------------- |
+| `npm run dev`        | Start development server with Turbopack |
+| `npm run build`      | Build for production                    |
+| `npm start`          | Start production server                 |
+| `npm run lint`       | Run ESLint and auto-fix issues          |
+| `npm run lint:check` | Check for linting errors                |
+| `npm run format`     | Format code with Prettier               |
+| `npm run typecheck`  | Run TypeScript type checking            |
 
 ---
 
@@ -75,32 +75,32 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
 ### Core
 
-| Technology | Version | Purpose |
-| ---------- | ------- | ------- |
-| [Next.js](https://nextjs.org/) | 16.1 | React framework with App Router |
-| [React](https://react.dev/) | 19 | UI library |
-| [TypeScript](https://www.typescriptlang.org/) | 5 | Type safety |
-| [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first styling |
+| Technology                                    | Version | Purpose                         |
+| --------------------------------------------- | ------- | ------------------------------- |
+| [Next.js](https://nextjs.org/)                | 16.1    | React framework with App Router |
+| [React](https://react.dev/)                   | 19      | UI library                      |
+| [TypeScript](https://www.typescriptlang.org/) | 5       | Type safety                     |
+| [Tailwind CSS](https://tailwindcss.com/)      | 4       | Utility-first styling           |
 
 ### 3D & Animation
 
-| Technology | Purpose |
-| ---------- | ------- |
-| [Three.js](https://threejs.org/) | 3D graphics engine |
+| Technology                                                  | Purpose                     |
+| ----------------------------------------------------------- | --------------------------- |
+| [Three.js](https://threejs.org/)                            | 3D graphics engine          |
 | [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) | React renderer for Three.js |
-| [Drei](https://github.com/pmndrs/drei) | Useful helpers for R3F |
-| [Framer Motion](https://www.framer.com/motion/) | Animation library |
-| [Lenis](https://lenis.darkroom.engineering/) | Smooth scroll |
+| [Drei](https://github.com/pmndrs/drei)                      | Useful helpers for R3F      |
+| [Framer Motion](https://www.framer.com/motion/)             | Animation library           |
+| [Lenis](https://lenis.darkroom.engineering/)                | Smooth scroll               |
 
 ### UI & State
 
-| Technology | Purpose |
-| ---------- | ------- |
-| [shadcn/ui](https://ui.shadcn.com/) | UI component library |
-| [Zustand](https://zustand-demo.pmnd.rs/) | State management |
-| [next-themes](https://github.com/pacocoursey/next-themes) | Theme management |
-| [Lucide React](https://lucide.dev/) | Icon library |
-| [Sonner](https://sonner.emilkowal.ski/) | Toast notifications |
+| Technology                                                | Purpose              |
+| --------------------------------------------------------- | -------------------- |
+| [shadcn/ui](https://ui.shadcn.com/)                       | UI component library |
+| [Zustand](https://zustand-demo.pmnd.rs/)                  | State management     |
+| [next-themes](https://github.com/pacocoursey/next-themes) | Theme management     |
+| [Lucide React](https://lucide.dev/)                       | Icon library         |
+| [Sonner](https://sonner.emilkowal.ski/)                   | Toast notifications  |
 
 ---
 

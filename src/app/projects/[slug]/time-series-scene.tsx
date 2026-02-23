@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable react-hooks/immutability */
 
-import { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, Line } from "@react-three/drei";
 import * as THREE from "three";

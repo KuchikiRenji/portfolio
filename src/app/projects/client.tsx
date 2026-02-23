@@ -50,7 +50,10 @@ export function ProjectsPageClient({
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const fullListRef = useRef<HTMLDivElement>(null);
-  const isFullListInView = useInView(fullListRef, { once: true, margin: "-100px" });
+  const isFullListInView = useInView(fullListRef, {
+    once: true,
+    margin: "-100px",
+  });
 
   // Sync URL ?category=... to state on mount and when URL changes
   useEffect(() => {
@@ -298,7 +301,11 @@ export function ProjectsPageClient({
       </section>
 
       {/* Full Project List Section */}
-      <section ref={fullListRef} className="relative py-16 sm:py-24" id="all-projects">
+      <section
+        ref={fullListRef}
+        className="relative py-16 sm:py-24"
+        id="all-projects"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           {/* Section Header with Filters */}
           <motion.div

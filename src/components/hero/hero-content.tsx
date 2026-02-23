@@ -119,7 +119,9 @@ export function HeroContent({
           <span className="text-white/90">AI Engineer</span>
           <span className="mx-2 xs:mx-3 text-purple-400/60">&</span>
           <span className="text-white/90">Full-Stack Developer</span>
-          <span className="mx-2 xs:mx-3 hidden text-cyan-400/60 sm:inline">•</span>
+          <span className="mx-2 xs:mx-3 hidden text-cyan-400/60 sm:inline">
+            •
+          </span>
           <span className="mt-2 block text-sm xs:text-base text-white/50 sm:mt-0 sm:inline">
             Fukuoka, Japan
           </span>

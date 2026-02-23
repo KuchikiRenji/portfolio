@@ -33,7 +33,13 @@ export function Providers({ children }: ProvidersProps) {
       <SkipLink />
 
       {mounted ? (
-        <Suspense fallback={<main id="main-content" className="min-w-0 overflow-x-hidden">{children}</main>}>
+        <Suspense
+          fallback={
+            <main id="main-content" className="min-w-0 overflow-x-hidden">
+              {children}
+            </main>
+          }
+        >
           <LenisProvider>
             <main id="main-content" className="min-w-0 overflow-x-hidden">
               {children}

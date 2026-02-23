@@ -70,10 +70,10 @@ export function ProjectsShowcase() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const categories = useMemo(() => getAllCategories(), []);
@@ -87,22 +87,23 @@ export function ProjectsShowcase() {
   // Filter projects - memoized with proper dependencies
   const filteredProjects = useMemo(() => {
     let filtered = sortedProjects;
-    
+
     // Apply category filter
     if (activeFilter) {
       filtered = filtered.filter((p) => p.categories.includes(activeFilter));
     }
-    
+
     // Apply search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter((p) => 
-        p.title.toLowerCase().includes(query) ||
-        p.description.toLowerCase().includes(query) ||
-        p.techStack.some(tech => tech.toLowerCase().includes(query))
+      filtered = filtered.filter(
+        (p) =>
+          p.title.toLowerCase().includes(query) ||
+          p.description.toLowerCase().includes(query) ||
+          p.techStack.some((tech) => tech.toLowerCase().includes(query))
       );
     }
-    
+
     return filtered;
   }, [activeFilter, sortedProjects, searchQuery]);
 
@@ -115,34 +116,37 @@ export function ProjectsShowcase() {
   // Determine how many projects to show
   const displayedProjects = useMemo(() => {
     if (showAll) return filteredProjects;
-    
+
     // Mobile: show based on visibleCount (starts at 4, adds 4 each time)
     if (isMobile) {
       return filteredProjects.slice(0, visibleCount);
     }
-    
+
     // Desktop: show rows of 4 (2 rows = 8 initially, then add 4 per click)
     const desktopCount = 8 + (visibleCount - 4) * 4;
-    return filteredProjects.slice(0, Math.min(desktopCount, filteredProjects.length));
+    return filteredProjects.slice(
+      0,
+      Math.min(desktopCount, filteredProjects.length)
+    );
   }, [filteredProjects, showAll, visibleCount, isMobile]);
 
   const handleShowMore = () => {
     if (isMobile) {
       // Mobile: add 4 more projects (changed from 5)
-      setVisibleCount(prev => prev + 4);
+      setVisibleCount((prev) => prev + 4);
     } else {
       // Desktop: add 1 row (4 projects)
-      setVisibleCount(prev => prev + 1);
+      setVisibleCount((prev) => prev + 1);
     }
   };
 
   const hasMore = useMemo(() => {
     if (showAll) return false;
-    
+
     if (isMobile) {
       return visibleCount < filteredProjects.length;
     }
-    
+
     // Desktop: check if there are more projects beyond current rows (2 rows = 8 initially)
     const desktopCount = 8 + (visibleCount - 4) * 4;
     return desktopCount < filteredProjects.length;
@@ -192,8 +196,10 @@ export function ProjectsShowcase() {
 
           {/* Subtitle */}
           <p className="mx-auto max-w-2xl text-sm xs:text-base text-white/50 px-4">
-            <span className="font-semibold text-white/70">{projects.length}</span> production AI
-            & full-stack projects delivering{" "}
+            <span className="font-semibold text-white/70">
+              {projects.length}
+            </span>{" "}
+            production AI & full-stack projects delivering{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-semibold text-transparent">
               measurable business impact
             </span>
@@ -203,7 +209,11 @@ export function ProjectsShowcase() {
         {/* Stats */}
         <div className="mb-12 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           {[
-            { icon: Brain, label: "AI Projects", value: projects.length.toString() },
+            {
+              icon: Brain,
+              label: "AI Projects",
+              value: projects.length.toString(),
+            },
             { icon: Cpu, label: "Technologies", value: "50+" },
             { icon: Zap, label: "Impact Delivered", value: "$10M+" },
           ].map(({ icon: Icon, label, value }) => (
@@ -213,7 +223,9 @@ export function ProjectsShowcase() {
             >
               <Icon className="h-5 w-5 text-purple-400" />
               <div>
-                <div className="text-lg font-bold text-white sm:text-xl">{value}</div>
+                <div className="text-lg font-bold text-white sm:text-xl">
+                  {value}
+                </div>
                 <div className="text-xs text-white/50">{label}</div>
               </div>
             </div>
@@ -248,7 +260,8 @@ export function ProjectsShowcase() {
           </div>
           {searchQuery && (
             <p className="mt-2 text-center text-sm text-white/50">
-              Found {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
+              Found {filteredProjects.length} project
+              {filteredProjects.length !== 1 ? "s" : ""}
             </p>
           )}
         </div>
@@ -266,11 +279,7 @@ export function ProjectsShowcase() {
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {displayedProjects.map((project, index) => (
             <div key={project.slug}>
-              <ProjectCard
-                project={project}
-                variant="list"
-                index={index}
-              />
+              <ProjectCard project={project} variant="list" index={index} />
             </div>
           ))}
         </div>
@@ -282,9 +291,7 @@ export function ProjectsShowcase() {
             <h3 className="mb-2 text-xl font-semibold text-white">
               No projects found
             </h3>
-            <p className="text-white/50">
-              Try selecting a different category
-            </p>
+            <p className="text-white/50">Try selecting a different category</p>
           </div>
         )}
 

@@ -3,7 +3,8 @@ import { BreadcrumbSchema, siteConfig } from "@/lib/structured-data";
 import { HomePage } from "@/components/home";
 
 export const metadata: Metadata = {
-  title: "Kuchiki Renji | AI Engineer & Full-Stack Developer Portfolio - Hire for LLM, SaaS & MLOps Projects",
+  title:
+    "Kuchiki Renji | AI Engineer & Full-Stack Developer Portfolio - Hire for LLM, SaaS & MLOps Projects",
   description:
     "Professional AI Engineer & Full-Stack Developer portfolio. Specializing in LLM development, RAG systems, SaaS architecture, and production MLOps. 16+ AI projects, 8+ years experience. Available for freelance consulting in Japan and remote. Expert in PyTorch, TensorFlow, Next.js, Python, AWS. Proven track record: +20% accuracy improvements, $10M+ business value delivered.",
   keywords: [
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
     "freelance AI developer",
     "AI consultant Japan",
     "machine learning engineer",
-    
+
     // Location-based
     "AI engineer Fukuoka",
     "AI developer Japan",
     "remote AI engineer",
     "freelance developer Japan",
-    
+
     // Service-based
     "LLM development services",
     "RAG system development",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     "MLOps consulting",
     "AI chatbot development",
     "custom AI solutions",
-    
+
     // Technology-specific
     "PyTorch developer",
     "TensorFlow engineer",
@@ -36,13 +37,13 @@ export const metadata: Metadata = {
     "Python AI developer",
     "OpenAI integration",
     "LangChain developer",
-    
+
     // Project-based
     "AI project portfolio",
     "machine learning projects",
     "production AI systems",
     "enterprise AI solutions",
-    
+
     // Experience-based
     "senior AI engineer",
     "8 years AI experience",
@@ -57,7 +58,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: "Kuchiki Renji - AI Engineer Portfolio",
-    title: "Kuchiki Renji | AI Engineer & Full-Stack Developer - Hire for AI Projects",
+    title:
+      "Kuchiki Renji | AI Engineer & Full-Stack Developer - Hire for AI Projects",
     description:
       "Professional AI Engineer with 8+ years experience. Specializing in LLM, RAG, SaaS, and MLOps. 16+ production projects. Available for freelance consulting. Expert in PyTorch, TensorFlow, Next.js, Python.",
     images: [

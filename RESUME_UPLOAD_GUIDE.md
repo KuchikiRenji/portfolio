@@ -3,17 +3,21 @@
 ## Quick Start
 
 ### Step 1: Prepare Your Resume
+
 1. **Save your resume as PDF** with the filename: `Kuchiki_Renji_Resume.pdf`
 2. **Optimize the file size** (recommended < 2MB for fast loading)
 3. **Ensure it's a PDF** (not Word, image, or other format)
 
 ### Step 2: Upload to Portfolio
+
 1. **Navigate to**: `public/resume/` folder in your project
 2. **Place your PDF file** there with the exact name: `Kuchiki_Renji_Resume.pdf`
 3. **Commit and push** to your repository
 
 ### Step 3: Verify
+
 After deployment, your resume will be available at:
+
 - **Direct URL**: `https://your-domain.com/resume/Kuchiki_Renji_Resume.pdf`
 - **Download button**: In the About section of your portfolio
 
@@ -49,6 +53,7 @@ A "Download Resume" button has been added to the About section (`src/components/
 ```
 
 ### 2. Button Features
+
 - **Gradient border** with glassmorphism effect
 - **Hover animation** (scale up)
 - **Tap feedback** (scale down)
@@ -57,6 +62,7 @@ A "Download Resume" button has been added to the About section (`src/components/
 - **Positioned next to** "Get in Touch" button
 
 ### 3. Mobile Optimization
+
 - Buttons stack vertically on mobile (< 640px)
 - Full width on small screens for easy tapping
 - Adequate spacing between buttons
@@ -65,36 +71,41 @@ A "Download Resume" button has been added to the About section (`src/components/
 ## File Naming Options
 
 ### Recommended (Primary)
+
 ```
 Kuchiki_Renji_Resume.pdf
 ```
 
 ### Alternative Options
+
 If you want to use a different name, update the href in `about-section.tsx`:
 
 ```tsx
 // Option 1: Simple name
-href="/resume/resume.pdf"
+href = "/resume/resume.pdf";
 
 // Option 2: With date
-href="/resume/Kuchiki_Renji_Resume_2026.pdf"
+href = "/resume/Kuchiki_Renji_Resume_2026.pdf";
 
 // Option 3: With version
-href="/resume/Kuchiki_Renji_Resume_v2.pdf"
+href = "/resume/Kuchiki_Renji_Resume_v2.pdf";
 ```
 
 ## File Requirements
 
 ### Format
+
 - **Required**: PDF (.pdf)
 - **Not supported**: Word (.doc, .docx), Images (.jpg, .png), Text (.txt)
 
 ### Size
+
 - **Recommended**: < 2MB
 - **Maximum**: < 5MB (for fast loading)
 - **Optimization**: Use online PDF compressors if needed
 
 ### Content
+
 - **Pages**: 1-2 pages recommended
 - **Resolution**: 300 DPI for print quality
 - **Fonts**: Embed all fonts
@@ -103,11 +114,13 @@ href="/resume/Kuchiki_Renji_Resume_v2.pdf"
 ## How to Optimize PDF Size
 
 ### Online Tools
+
 1. **Adobe Acrobat Online**: https://www.adobe.com/acrobat/online/compress-pdf.html
 2. **Smallpdf**: https://smallpdf.com/compress-pdf
 3. **iLovePDF**: https://www.ilovepdf.com/compress_pdf
 
 ### Tips
+
 - Remove unnecessary images
 - Reduce image resolution to 150-300 DPI
 - Use PDF compression tools
@@ -116,6 +129,7 @@ href="/resume/Kuchiki_Renji_Resume_v2.pdf"
 ## Testing Your Resume
 
 ### Local Testing
+
 1. Start your development server: `npm run dev`
 2. Navigate to: `http://localhost:3000/#about`
 3. Scroll to the bottom
@@ -123,7 +137,9 @@ href="/resume/Kuchiki_Renji_Resume_v2.pdf"
 5. Verify the PDF downloads correctly
 
 ### Production Testing
+
 After deployment:
+
 1. Visit your live site
 2. Go to About section
 3. Click "Download Resume"
@@ -133,13 +149,16 @@ After deployment:
 ## Updating Your Resume
 
 ### To Update
+
 1. **Replace the file** in `public/resume/` with your new version
 2. **Keep the same filename** (or update the code if you change it)
 3. **Commit and push** changes
 4. **Deploy** to production
 
 ### Version Control
+
 If you want to keep old versions:
+
 ```
 public/resume/
 ├── Kuchiki_Renji_Resume.pdf          ← Current version (linked)
@@ -152,6 +171,7 @@ public/resume/
 If you want to add a "Resume" link to the navbar:
 
 ### Step 1: Update Navbar Links
+
 Edit `src/components/Navbar.tsx`:
 
 ```tsx
@@ -160,16 +180,22 @@ const navLinks = [
   { href: "#projects", label: "Projects", isHash: true },
   { href: "#about", label: "About", isHash: true },
   { href: "#contact", label: "Contact", isHash: true },
-  { href: "/resume/Kuchiki_Renji_Resume.pdf", label: "Resume", isHash: false, download: true }, // Add this
+  {
+    href: "/resume/Kuchiki_Renji_Resume.pdf",
+    label: "Resume",
+    isHash: false,
+    download: true,
+  }, // Add this
 ] as const;
 ```
 
 ### Step 2: Handle Download Attribute
+
 Update the link rendering to support download:
 
 ```tsx
-<Link 
-  key={link.href} 
+<Link
+  key={link.href}
   href={link.href}
   download={link.download}
   className={linkBaseClasses}
@@ -181,26 +207,34 @@ Update the link rendering to support download:
 ## Troubleshooting
 
 ### Issue: Resume doesn't download
-**Solution**: 
+
+**Solution**:
+
 - Check filename matches exactly (case-sensitive)
 - Verify file is in `public/resume/` folder
 - Clear browser cache
 - Check browser console for errors
 
 ### Issue: 404 Not Found
+
 **Solution**:
+
 - Ensure file is in `public/resume/` not `src/resume/`
 - Verify filename spelling
 - Rebuild and redeploy
 
 ### Issue: File opens in browser instead of downloading
+
 **Solution**:
+
 - The `download` attribute should trigger download
 - Some browsers may open PDF instead (this is normal)
 - Users can right-click → "Save As" if needed
 
 ### Issue: File size too large
+
 **Solution**:
+
 - Compress PDF using online tools
 - Reduce image quality in resume
 - Remove unnecessary pages or images
@@ -208,6 +242,7 @@ Update the link rendering to support download:
 ## Best Practices
 
 ### Resume Content
+
 - ✅ Keep it concise (1-2 pages)
 - ✅ Use professional formatting
 - ✅ Include contact information
@@ -215,6 +250,7 @@ Update the link rendering to support download:
 - ✅ Use action verbs and metrics
 
 ### File Management
+
 - ✅ Use consistent naming convention
 - ✅ Keep file size under 2MB
 - ✅ Update regularly (every 3-6 months)
@@ -222,6 +258,7 @@ Update the link rendering to support download:
 - ✅ Keep backup copies
 
 ### SEO & Accessibility
+
 - ✅ Use descriptive filename
 - ✅ Add alt text to download button
 - ✅ Ensure PDF is text-based (not scanned image)
@@ -233,6 +270,7 @@ Update the link rendering to support download:
 If you want to offer different resume versions:
 
 ### Example Structure
+
 ```
 public/resume/
 ├── Kuchiki_Renji_Resume.pdf           ← General version
@@ -242,6 +280,7 @@ public/resume/
 ```
 
 ### Update About Section
+
 ```tsx
 <div className="flex flex-wrap gap-3 justify-center">
   <motion.a href="/resume/Kuchiki_Renji_Resume.pdf" download>
@@ -259,17 +298,20 @@ public/resume/
 ## Security Considerations
 
 ### What's Safe
+
 - ✅ PDF files in `public/` folder are publicly accessible
 - ✅ Anyone with the URL can download
 - ✅ This is normal for portfolio resumes
 
 ### What to Avoid
+
 - ❌ Don't include sensitive personal information (SSN, passport number)
 - ❌ Don't include private addresses (use city/state only)
 - ❌ Don't include personal phone numbers (use professional number)
 - ❌ Don't include references without permission
 
 ### Privacy Tips
+
 - Use professional email address
 - Use LinkedIn URL instead of full address
 - Consider using a Google Voice number
@@ -280,16 +322,17 @@ public/resume/
 To track resume downloads, you can add analytics:
 
 ### Using Google Analytics
+
 ```tsx
 <motion.a
   href="/resume/Kuchiki_Renji_Resume.pdf"
   download
   onClick={() => {
     // Track download event
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'download', {
-        event_category: 'Resume',
-        event_label: 'Kuchiki_Renji_Resume.pdf',
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "download", {
+        event_category: "Resume",
+        event_label: "Kuchiki_Renji_Resume.pdf",
       });
     }
   }}
@@ -307,6 +350,6 @@ Your portfolio now has a professional resume download feature:
 ✅ **Smooth animations** on hover and tap  
 ✅ **Easy to update** - just replace the PDF file  
 ✅ **Direct URL access** for sharing  
-✅ **Professional styling** matching your portfolio theme  
+✅ **Professional styling** matching your portfolio theme
 
 Simply place your `Kuchiki_Renji_Resume.pdf` file in the `public/resume/` folder and it will be ready to download!

@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "@/components/providers";
 import Navbar from "@/components/Navbar";
 import { StructuredData, siteConfig } from "@/lib/structured-data";
+import { WebGLErrorSuppressor } from "@/components/webgl-error-suppressor";
 import "./globals.css";
 
 // Primary sans-serif font with full Latin subset
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     "MLOps Engineer",
     "AI Specialist",
     "Artificial Intelligence Engineer",
-    
+
     // LLM & NLP
     "LLM Engineer",
     "Large Language Model Developer",
@@ -66,13 +67,13 @@ export const metadata: Metadata = {
     "Chatbot Developer",
     "AI Chatbot Development",
     "LangChain Developer",
-    
+
     // Computer Vision
     "Computer Vision Engineer",
     "Image Recognition",
     "Object Detection",
     "CV Engineer",
-    
+
     // Full-Stack Development
     "Full-Stack Developer",
     "Full-Stack Engineer",
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
     "Next.js Developer",
     "Node.js Developer",
     "Python Developer",
-    
+
     // SaaS & Cloud
     "SaaS Developer",
     "SaaS Engineer",
@@ -100,7 +101,7 @@ export const metadata: Metadata = {
     "API Developer",
     "REST API",
     "GraphQL",
-    
+
     // Specific Technologies
     "PyTorch",
     "TensorFlow",
@@ -117,7 +118,7 @@ export const metadata: Metadata = {
     "Docker",
     "Kubernetes",
     "CI/CD",
-    
+
     // MLOps & Data
     "MLOps",
     "DataOps",
@@ -128,7 +129,7 @@ export const metadata: Metadata = {
     "Data Engineering",
     "ETL Developer",
     "Big Data",
-    
+
     // Specialized AI
     "Demand Forecasting",
     "Time Series Forecasting",
@@ -136,13 +137,13 @@ export const metadata: Metadata = {
     "Recommendation Systems",
     "Anomaly Detection",
     "Sentiment Analysis",
-    
+
     // Location
     "Fukuoka",
     "Japan",
     "Remote Developer",
     "Freelance Developer",
-    
+
     // Industry
     "AI Consultant",
     "Tech Consultant",
@@ -158,15 +159,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [
-      { url: "/profile.png", type: "image/png", sizes: "any" },
-    ],
-    apple: [
-      { url: "/profile.png", type: "image/png", sizes: "180x180" },
-    ],
-    shortcut: [
-      { url: "/profile.png", type: "image/png" },
-    ],
+    icon: [{ url: "/profile.png", type: "image/png", sizes: "any" }],
+    apple: [{ url: "/profile.png", type: "image/png", sizes: "180x180" }],
+    shortcut: [{ url: "/profile.png", type: "image/png" }],
   },
   openGraph: {
     type: "website",
@@ -236,7 +231,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://vercel.live" />
-        
+
         {/* Preconnect to critical origins */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -244,7 +239,7 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        
+
         {/* Preload critical assets */}
         <link rel="preload" href="/profile.png" as="image" type="image/png" />
 
@@ -265,6 +260,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${fontDisplay.variable} ${fontMono.variable} font-sans antialiased`}
       >
+        <WebGLErrorSuppressor />
         <Providers>
           <Navbar />
           {children}

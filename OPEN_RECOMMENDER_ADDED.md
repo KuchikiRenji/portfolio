@@ -16,26 +16,31 @@ Open source AI-powered recommendation system for YouTube videos and articles. Us
 ## Tech Stack
 
 **Backend:**
+
 - Node.js
 - tRPC (type-safe APIs)
 - Prisma (ORM)
 - Python (workers)
 
 **Frontend:**
+
 - React
 - TypeScript
 
 **AI/LLM:**
+
 - Modelfusion
 - LangChain
 - OpenAI-compatible APIs
 
 **Data Sources:**
+
 - YouTube (via yt-dlp)
 - Twitter/X (optional)
 - Web search
 
 **Tools:**
+
 - Git/GitHub
 
 ## Technical Highlights

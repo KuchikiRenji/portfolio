@@ -202,7 +202,7 @@ export function NeuralNetworkParticles({
   // Cache color objects to avoid recreation every frame
   const purpleColorRef = useRef(new THREE.Color("#8b5cf6"));
   const cyanColorRef = useRef(new THREE.Color("#06b6d4"));
-  
+
   // Frame counter for throttling expensive operations
   const frameCountRef = useRef(0);
 
@@ -251,7 +251,7 @@ export function NeuralNetworkParticles({
       let lineIndex = 0;
       const maxLines = count * 3;
       const sampleRate = Math.max(1, Math.floor(count / 500));
-      
+
       // Pre-calculate distance squared threshold to avoid sqrt in inner loop
       const distSq = connectionDistance * connectionDistance;
 

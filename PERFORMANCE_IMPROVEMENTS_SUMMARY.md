@@ -3,6 +3,7 @@
 ## ✅ Optimizations Applied
 
 ### 1. Three.js Neural Network Particles (Major Impact)
+
 **File:** `src/components/three/neural-network-particles.tsx`
 
 - **Cached color objects**: Prevents creating new `THREE.Color` instances every frame (~60 objects/sec → 2 objects total)
@@ -13,15 +14,17 @@
 **Performance Gain:** ~30-40% FPS improvement in 3D scenes
 
 ### 2. Reduced Particle Counts (Major Impact)
+
 **File:** `src/components/hero/hero-section.tsx`
 
 - Desktop: 2000 → 1000 particles (50% reduction)
-- Mobile: 400 → 300 particles (25% reduction)  
+- Mobile: 400 → 300 particles (25% reduction)
 - Low-end: 200 → 150 particles (25% reduction)
 
 **Performance Gain:** ~25-35% faster rendering, 40% less memory
 
 ### 3. Simplified Post-Processing Effects (Medium Impact)
+
 **File:** `src/components/three/hero-scene.tsx`
 
 - Removed ChromaticAberration effect (minimal visual impact, significant performance cost)
@@ -32,6 +35,7 @@
 **Performance Gain:** ~15-20% improvement in post-processing
 
 ### 4. Canvas Frame Loop Optimization (Medium Impact)
+
 **File:** `src/components/three/hero-scene.tsx`
 
 - Changed to `frameloop="demand"` - only renders when needed
@@ -40,6 +44,7 @@
 **Performance Gain:** ~10-15% CPU usage reduction
 
 ### 5. Project Card Optimizations (Medium Impact)
+
 **File:** `src/components/project/ProjectCard.tsx`
 
 - **Throttled mouse move**: Using `requestAnimationFrame` for tilt updates
@@ -52,6 +57,7 @@
 **Performance Gain:** ~20-30% smoother scrolling, 15% faster initial load
 
 ### 6. React Memoization Improvements (Small Impact)
+
 **File:** `src/components/projects/projects-showcase.tsx`
 
 - Removed redundant `displayedProjects` memo
@@ -63,6 +69,7 @@
 ## 📊 Expected Performance Metrics
 
 ### Before Optimizations:
+
 - **Desktop FPS**: 45-60 FPS (with drops)
 - **Mobile FPS**: 30-40 FPS
 - **Initial Load**: ~3.5s
@@ -70,6 +77,7 @@
 - **Particle Calculations**: Every 16.67ms
 
 ### After Optimizations:
+
 - **Desktop FPS**: Stable 60 FPS
 - **Mobile FPS**: 45-60 FPS
 - **Initial Load**: ~2.5s (30% faster)
@@ -88,6 +96,7 @@
 ## 🔍 What Was Changed
 
 ### Modified Files:
+
 1. `src/components/three/neural-network-particles.tsx` - Core performance improvements
 2. `src/components/three/hero-scene.tsx` - Post-processing and canvas optimizations
 3. `src/components/hero/hero-section.tsx` - Particle count adjustments
@@ -95,6 +104,7 @@
 5. `src/components/projects/projects-showcase.tsx` - React memoization improvements
 
 ### No Breaking Changes:
+
 - All visual effects maintained
 - User experience unchanged
 - Backward compatible
@@ -103,11 +113,13 @@
 ## 🚀 Next Steps to Test
 
 1. **Build the project:**
+
    ```bash
    npm run build
    ```
 
 2. **Run in production mode:**
+
    ```bash
    npm start
    ```
@@ -127,6 +139,7 @@
 ## 💡 Additional Recommendations
 
 ### Future Optimizations (if needed):
+
 1. **Intersection Observer**: Pause 3D scene when not visible
 2. **Virtual Scrolling**: For project grids with >50 items
 3. **WebWorker**: Move particle calculations off main thread
@@ -134,6 +147,7 @@
 5. **Service Worker**: Cache static assets
 
 ### Monitoring:
+
 - Use Lighthouse for Core Web Vitals
 - Monitor with Vercel Analytics
 - Track real user metrics (RUM)
@@ -148,14 +162,14 @@
 
 ## 📈 Benchmark Comparison
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Desktop FPS | 45-60 | 60 | +25% |
-| Mobile FPS | 30-40 | 45-60 | +50% |
-| Initial Load | 3.5s | 2.5s | -29% |
-| Memory | 180MB | 120MB | -33% |
-| Particles (Desktop) | 2000 | 1000 | -50% |
-| Connection Updates | Every frame | Every 2 frames | -50% |
+| Metric              | Before      | After          | Improvement |
+| ------------------- | ----------- | -------------- | ----------- |
+| Desktop FPS         | 45-60       | 60             | +25%        |
+| Mobile FPS          | 30-40       | 45-60          | +50%        |
+| Initial Load        | 3.5s        | 2.5s           | -29%        |
+| Memory              | 180MB       | 120MB          | -33%        |
+| Particles (Desktop) | 2000        | 1000           | -50%        |
+| Connection Updates  | Every frame | Every 2 frames | -50%        |
 
 ---
 
