@@ -62,7 +62,7 @@ function handleHashLink(href: string, router: ReturnType<typeof useRouter>, path
 
 const navbarVariants = {
   initial: { y: -20, opacity: 0 },
-  animate: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
+  animate: { y: 0, opacity: 1, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
 const mobileMenuVariants = {
@@ -70,14 +70,14 @@ const mobileMenuVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.2, ease: "easeOut", when: "beforeChildren", staggerChildren: 0.06 },
+    transition: { duration: 0.2, ease: "easeOut" as const, when: "beforeChildren" as const, staggerChildren: 0.06 },
   },
-  exit: { opacity: 0, scale: 0.98, transition: { duration: 0.15, ease: "easeIn" } },
+  exit: { opacity: 0, scale: 0.98, transition: { duration: 0.15, ease: "easeIn" as const } },
 };
 
 const mobileLinkVariants = {
   hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" as const } },
 };
 
 const linkBaseClasses =
