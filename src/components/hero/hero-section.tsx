@@ -161,7 +161,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-950 via-slate-950 to-cyan-950" />
         <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-purple-600/20 blur-[100px]" />
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-cyan-600/20 blur-[100px]" />
-        
+
         {/* Show content immediately */}
         <HeroContent
           onScrollToProjects={handleScrollToProjects}

@@ -26,22 +26,25 @@ function ProjectCardComponent({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (variant === "timeline") return; // No tilt for timeline variant
-    
+
     // Capture values before async operation
     const target = e.currentTarget;
     const clientX = e.clientX;
     const clientY = e.clientY;
-    
+
     // Use requestAnimationFrame to throttle tilt updates
     requestAnimationFrame(() => {
       // Check if element still exists
       if (!target) return;
-      
+
       const rect = target.getBoundingClientRect();
       const x = (clientX - rect.left) / rect.width - 0.5;
       const y = (clientY - rect.top) / rect.height - 0.5;
       // Limit rotation to ±10 degrees
-      setTilt({ x: Math.max(-10, Math.min(10, y * 15)), y: Math.max(-10, Math.min(10, -x * 15)) });
+      setTilt({
+        x: Math.max(-10, Math.min(10, y * 15)),
+        y: Math.max(-10, Math.min(10, -x * 15)),
+      });
     });
   };
 
@@ -63,7 +66,9 @@ function ProjectCardComponent({
           useViewAnimation ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }
         }
         whileInView={useViewAnimation ? { opacity: 1, y: 0 } : undefined}
-        viewport={useViewAnimation ? { once: true, margin: "-50px" } : undefined}
+        viewport={
+          useViewAnimation ? { once: true, margin: "-50px" } : undefined
+        }
         transition={{
           duration: 0.5,
           delay: Math.min(index * 0.05, 0.5), // Cap delay to prevent long waits
@@ -73,9 +78,10 @@ function ProjectCardComponent({
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
-          transform: isHovered && !isTimeline
-            ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)`
-            : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)",
+          transform:
+            isHovered && !isTimeline
+              ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)`
+              : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)",
           willChange: isHovered ? "transform" : "auto",
         }}
         className={cn(

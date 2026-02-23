@@ -1,7 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  type Variants,
+} from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -487,7 +492,8 @@ export function SkillsDisplay() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeTab, setActiveTab] = useState("ai-ml"); // Default to AI/ML
 
-  const activeCategory = techStack.find((cat) => cat.id === activeTab) || techStack[2];
+  const activeCategory =
+    techStack.find((cat) => cat.id === activeTab) || techStack[2];
 
   return (
     <div ref={ref} className="space-y-8">
@@ -505,7 +511,9 @@ export function SkillsDisplay() {
           className="mb-3 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2"
         >
           <Sparkles className="h-4 w-4 text-purple-400" />
-          <span className="text-sm font-medium text-purple-300">Tech Stack</span>
+          <span className="text-sm font-medium text-purple-300">
+            Tech Stack
+          </span>
         </motion.div>
         <motion.h3
           initial={{ opacity: 0, y: 10 }}

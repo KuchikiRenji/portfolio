@@ -3,14 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion, type Variants } from "framer-motion";
-import {
-  MapPin,
-  Mail,
-  Github,
-  Send,
-  Sparkles,
-  Download,
-} from "lucide-react";
+import { MapPin, Mail, Github, Send, Sparkles, Download } from "lucide-react";
 import { bio } from "./about-data";
 import { CareerTimeline } from "./career-timeline";
 import { SpotifyPlayer } from "./spotify-player";
@@ -287,7 +280,7 @@ export function AboutSection() {
               <Mail className="h-5 w-5" />
               Get in Touch
             </motion.a>
-            
+
             <motion.a
               href="/resume/Kuchiki_Renji_Resume.pdf"
               download

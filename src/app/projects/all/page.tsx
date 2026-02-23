@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { AllProjectsClient } from "./client";
-import { projects, getAllCategories, getAllYears, getProjectsByYear } from "@/data/projects";
+import {
+  projects,
+  getAllCategories,
+  getAllYears,
+  getProjectsByYear,
+} from "@/data/projects";
 import { BreadcrumbSchema, siteConfig } from "@/lib/structured-data";
 
 export const metadata: Metadata = {

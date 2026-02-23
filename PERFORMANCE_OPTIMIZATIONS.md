@@ -1,11 +1,13 @@
 # Performance Optimizations Applied
 
 ## Summary
+
 Implemented comprehensive performance improvements reducing rendering time by ~40-60% across the board.
 
 ## Key Optimizations
 
 ### 1. Three.js Scene Optimizations
+
 - **Reduced particle count**: 2000 → 1000 (desktop), 400 → 300 (mobile), 200 → 150 (low-end)
 - **Throttled connection updates**: Now updates every 2 frames instead of every frame
 - **Cached color objects**: Prevents creating new THREE.Color objects every frame
@@ -15,6 +17,7 @@ Implemented comprehensive performance improvements reducing rendering time by ~4
 - **Frame loop optimization**: Changed to "demand" mode for better performance
 
 ### 2. Component Rendering Optimizations
+
 - **Throttled tilt updates**: Using requestAnimationFrame for mouse move handlers
 - **Reduced animation delays**: Capped at 0.5s instead of scaling infinitely with index
 - **Added willChange hints**: Only when hovering to prevent unnecessary GPU layers
@@ -22,6 +25,7 @@ Implemented comprehensive performance improvements reducing rendering time by ~4
 - **Proper lazy loading**: Only first 2 featured images load eagerly
 
 ### 3. React Performance
+
 - **Removed redundant memoization**: Eliminated unused `displayedProjects` memo
 - **Proper memo dependencies**: Ensured all useMemo hooks have correct dependencies
 - **Reduced re-renders**: Better state management in ProjectsShowcase
@@ -29,16 +33,19 @@ Implemented comprehensive performance improvements reducing rendering time by ~4
 ## Performance Gains
 
 ### Before:
+
 - Desktop: ~2000 particles, 60 FPS with drops to 45 FPS
 - Mobile: ~400 particles, 30-40 FPS
 - Connection calculations: Every frame (16.67ms budget)
 
 ### After:
+
 - Desktop: ~1000 particles, stable 60 FPS
-- Mobile: ~300 particles, stable 45-60 FPS  
+- Mobile: ~300 particles, stable 45-60 FPS
 - Connection calculations: Every 2 frames (33.34ms budget)
 
 ## Expected Results
+
 - **Initial load**: 20-30% faster
 - **Scroll performance**: 40-50% smoother
 - **3D scene FPS**: 15-25% improvement
@@ -48,6 +55,7 @@ Implemented comprehensive performance improvements reducing rendering time by ~4
 ## Additional Recommendations
 
 ### Future Optimizations:
+
 1. Implement virtual scrolling for project grid (if >50 projects)
 2. Add intersection observer to pause 3D scene when not visible
 3. Consider WebWorker for particle calculations
@@ -55,12 +63,14 @@ Implemented comprehensive performance improvements reducing rendering time by ~4
 5. Add service worker for asset caching
 
 ### Monitoring:
+
 - Use Chrome DevTools Performance tab to profile
 - Monitor Core Web Vitals (LCP, FID, CLS)
 - Test on low-end devices (< 4GB RAM)
 - Check battery drain on mobile devices
 
 ## Testing Commands
+
 ```bash
 # Build and analyze bundle
 npm run build
@@ -73,7 +83,9 @@ npm run typecheck
 ```
 
 ## Browser Support
+
 All optimizations maintain compatibility with:
+
 - Chrome/Edge 90+
 - Firefox 88+
 - Safari 14+

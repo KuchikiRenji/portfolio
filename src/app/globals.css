@@ -403,39 +403,39 @@ img {
   body {
     font-size: 14px;
   }
-  
+
   /* Reduce padding on containers */
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Optimize hero section for small screens */
   .hero-content {
     padding-top: 5rem;
     padding-bottom: 3rem;
   }
-  
+
   /* Smaller text for mobile */
   h1 {
     font-size: 2rem !important;
     line-height: 1.2;
   }
-  
+
   h2 {
     font-size: 1.5rem !important;
   }
-  
+
   /* Optimize button sizes */
   button {
     min-height: 44px; /* iOS touch target size */
   }
-  
+
   /* Reduce gap in flex containers */
   .flex {
     gap: 0.75rem;
   }
-  
+
   /* Optimize card spacing */
   .card {
     padding: 1rem;
@@ -449,24 +449,25 @@ img {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
-  
+
   /* Optimize grid layouts */
   .grid-mobile {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   /* Better touch targets */
-  a, button {
+  a,
+  button {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   /* Optimize navbar */
   nav {
     padding: 0.75rem 1rem;
   }
-  
+
   /* Better readability */
   p {
     line-height: 1.6;
@@ -481,12 +482,12 @@ img {
     padding-top: 4rem;
     padding-bottom: 2rem;
   }
-  
+
   /* Smaller headings in landscape */
   h1 {
     font-size: 2.5rem !important;
   }
-  
+
   /* Compact buttons */
   button {
     padding-top: 0.5rem;
@@ -500,11 +501,11 @@ img {
     padding-left: max(0px, env(safe-area-inset-left));
     padding-right: max(0px, env(safe-area-inset-right));
   }
-  
+
   .fixed-header {
     padding-top: max(0px, env(safe-area-inset-top));
   }
-  
+
   .fixed-footer {
     padding-bottom: max(0px, env(safe-area-inset-bottom));
   }
@@ -515,24 +516,27 @@ img {
   * {
     max-width: 100%;
   }
-  
-  img, video {
+
+  img,
+  video {
     height: auto;
   }
-  
+
   /* Ensure tables are scrollable */
   table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
   }
-  
+
   /* Better form inputs on mobile */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-size: 16px; /* Prevents zoom on iOS */
     max-width: 100%;
   }
-  
+
   /* Optimize search bars */
   input[type="search"] {
     -webkit-appearance: none;
@@ -546,13 +550,13 @@ img {
   .hover-effect:hover {
     transform: none;
   }
-  
+
   /* Use active states instead */
   .hover-effect:active {
     transform: scale(0.98);
     opacity: 0.9;
   }
-  
+
   /* Better tap highlights */
   * {
     -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
@@ -565,7 +569,7 @@ img {
   .animate-complex {
     animation-duration: 0.3s !important;
   }
-  
+
   /* Disable parallax on mobile for better performance */
   [data-parallax] {
     transform: none !important;
@@ -575,17 +579,21 @@ img {
 /* iOS-specific fixes */
 @supports (-webkit-touch-callout: none) {
   /* Fix iOS input zoom */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-size: 16px;
   }
-  
+
   /* Fix iOS scroll bounce */
   body {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   /* Fix iOS button appearance */
-  button, input[type="button"], input[type="submit"] {
+  button,
+  input[type="button"],
+  input[type="submit"] {
     -webkit-appearance: none;
     appearance: none;
   }

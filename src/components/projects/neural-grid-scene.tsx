@@ -224,8 +224,7 @@ export function NeuralGridScene({
     // Check WebGL availability
     try {
       const canvas = document.createElement("canvas");
-      const gl =
-        canvas.getContext("webgl2") || canvas.getContext("webgl");
+      const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
       if (!gl) {
         setHasWebGL(false);
       }

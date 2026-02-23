@@ -41,7 +41,10 @@ export default function ProjectsLoading() {
             </div>
             {/* Smaller cards */}
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="aspect-[16/10] w-full animate-pulse rounded-2xl bg-white/5">
+              <div
+                key={i}
+                className="aspect-[16/10] w-full animate-pulse rounded-2xl bg-white/5"
+              >
                 <div className="relative h-full overflow-hidden rounded-2xl">
                   <div className="shimmer absolute inset-0" />
                 </div>

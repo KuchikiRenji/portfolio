@@ -3,6 +3,7 @@
 ## ✅ Completed Tasks
 
 ### 1. Moshi Voice Assistant Project
+
 - **Status**: ✅ Added to `src/data/projects.ts`
 - **Slug**: `moshi-voice-assistant`
 - **Period**: Sep 2024 – Dec 2024
@@ -11,6 +12,7 @@
   - `mimi-codec.png` ✅
 
 ### 2. Salty Dream Bot Project
+
 - **Status**: ✅ Added to `src/data/projects.ts`
 - **Slug**: `salty-dream-bot`
 - **Period**: Dec 2022 – Mar 2023
@@ -20,11 +22,13 @@
   - `interrogated.png` ⏳ Needs to be saved manually
 
 ### 3. Rule-based LLMs Project
+
 - **Status**: ✅ Updated IBM Watsonx.ai link
 - **Link**: Changed to production URL `https://www.ibm.com/products/watsonx-ai`
 - **GIF Support**: ✅ Confirmed - `hr-policy.gif` is supported by Next.js Image component
 
 ## 📊 Total Projects: 38
+
 - 24 placeholder projects
 - 16 real projects:
   1. Zitro.AI (Dec 2025 – Feb 2026)
@@ -45,6 +49,7 @@
   16. **Solana Bundler (Jul 2025 – Sep 2025)** ✅ NEW
 
 ### 3. VALL-E Zero-Shot TTS Project
+
 - **Status**: ✅ Added to `src/data/projects.ts`
 - **Slug**: `vall-e-tts`
 - **Period**: Jan 2023 – Mar 2023
@@ -53,6 +58,7 @@
   - `architecture.png` ⏳ Needs to be saved manually (the diagram image you provided)
 
 ### 4. Admin Issuer Portal Project
+
 - **Status**: ✅ Added to `src/data/projects.ts`
 - **Slug**: `admin-issuer-portal`
 - **Period**: Dec 2025 – Jan 2026
@@ -62,6 +68,7 @@
   - `signature-editor.png` ⏳ Needs to be saved manually (second screenshot you provided)
 
 ### 5. Rising Dot Agency Project
+
 - **Status**: ✅ Added to `src/data/projects.ts`
 - **Slug**: `rising-dot-agency`
 - **Period**: Dec 2025 – Jan 2026
@@ -72,6 +79,7 @@
   - `seo-tools.png` ⏳ Needs to be saved manually (third screenshot - keyword strategy)
 
 ### 6. Solana Bundler Project
+
 - **Status**: ✅ Added to `src/data/projects.ts`
 - **Slug**: `solana-bundler`
 - **Period**: Jul 2025 – Sep 2025
@@ -85,39 +93,52 @@
 ## 📝 Action Items for You
 
 ### Solana Bundler Images
+
 You need to manually save these 4 images to `public/projects/solana-bundler/`:
+
 1. `wallet-management.png` - First screenshot showing the wallet management dashboard with dev wallet details
 2. `fund-wallets.png` - Second screenshot showing multiple fund wallets with balances
 3. `token-deployment.png` - Third screenshot showing the token deployment interface with platform options
 4. `architecture.png` - Fourth screenshot showing the technical architecture diagram
 
 ### Rising Dot Agency Images
+
 You need to manually save these 3 images to `public/projects/rising-dot-agency/`:
+
 1. `hero.png` - First screenshot showing the hero section with "Web Development & Design Agency"
 2. `portfolio.png` - Second screenshot showing the creative portfolio section with project cards
 3. `seo-tools.png` - Third screenshot showing the keyword strategy dashboard with keyword cloud
 
 ### Admin Issuer Portal Images
+
 You need to manually save these 2 images to `public/projects/admin-issuer-portal/`:
+
 1. `dashboard.png` - First screenshot showing the certificate management dashboard with metrics and issuer list
 2. `signature-editor.png` - Second screenshot showing the signature editor with canvas and audit trail
 
 ### VALL-E TTS Image
+
 You need to manually save this 1 image to `public/projects/vall-e-tts/`:
+
 1. `architecture.png` - The VALL-E architecture diagram you provided (showing the pipeline with phoneme conversion, audio codec encoder, neural codec language modeling, and audio codec decoder)
 
 ### Salty Dream Bot Images
+
 You need to manually save these 2 images to `public/projects/salty-dream-bot/`:
+
 1. `generated.png` - Screenshot showing AI-generated image from the bot
 2. `interrogated.png` - Screenshot showing CLIP/DeepDanbooru interrogation feature
 
 ### How to Add Images
+
 1. Save your screenshots with the exact filenames above
 2. Place them in: `public/projects/salty-dream-bot/`
 3. The project will automatically display them in the gallery
 
 ## 🎉 Summary
+
 Six new projects have been successfully added to your portfolio:
+
 1. **Moshi Voice Assistant** - Fully complete with images ✅
 2. **Salty Dream Bot** - Needs 2 images to be saved manually
 3. **VALL-E TTS** - Needs 1 image (the architecture diagram) to be saved manually

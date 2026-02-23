@@ -23,15 +23,21 @@ export const projects: Project[] = [
       "Complex video generation → Built modular pipeline with AI-driven scene composition and transitions",
       "Platform-specific optimization → Implemented adaptive rendering for different aspect ratios and durations",
     ],
-    links: [
-      { label: "Live App", url: "https://zitro.ai" },
-    ],
+    links: [{ label: "Live App", url: "https://zitro.ai" }],
     categories: ["AI/ML", "Full-Stack Application"],
-    techStack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "AI/ML", "Git/GitHub"],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "AI/ML",
+      "Git/GitHub",
+    ],
     year: 2026,
   },
   {
-    title: "Open Recommender — Open Source AI Recommendation System for Videos & Articles",
+    title:
+      "Open Recommender — Open Source AI Recommendation System for Videos & Articles",
     slug: "open-recommender",
     impact: "Self-hosted AI that learns your interests for timeless content",
     description:
@@ -49,10 +55,23 @@ export const projects: Project[] = [
       "Content quality filtering → Built AI pipeline to prioritize timeless, educational content over viral trends",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/open-recommender" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/open-recommender",
+      },
     ],
     categories: ["AI/ML", "LLM Integration", "Full-Stack Application"],
-    techStack: ["Node.js", "TypeScript", "React", "tRPC", "Prisma", "Python", "LangChain", "OpenAI", "Git/GitHub"],
+    techStack: [
+      "Node.js",
+      "TypeScript",
+      "React",
+      "tRPC",
+      "Prisma",
+      "Python",
+      "LangChain",
+      "OpenAI",
+      "Git/GitHub",
+    ],
     year: 2024,
   },
   {
@@ -81,10 +100,22 @@ export const projects: Project[] = [
       "Multi-modal data integration → Built unified pipeline combining time series, images, and tabular features",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/End-to-end_Demand_forecasting_inventory_optimization" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/End-to-end_Demand_forecasting_inventory_optimization",
+      },
     ],
     categories: ["AI/ML", "Forecasting/Time-Series", "MLOps/Deployment"],
-    techStack: ["Python", "Databricks", "PySpark", "LightGBM", "MLflow", "Delta Lake", "Evidently AI", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "Databricks",
+      "PySpark",
+      "LightGBM",
+      "MLflow",
+      "Delta Lake",
+      "Evidently AI",
+      "Git/GitHub",
+    ],
     year: 2025,
   },
   {
@@ -114,7 +145,18 @@ export const projects: Project[] = [
       { label: "GitHub", url: "https://github.com/KuchikiRenji/unmissablerp" },
     ],
     categories: ["Full-Stack Application"],
-    techStack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "SWR", "Recharts", "Zod", "Vercel", "Git/GitHub"],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "SWR",
+      "Recharts",
+      "Zod",
+      "Vercel",
+      "Git/GitHub",
+    ],
     year: 2025,
   },
   {
@@ -140,14 +182,27 @@ export const projects: Project[] = [
       "High-dimensional data visualization → Applied PCA for dimensionality reduction to create interpretable 2D plots",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/customer-segmentation-project" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/customer-segmentation-project",
+      },
     ],
     categories: ["AI/ML", "Predictive Modeling"],
-    techStack: ["Python", "scikit-learn", "Streamlit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "scikit-learn",
+      "Streamlit",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "Git/GitHub",
+    ],
     year: 2025,
   },
   {
-    title: "Argo CD Kubernetes Rollout Patterns — Blue-Green & Canary Deployments",
+    title:
+      "Argo CD Kubernetes Rollout Patterns — Blue-Green & Canary Deployments",
     slug: "argocd-k8s-rollout-patterns",
     impact: "Progressive delivery with automated rollbacks and traffic control",
     description:
@@ -169,10 +224,19 @@ export const projects: Project[] = [
       "Traffic management complexity → Used Argo Rollouts for declarative traffic splitting with pause controls",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/argocd-k8s-rollout-patterns" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/argocd-k8s-rollout-patterns",
+      },
     ],
     categories: ["MLOps/Deployment"],
-    techStack: ["Kubernetes", "Argo CD", "Argo Rollouts", "Docker", "Git/GitHub"],
+    techStack: [
+      "Kubernetes",
+      "Argo CD",
+      "Argo Rollouts",
+      "Docker",
+      "Git/GitHub",
+    ],
     year: 2024,
   },
   {
@@ -200,11 +264,26 @@ export const projects: Project[] = [
       "Document ingestion at scale → Built ETL pipeline with Logstash for MongoDB to Elasticsearch data migration",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/E2E-AI-Chatbot" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/E2E-AI-Chatbot",
+      },
       { label: "Website", url: "https://khoivn.space" },
     ],
     categories: ["AI/ML", "LLM Integration", "Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Gradio", "GPT4All", "MongoDB", "Elasticsearch", "Redis", "Docker", "Kubernetes", "Nginx", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "FastAPI",
+      "Gradio",
+      "GPT4All",
+      "MongoDB",
+      "Elasticsearch",
+      "Redis",
+      "Docker",
+      "Kubernetes",
+      "Nginx",
+      "Git/GitHub",
+    ],
     year: 2024,
   },
   {
@@ -230,10 +309,26 @@ export const projects: Project[] = [
       "Complex deployment → Containerized entire stack with Docker Compose for one-command setup",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/rule-based-llms" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/rule-based-llms",
+      },
     ],
     categories: ["AI/ML", "LLM Integration", "Full-Stack Application"],
-    techStack: ["Python", "LangChain", "React", "TypeScript", "Vite", "IBM ODM", "IBM ADS", "Ollama", "IBM Watsonx", "Docker", "Flask", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "LangChain",
+      "React",
+      "TypeScript",
+      "Vite",
+      "IBM ODM",
+      "IBM ADS",
+      "Ollama",
+      "IBM Watsonx",
+      "Docker",
+      "Flask",
+      "Git/GitHub",
+    ],
     year: 2025,
   },
   {
@@ -259,10 +354,23 @@ export const projects: Project[] = [
       "API rate limits → Added exponential backoff retry logic with hardware-aware batch sizing (CUDA/MPS/CPU)",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/X-CustomerSupport-Chatbot" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/X-CustomerSupport-Chatbot",
+      },
     ],
     categories: ["AI/ML", "LLM Integration", "NLP/Chatbots"],
-    techStack: ["Python", "LangChain", "OpenAI", "GPT-4", "FAISS", "Streamlit", "SentenceTransformers", "spaCy", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "LangChain",
+      "OpenAI",
+      "GPT-4",
+      "FAISS",
+      "Streamlit",
+      "SentenceTransformers",
+      "spaCy",
+      "Git/GitHub",
+    ],
     year: 2025,
   },
   {
@@ -288,11 +396,30 @@ export const projects: Project[] = [
       "Multiple model deployment → Built unified interface supporting WatsonX, OpenAI, and open-source LLMs with seamless switching",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/ai-medical-chatbot" },
-      { label: "IBM WatsonX.ai", url: "https://www.ibm.com/products/watsonx-ai" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/ai-medical-chatbot",
+      },
+      {
+        label: "IBM WatsonX.ai",
+        url: "https://www.ibm.com/products/watsonx-ai",
+      },
     ],
     categories: ["AI/ML", "LLM Integration", "NLP/Chatbots"],
-    techStack: ["Python", "IBM Watsonx", "OpenAI", "LangChain", "Llama 3", "Mixtral", "Gradio", "FAISS", "Milvus", "ChromaDB", "Hugging Face", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "IBM Watsonx",
+      "OpenAI",
+      "LangChain",
+      "Llama 3",
+      "Mixtral",
+      "Gradio",
+      "FAISS",
+      "Milvus",
+      "ChromaDB",
+      "Hugging Face",
+      "Git/GitHub",
+    ],
     year: 2023,
   },
   {
@@ -322,7 +449,17 @@ export const projects: Project[] = [
       { label: "Paper", url: "http://kyutai.org/Moshi.pdf" },
     ],
     categories: ["AI/ML", "LLM Integration"],
-    techStack: ["Python", "PyTorch", "Rust", "MLX", "Hugging Face", "Transformers", "CUDA", "Metal", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "PyTorch",
+      "Rust",
+      "MLX",
+      "Hugging Face",
+      "Transformers",
+      "CUDA",
+      "Metal",
+      "Git/GitHub",
+    ],
     year: 2024,
   },
   {
@@ -347,14 +484,25 @@ export const projects: Project[] = [
       "Code maintainability → Used modular cogs pattern for organized command structure and easy feature additions",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/salty-dream-bot" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/salty-dream-bot",
+      },
     ],
     categories: ["AI/ML", "Full-Stack Application"],
-    techStack: ["Python", "Discord.py", "Stable Diffusion", "AUTOMATIC1111", "py-cord", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "Discord.py",
+      "Stable Diffusion",
+      "AUTOMATIC1111",
+      "py-cord",
+      "Git/GitHub",
+    ],
     year: 2023,
   },
   {
-    title: "VALL-E — Zero-Shot Text-to-Speech with Neural Codec Language Models",
+    title:
+      "VALL-E — Zero-Shot Text-to-Speech with Neural Codec Language Models",
     slug: "vall-e-tts",
     impact: "Zero-shot voice cloning from 3-second audio sample",
     description:
@@ -376,11 +524,20 @@ export const projects: Project[] = [
       { label: "Paper", url: "https://arxiv.org/abs/2301.02111" },
     ],
     categories: ["AI/ML", "LLM Integration"],
-    techStack: ["Python", "PyTorch", "EnCodec", "Transformers", "DeepSpeed", "CUDA", "Git/GitHub"],
+    techStack: [
+      "Python",
+      "PyTorch",
+      "EnCodec",
+      "Transformers",
+      "DeepSpeed",
+      "CUDA",
+      "Git/GitHub",
+    ],
     year: 2023,
   },
   {
-    title: "Admin Issuer Portal — Certificate & Digital Signature Management UI",
+    title:
+      "Admin Issuer Portal — Certificate & Digital Signature Management UI",
     slug: "admin-issuer-portal",
     impact: "Complete certificate lifecycle management with audit trail",
     description:
@@ -401,11 +558,27 @@ export const projects: Project[] = [
       "Audit compliance → Implemented comprehensive audit trail tracking all signing events with timestamps, actors, IP addresses, and device info",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/Admin_Issuer_Portal_UI" },
-      { label: "Figma Design", url: "https://www.figma.com/design/your-design-link" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/Admin_Issuer_Portal_UI",
+      },
+      {
+        label: "Figma Design",
+        url: "https://www.figma.com/design/your-design-link",
+      },
     ],
     categories: ["Full-Stack Application"],
-    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI", "React Hook Form", "Recharts", "Lucide React", "Git/GitHub"],
+    techStack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Radix UI",
+      "React Hook Form",
+      "Recharts",
+      "Lucide React",
+      "Git/GitHub",
+    ],
     year: 2026,
   },
   {
@@ -431,16 +604,34 @@ export const projects: Project[] = [
       "Content management at scale → Built MongoDB-backed CMS with role-based access control and visual editors for non-technical users",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/KuchikiRenji/rising-dot-agency" },
+      {
+        label: "GitHub",
+        url: "https://github.com/KuchikiRenji/rising-dot-agency",
+      },
     ],
     categories: ["Full-Stack Application"],
-    techStack: ["Next.js", "TypeScript", "React", "MongoDB", "Tailwind CSS", "Framer Motion", "GSAP", "Three.js", "NextAuth.js", "Cloudinary", "Vercel", "Git/GitHub"],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "MongoDB",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GSAP",
+      "Three.js",
+      "NextAuth.js",
+      "Cloudinary",
+      "Vercel",
+      "Git/GitHub",
+    ],
     year: 2026,
   },
   {
-    title: "Solana Bundler — Token Deployment & Multi-Wallet Management Platform",
+    title:
+      "Solana Bundler — Token Deployment & Multi-Wallet Management Platform",
     slug: "solana-bundler",
-    impact: "Complete Solana token lifecycle with multi-wallet trading automation",
+    impact:
+      "Complete Solana token lifecycle with multi-wallet trading automation",
     description:
       "Powerful token deployment and management tool for Solana blockchain (Jul 2025 – Sep 2025). Deploy SPL tokens on pump.fun, letsbonk.fun, cook.meme, and other platforms with one-click deployment. Features comprehensive multi-wallet management (dev & fund wallets), batch trading operations, real-time charts via DEXTools integration, and local-only private key storage. Built with React, TypeScript, Tailwind CSS, and Solana Web3.js for secure, client-side token operations.",
     defaultImage: "/projects/solana-bundler/wallet-management.png",
@@ -462,10 +653,20 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Live App", url: "https://www.bundlerbot.fun/" },
-      { label: "GitHub", url: "https://github.com/0xBundlerBot/Solana_Bundler_Bot" },
+      {
+        label: "GitHub",
+        url: "https://github.com/0xBundlerBot/Solana_Bundler_Bot",
+      },
     ],
     categories: ["Full-Stack Application"],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Solana Web3.js", "LocalStorage", "Git/GitHub"],
+    techStack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Solana Web3.js",
+      "LocalStorage",
+      "Git/GitHub",
+    ],
     year: 2025,
   },
 ];

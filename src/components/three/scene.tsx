@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { Suspense } from "react";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { GradientSphere } from "./gradient-sphere";
 import { FloatingParticles } from "./floating-particles";

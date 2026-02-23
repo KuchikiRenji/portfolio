@@ -407,7 +407,10 @@ const itemVariants = {
   },
 };
 
-export function ProjectTechStack({ tech, variant = "pills" }: ProjectTechStackProps) {
+export function ProjectTechStack({
+  tech,
+  variant = "pills",
+}: ProjectTechStackProps) {
   if (tech.length === 0) return null;
 
   if (variant === "grid") {
