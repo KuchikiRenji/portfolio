@@ -50,6 +50,7 @@ class CanvasErrorBoundary extends Component<
 export function SafeCanvas({ children, fallback, ...props }: SafeCanvasProps) {
   const [hasWebGL, setHasWebGL] = useState<boolean | null>(null);
   const [isClient, setIsClient] = useState(false);
+  const [renderAttempted, setRenderAttempted] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -95,42 +96,49 @@ export function SafeCanvas({ children, fallback, ...props }: SafeCanvasProps) {
     }
   }, []);
 
+  const handleError = () => {
+    setHasWebGL(false);
+    setRenderAttempted(true);
+  };
+
   // Don't render on server
   if (!isClient || hasWebGL === null) {
     return null;
   }
 
-  // Show fallback if no WebGL
-  if (hasWebGL === false) {
+  // Show fallback if no WebGL or if render was attempted and failed
+  if (hasWebGL === false || renderAttempted) {
     return <>{fallback || null}</>;
   }
 
-  const handleError = () => {
-    setHasWebGL(false);
-  };
-
-  return (
-    <CanvasErrorBoundary onError={handleError} fallback={fallback || null}>
-      <Canvas
-        {...props}
-        onCreated={(state) => {
-          try {
-            // Validate WebGL context
-            const gl = state.gl.getContext();
-            if (!gl) {
+  // Wrap in try-catch to prevent any errors from propagating
+  try {
+    return (
+      <CanvasErrorBoundary onError={handleError} fallback={fallback || null}>
+        <Canvas
+          {...props}
+          onCreated={(state) => {
+            try {
+              // Validate WebGL context
+              const gl = state.gl.getContext();
+              if (!gl) {
+                setHasWebGL(false);
+                return;
+              }
+              if (props.onCreated) {
+                props.onCreated(state);
+              }
+            } catch (e) {
               setHasWebGL(false);
-              return;
             }
-            if (props.onCreated) {
-              props.onCreated(state);
-            }
-          } catch (e) {
-            setHasWebGL(false);
-          }
-        }}
-      >
-        {children}
-      </Canvas>
-    </CanvasErrorBoundary>
-  );
+          }}
+        >
+          {children}
+        </Canvas>
+      </CanvasErrorBoundary>
+    );
+  } catch (e) {
+    // If Canvas creation throws immediately, show fallback
+    return <>{fallback || null}</>;
+  }
 }
