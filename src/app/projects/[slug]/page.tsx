@@ -4,14 +4,16 @@ import { ProjectDetailClient } from "./detail-client";
 import { projects, getProjectBySlug } from "@/data/projects";
 import { BreadcrumbSchema, siteConfig } from "@/lib/structured-data";
 
-// ISR: Revalidate every 24 hours
-export const revalidate = 86400;
+// Instant page transitions - no animations
+export const dynamic = "force-static";
+export const dynamicParams = true;
+export const revalidate = 3600; // Revalidate every hour
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Pre-generate all 24 project pages
+// Pre-generate all project pages
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,

@@ -199,6 +199,13 @@ export function NeuralNetworkParticles({
     mouseRef.current = mouseInfluence;
   }, [mouseInfluence]);
 
+  // Cache color objects to avoid recreation every frame
+  const purpleColorRef = useRef(new THREE.Color("#8b5cf6"));
+  const cyanColorRef = useRef(new THREE.Color("#06b6d4"));
+  
+  // Frame counter for throttling expensive operations
+  const frameCountRef = useRef(0);
+
   useFrame((state) => {
     if (!pointsRef.current || !linesRef.current) return;
 
@@ -212,8 +219,8 @@ export function NeuralNetworkParticles({
     const lineAlphas = lineGeometry.attributes.alpha.array as Float32Array;
 
     const mouse = mouseRef.current;
-    const purpleColor = new THREE.Color("#8b5cf6");
-    const cyanColor = new THREE.Color("#06b6d4");
+    const purpleColor = purpleColorRef.current;
+    const cyanColor = cyanColorRef.current;
 
     // Update particle positions with subtle movement
     for (let i = 0; i < count; i++) {
@@ -235,69 +242,79 @@ export function NeuralNetworkParticles({
 
     particleGeometry.attributes.position.needsUpdate = true;
 
-    // Update connections (sample subset for performance)
-    let lineIndex = 0;
-    const maxLines = count * 3;
-    const sampleRate = Math.max(1, Math.floor(count / 500));
+    // Throttle connection updates to every 2 frames for better performance
+    frameCountRef.current++;
+    const shouldUpdateConnections = frameCountRef.current % 2 === 0;
 
-    for (let i = 0; i < count && lineIndex < maxLines; i += sampleRate) {
-      const i3 = i * 3;
-      const x1 = positions[i3];
-      const y1 = positions[i3 + 1];
-      const z1 = positions[i3 + 2];
+    if (shouldUpdateConnections) {
+      // Update connections (sample subset for performance)
+      let lineIndex = 0;
+      const maxLines = count * 3;
+      const sampleRate = Math.max(1, Math.floor(count / 500));
+      
+      // Pre-calculate distance squared threshold to avoid sqrt in inner loop
+      const distSq = connectionDistance * connectionDistance;
 
-      for (
-        let j = i + sampleRate;
-        j < count && lineIndex < maxLines;
-        j += sampleRate
-      ) {
-        const j3 = j * 3;
-        const x2 = positions[j3];
-        const y2 = positions[j3 + 1];
-        const z2 = positions[j3 + 2];
+      for (let i = 0; i < count && lineIndex < maxLines; i += sampleRate) {
+        const i3 = i * 3;
+        const x1 = positions[i3];
+        const y1 = positions[i3 + 1];
+        const z1 = positions[i3 + 2];
 
-        const dx = x1 - x2;
-        const dy = y1 - y2;
-        const dz = z1 - z2;
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        for (
+          let j = i + sampleRate;
+          j < count && lineIndex < maxLines;
+          j += sampleRate
+        ) {
+          const j3 = j * 3;
+          const x2 = positions[j3];
+          const y2 = positions[j3 + 1];
+          const z2 = positions[j3 + 2];
 
-        if (dist < connectionDistance) {
-          const alpha = 1 - dist / connectionDistance;
-          const li6 = lineIndex * 6;
-          const li2 = lineIndex * 2;
+          const dx = x1 - x2;
+          const dy = y1 - y2;
+          const dz = z1 - z2;
+          const distSquared = dx * dx + dy * dy + dz * dz;
 
-          linePositions[li6] = x1;
-          linePositions[li6 + 1] = y1;
-          linePositions[li6 + 2] = z1;
-          linePositions[li6 + 3] = x2;
-          linePositions[li6 + 4] = y2;
-          linePositions[li6 + 5] = z2;
+          if (distSquared < distSq) {
+            const dist = Math.sqrt(distSquared);
+            const alpha = 1 - dist / connectionDistance;
+            const li6 = lineIndex * 6;
+            const li2 = lineIndex * 2;
 
-          // Gradient color for lines
-          const t1 = (y1 + 10) / 20;
-          const t2 = (y2 + 10) / 20;
-          const color1 = purpleColor.clone().lerp(cyanColor, t1);
-          const color2 = purpleColor.clone().lerp(cyanColor, t2);
+            linePositions[li6] = x1;
+            linePositions[li6 + 1] = y1;
+            linePositions[li6 + 2] = z1;
+            linePositions[li6 + 3] = x2;
+            linePositions[li6 + 4] = y2;
+            linePositions[li6 + 5] = z2;
 
-          lineColors[li6] = color1.r;
-          lineColors[li6 + 1] = color1.g;
-          lineColors[li6 + 2] = color1.b;
-          lineColors[li6 + 3] = color2.r;
-          lineColors[li6 + 4] = color2.g;
-          lineColors[li6 + 5] = color2.b;
+            // Gradient color for lines
+            const t1 = (y1 + 10) / 20;
+            const t2 = (y2 + 10) / 20;
+            const color1 = purpleColor.clone().lerp(cyanColor, t1);
+            const color2 = purpleColor.clone().lerp(cyanColor, t2);
 
-          lineAlphas[li2] = alpha;
-          lineAlphas[li2 + 1] = alpha;
+            lineColors[li6] = color1.r;
+            lineColors[li6 + 1] = color1.g;
+            lineColors[li6 + 2] = color1.b;
+            lineColors[li6 + 3] = color2.r;
+            lineColors[li6 + 4] = color2.g;
+            lineColors[li6 + 5] = color2.b;
 
-          lineIndex++;
+            lineAlphas[li2] = alpha;
+            lineAlphas[li2 + 1] = alpha;
+
+            lineIndex++;
+          }
         }
       }
-    }
 
-    lineGeometry.setDrawRange(0, lineIndex * 2);
-    lineGeometry.attributes.position.needsUpdate = true;
-    lineGeometry.attributes.customColor.needsUpdate = true;
-    lineGeometry.attributes.alpha.needsUpdate = true;
+      lineGeometry.setDrawRange(0, lineIndex * 2);
+      lineGeometry.attributes.position.needsUpdate = true;
+      lineGeometry.attributes.customColor.needsUpdate = true;
+      lineGeometry.attributes.alpha.needsUpdate = true;
+    }
 
     // Subtle rotation
     pointsRef.current.rotation.y = time * 0.02 + mouse.x * 0.1;

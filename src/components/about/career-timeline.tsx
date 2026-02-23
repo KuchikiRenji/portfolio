@@ -104,20 +104,22 @@ function TimelineItem({
         <p className="mb-3 text-sm text-white/60">{event.description}</p>
 
         {/* Highlights */}
-        <div className="flex flex-wrap gap-2">
-          {event.highlights.map((highlight, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + i * 0.05 }}
-              className="rounded-lg bg-white/5 px-2 py-1 text-xs text-white/50"
-            >
-              {highlight}
-            </motion.span>
-          ))}
-        </div>
+        {event.highlights.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {event.highlights.map((highlight, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 + i * 0.05 }}
+                className="rounded-lg bg-white/5 px-2 py-1 text-xs text-white/50"
+              >
+                {highlight}
+              </motion.span>
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );

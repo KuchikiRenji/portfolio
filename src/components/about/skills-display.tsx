@@ -31,9 +31,29 @@ const techStack: TechCategory[] = [
         brandColor: "59, 130, 246",
       },
       {
+        name: "TypeScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+        brandColor: "49, 120, 198",
+      },
+      {
+        name: "JavaScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+        brandColor: "247, 223, 30",
+      },
+      {
         name: "Node.js",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
         brandColor: "34, 197, 94",
+      },
+      {
+        name: "Go",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg",
+        brandColor: "0, 173, 216",
+      },
+      {
+        name: "Rust",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg",
+        brandColor: "206, 145, 120",
       },
     ],
   },
@@ -53,14 +73,24 @@ const techStack: TechCategory[] = [
         brandColor: "148, 163, 184",
       },
       {
-        name: "REST API",
-        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openapiinitiative.svg",
-        brandColor: "107, 165, 57",
+        name: "Express.js",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+        brandColor: "148, 163, 184",
       },
       {
         name: "GraphQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
         brandColor: "229, 53, 171",
+      },
+      {
+        name: "tRPC",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trpc/trpc-original.svg",
+        brandColor: "56, 189, 248",
+      },
+      {
+        name: "Prisma",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
+        brandColor: "45, 212, 191",
       },
     ],
   },
@@ -75,22 +105,27 @@ const techStack: TechCategory[] = [
         brandColor: "238, 76, 44",
       },
       {
-        name: "LLM",
+        name: "OpenAI",
         icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg",
         brandColor: "168, 85, 247",
       },
       {
-        name: "Computer Vision",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg",
-        brandColor: "34, 197, 94",
-      },
-      {
-        name: "NLP",
-        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/huggingface.svg",
+        name: "Hugging Face",
+        icon: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
         brandColor: "255, 210, 30",
       },
       {
-        name: "MLOps",
+        name: "TensorFlow",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
+        brandColor: "255, 109, 0",
+      },
+      {
+        name: "scikit-learn",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg",
+        brandColor: "249, 115, 22",
+      },
+      {
+        name: "MLflow",
         icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mlflow.svg",
         brandColor: "1, 148, 226",
       },
@@ -101,6 +136,11 @@ const techStack: TechCategory[] = [
     title: "Frontend & Design",
     gradient: "from-cyan-400 to-blue-500",
     items: [
+      {
+        name: "React",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+        brandColor: "97, 218, 251",
+      },
       {
         name: "Next.js",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
@@ -121,6 +161,11 @@ const techStack: TechCategory[] = [
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
         brandColor: "187, 77, 255",
       },
+      {
+        name: "Vite",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+        brandColor: "189, 52, 254",
+      },
     ],
   },
   {
@@ -134,19 +179,19 @@ const techStack: TechCategory[] = [
         brandColor: "255, 153, 0",
       },
       {
-        name: "GCP",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-        brandColor: "66, 133, 244",
-      },
-      {
-        name: "Azure",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
-        brandColor: "0, 127, 255",
-      },
-      {
         name: "Docker",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
         brandColor: "33, 150, 243",
+      },
+      {
+        name: "Kubernetes",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
+        brandColor: "50, 108, 229",
+      },
+      {
+        name: "Vercel",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
+        brandColor: "255, 255, 255",
       },
       {
         name: "Nginx",
@@ -154,7 +199,7 @@ const techStack: TechCategory[] = [
         brandColor: "0, 150, 57",
       },
       {
-        name: "CI/CD",
+        name: "GitHub Actions",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
         brandColor: "33, 150, 243",
       },
@@ -162,7 +207,7 @@ const techStack: TechCategory[] = [
   },
   {
     id: "tools",
-    title: "Tools & Others",
+    title: "Tools & Integrations",
     gradient: "from-purple-400 to-pink-500",
     items: [
       {
@@ -171,14 +216,29 @@ const techStack: TechCategory[] = [
         brandColor: "240, 80, 51",
       },
       {
-        name: "SQL / NoSQL",
+        name: "MongoDB",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+        brandColor: "71, 162, 72",
+      },
+      {
+        name: "PostgreSQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
         brandColor: "51, 103, 145",
       },
       {
-        name: "Agile/Scrum",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg",
-        brandColor: "0, 82, 204",
+        name: "Redis",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+        brandColor: "220, 47, 2",
+      },
+      {
+        name: "VAPI",
+        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/v.svg",
+        brandColor: "139, 92, 246",
+      },
+      {
+        name: "GoHighLevel",
+        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googleanalytics.svg",
+        brandColor: "34, 197, 94",
       },
     ],
   },
@@ -276,10 +336,10 @@ function TechCard({ item }: { item: TechItem }) {
       }}
       className={cn(
         "group relative flex flex-col items-center justify-center",
-        "rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md",
+        "rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md",
         "p-4 sm:p-5",
         "transition-all duration-300 ease-out",
-        "hover:border-white/20 hover:bg-black/40",
+        "hover:border-white/30 hover:bg-white/15",
         "cursor-pointer"
       )}
     >
@@ -302,7 +362,7 @@ function TechCard({ item }: { item: TechItem }) {
       </div>
 
       {/* Name */}
-      <span className="text-center text-xs font-medium text-white/60 transition-colors duration-300 group-hover:text-white/90 sm:text-sm">
+      <span className="text-center text-xs font-medium text-white/90 transition-colors duration-300 group-hover:text-white sm:text-sm">
         {item.name}
       </span>
     </motion.div>
@@ -467,7 +527,7 @@ export function SkillsDisplay() {
         className="relative"
       >
         {/* Scrollable tabs wrapper */}
-        <div className="scrollbar-hide -mx-4 overflow-x-auto px-4 sm:mx-0 sm:overflow-visible sm:px-0">
+        <div className="scrollbar-hide -mx-4 overflow-x-auto overflow-y-hidden px-4 sm:mx-0 sm:overflow-visible sm:px-0 [contain:inline-size]">
           <div className="flex min-w-max justify-start gap-2 pb-2 sm:flex-wrap sm:justify-center sm:gap-3">
             {techStack.map((category) => (
               <TabButton

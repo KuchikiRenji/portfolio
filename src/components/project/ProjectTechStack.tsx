@@ -134,6 +134,36 @@ const techIcons: Record<string, { icon: string; color: string }> = {
     color: "139, 92, 246",
   },
 
+  // Services & Platforms
+  Supabase: {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+    color: "62, 207, 142",
+  },
+  Stripe: {
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/stripe.svg",
+    color: "99, 91, 255",
+  },
+  PostHog: {
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/posthog.svg",
+    color: "255, 200, 0",
+  },
+  FFmpeg: {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ffmpeg/ffmpeg-original.svg",
+    color: "0, 127, 0",
+  },
+  tRPC: {
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/trpc.svg",
+    color: "56, 189, 248",
+  },
+  Prisma: {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
+    color: "45, 212, 191",
+  },
+  Vite: {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+    color: "149, 97, 255",
+  },
+
   // Data
   PostgreSQL: {
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",

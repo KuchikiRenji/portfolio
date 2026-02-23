@@ -4,9 +4,9 @@ import type { ReactNode } from "react";
 export const siteConfig = {
   url: "https://kuchikirenji.dev",
   name: "Kuchiki Renji",
-  title: "Kuchiki Renji | AI Engineer & Full-Stack Developer",
+  title: "Kuchiki Renji | AI Engineer, Full-Stack Developer & SaaS Architect Portfolio",
   description:
-    "AI Engineer & Full-Stack Developer based in Fukuoka, Japan. Building production AI that moves metrics — +20% forecasting accuracy, +15% model performance.",
+    "Hire Kuchiki Renji - Senior AI Engineer & Full-Stack Developer in Japan specializing in production AI systems, LLM development, RAG, SaaS architecture, and MLOps. 8+ years building scalable AI applications with PyTorch, TensorFlow, Next.js, Python. Proven results: +20% forecasting accuracy, +15% model performance, $10M+ business value. Available for freelance AI consulting and full-stack development projects.",
   locale: "en_US",
   twitter: "@Kuchiki010718",
   image: "/og-image.png",
@@ -21,11 +21,12 @@ export function PersonSchema() {
     url: siteConfig.url,
     image: `${siteConfig.url}/avatar.png`,
     sameAs: [
-      "https://x.com/Kuchiki010718",
       "https://github.com/kuchikirenji",
-      "https://linkedin.com/in/kuchikirenji",
+      "https://x.com/Kuchiki010718",
+      "https://t.me/kuchikirenji",
+      "https://www.linkedin.com/in/kuchikirenji",
     ],
-    jobTitle: "AI Engineer & Full-Stack Developer",
+    jobTitle: "AI Engineer, Full-Stack Developer & SaaS Architect",
     worksFor: {
       "@type": "Organization",
       name: "Freelance",
@@ -39,18 +40,50 @@ export function PersonSchema() {
       "Artificial Intelligence",
       "Machine Learning",
       "Deep Learning",
+      "Large Language Models",
+      "LLM Development",
+      "RAG Systems",
       "Computer Vision",
       "Natural Language Processing",
+      "MLOps",
+      "AI Engineering",
+      "SaaS Development",
+      "SaaS Architecture",
+      "Full-Stack Development",
+      "Cloud Architecture",
+      "Microservices",
+      "API Development",
       "PyTorch",
       "TensorFlow",
+      "LangChain",
+      "OpenAI",
       "Python",
       "TypeScript",
+      "JavaScript",
       "React",
       "Next.js",
+      "Node.js",
       "FastAPI",
+      "Flask",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
       "AWS",
+      "Azure",
+      "Google Cloud",
       "Docker",
       "Kubernetes",
+      "CI/CD",
+      "DevOps",
+      "Databricks",
+      "MLflow",
+      "Demand Forecasting",
+      "Predictive Analytics",
+      "Time Series Analysis",
+      "Chatbot Development",
+      "AI Automation",
+      "Web3",
+      "Blockchain",
     ],
     description: siteConfig.description,
   };
@@ -141,6 +174,63 @@ export function ProfilePageSchema() {
   );
 }
 
+// FAQ Schema for SEO
+export function FAQSchema() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What AI technologies does Kuchiki Renji specialize in?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Kuchiki Renji specializes in Large Language Models (LLMs), RAG systems, computer vision, NLP, MLOps, and production AI deployment. Expert in PyTorch, TensorFlow, LangChain, OpenAI, and Hugging Face transformers.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What full-stack technologies does Kuchiki Renji use?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Full-stack expertise includes React, Next.js, TypeScript, Node.js, Python, FastAPI, Flask, PostgreSQL, MongoDB, Redis, and modern cloud platforms (AWS, Azure, GCP). Experienced in building scalable SaaS applications and microservices.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What types of SaaS projects has Kuchiki Renji built?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Built production SaaS applications including AI chatbots, demand forecasting systems, customer segmentation platforms, recommendation engines, and MLOps pipelines. Delivered $10M+ in measurable business value across 16+ production projects.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does Kuchiki Renji offer freelance AI development services?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, available for freelance AI engineering, full-stack development, and SaaS architecture consulting. Specializes in building production-ready AI systems, LLM applications, and scalable cloud infrastructure.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is Kuchiki Renji's experience with MLOps?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Extensive MLOps experience including model deployment, CI/CD pipelines, monitoring, drift detection, and automated retraining. Proficient with MLflow, Databricks, Docker, Kubernetes, and cloud-native ML platforms.",
+        },
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+    />
+  );
+}
+
 // Combine all schemas
 export function StructuredData({ children }: { children?: ReactNode }) {
   return (
@@ -148,6 +238,7 @@ export function StructuredData({ children }: { children?: ReactNode }) {
       <PersonSchema />
       <WebsiteSchema />
       <ProfilePageSchema />
+      <FAQSchema />
       {children}
     </>
   );

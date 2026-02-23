@@ -87,7 +87,7 @@ export function HeroContent({
         {/* Main Name */}
         <motion.h1
           variants={itemVariants}
-          className="mb-6 font-display text-5xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+          className="mb-6 font-display text-4xl font-black tracking-tight xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
         >
           <span className="relative inline-block">
             <span
@@ -104,9 +104,9 @@ export function HeroContent({
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1, duration: 0.5 }}
-              className="absolute -right-4 -top-4 sm:-right-8 sm:-top-8"
+              className="absolute -right-3 -top-3 xs:-right-4 xs:-top-4 sm:-right-8 sm:-top-8"
             >
-              <Sparkles className="h-6 w-6 text-purple-400 sm:h-8 sm:w-8" />
+              <Sparkles className="h-5 w-5 xs:h-6 xs:w-6 text-purple-400 sm:h-8 sm:w-8" />
             </motion.span>
           </span>
         </motion.h1>
@@ -114,20 +114,20 @@ export function HeroContent({
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="mb-6 text-lg font-medium text-white/60 sm:text-xl md:text-2xl"
+          className="mb-6 text-base font-medium text-white/60 xs:text-lg sm:text-xl md:text-2xl"
         >
           <span className="text-white/90">AI Engineer</span>
-          <span className="mx-3 text-purple-400/60">&</span>
+          <span className="mx-2 xs:mx-3 text-purple-400/60">&</span>
           <span className="text-white/90">Full-Stack Developer</span>
-          <span className="mx-3 hidden text-cyan-400/60 sm:inline">•</span>
-          <span className="mt-2 block text-white/50 sm:mt-0 sm:inline">
+          <span className="mx-2 xs:mx-3 hidden text-cyan-400/60 sm:inline">•</span>
+          <span className="mt-2 block text-sm xs:text-base text-white/50 sm:mt-0 sm:inline">
             Fukuoka, Japan
           </span>
         </motion.p>
 
         {/* Tagline with metrics */}
-        <motion.div variants={itemVariants} className="mb-12">
-          <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/50 sm:text-lg md:text-xl">
+        <motion.div variants={itemVariants} className="mb-10 xs:mb-12">
+          <p className="mx-auto max-w-3xl text-sm leading-relaxed text-white/50 xs:text-base sm:text-lg md:text-xl px-2">
             Building production AI that moves metrics —{" "}
             <span className="font-semibold text-emerald-400">
               +20% forecasting accuracy
@@ -146,7 +146,7 @@ export function HeroContent({
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="flex flex-col items-center justify-center gap-3 xs:gap-4 sm:flex-row"
         >
           <TiltCard glowColor="rgba(139, 92, 246, 0.4)">
             <motion.button
@@ -154,7 +154,7 @@ export function HeroContent({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={cn(
-                "relative px-8 py-4 text-base font-semibold sm:text-lg",
+                "relative px-6 py-3 xs:px-8 xs:py-4 text-sm xs:text-base font-semibold sm:text-lg w-full xs:w-auto",
                 "bg-gradient-to-r from-purple-600 to-cyan-600",
                 "text-white",
                 "transition-all duration-300",
@@ -162,8 +162,8 @@ export function HeroContent({
                 "hover:shadow-[0_0_40px_rgba(139,92,246,0.4)]"
               )}
             >
-              <span className="relative z-10 flex items-center gap-2">
-                <Sparkles className="h-5 w-5" />
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <Sparkles className="h-4 w-4 xs:h-5 xs:w-5" />
                 Explore Projects
               </span>
             </motion.button>
@@ -175,7 +175,7 @@ export function HeroContent({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={cn(
-                "px-8 py-4 text-base font-semibold sm:text-lg",
+                "px-6 py-3 xs:px-8 xs:py-4 text-sm xs:text-base font-semibold sm:text-lg w-full xs:w-auto",
                 "bg-white/5",
                 "text-white/90",
                 "transition-all duration-300",
@@ -183,8 +183,8 @@ export function HeroContent({
                 "hover:text-white"
               )}
             >
-              <span className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
+              <span className="flex items-center justify-center gap-2">
+                <Mail className="h-4 w-4 xs:h-5 xs:w-5" />
                 Get in Touch
               </span>
             </motion.button>
@@ -194,60 +194,29 @@ export function HeroContent({
         {/* Tech Stack Pills */}
         <motion.div
           variants={itemVariants}
-          className="mt-16 flex flex-wrap items-center justify-center gap-2"
+          className="mt-12 xs:mt-16 flex flex-wrap items-center justify-center gap-1.5 xs:gap-2 px-4"
         >
           {[
-            "PyTorch",
-            "LangChain",
             "Next.js",
-            "TypeScript",
             "FastAPI",
-            "PostgreSQL",
             "AWS",
+            "Docker",
+            "Vite",
+            "VAPI",
+            "GoHighLevel",
+            "GitHub Actions",
+            "Git",
           ].map((tech, i) => (
             <motion.span
               key={tech}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.2 + i * 0.05 }}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/50 backdrop-blur-sm sm:text-sm"
+              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 xs:px-3 text-[11px] xs:text-xs font-medium text-white/50 backdrop-blur-sm sm:text-sm"
             >
               {tech}
             </motion.span>
           ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 sm:bottom-12"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-xs font-medium uppercase tracking-widest text-white/30">
-            Scroll to explore
-          </span>
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/20 p-2">
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="h-2 w-1 rounded-full bg-gradient-to-b from-purple-400 to-cyan-400"
-            />
-          </div>
         </motion.div>
       </motion.div>
     </motion.div>

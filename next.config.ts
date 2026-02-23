@@ -5,6 +5,17 @@ const nextConfig: NextConfig = {
   // Turbopack configuration (empty config enables Turbopack)
   turbopack: {},
 
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: [
+      "framer-motion",
+      "lucide-react",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
+    ],
+  },
+
   // Image optimization configuration
   images: {
     formats: ["image/avif", "image/webp"],
@@ -41,6 +52,15 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/fonts/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:path*.{jpg,jpeg,png,gif,webp,avif,ico,svg}",
         headers: [
           {
             key: "Cache-Control",

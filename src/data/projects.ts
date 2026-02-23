@@ -1,665 +1,502 @@
 import type { Project } from "@/types/project";
 
-// Placeholder data for 24 projects – replace with real details later
+// Real projects portfolio - 16 projects with actual implementations
 export const projects: Project[] = [
   {
-    title: "Multi-Tenant Analytics Dashboard with Real-Time KPIs",
-    slug: "multi-tenant-analytics-dashboard-with-real-time-kpis",
-    impact: "+18% executive reporting efficiency",
+    title: "Zitro.AI — AI-Powered Creator Studio",
+    slug: "zitro-ai",
+    impact: "Viral clips from scripts, no editing experience required",
     description:
-      "Built a SaaS-style analytics dashboard for internal business units, consolidating metrics from disparate systems into a single pane of glass. Implemented real-time KPI streaming and access control per tenant. Helped stakeholders make faster, data-driven decisions with less manual Excel work.",
-    defaultImage: "/projects/project-1/hero.webp",
+      "AI-powered creator studio for generating viral video clips from scripts (Dec 2025 – Feb 2026). Built with Next.js, TypeScript, and modern AI tools. Features automated video generation, script-to-clip conversion, and content optimization for social media platforms. Designed for creators who want professional results without video editing experience.",
+    defaultImage: "/projects/zitro-ai/hero.png",
     gallery: [
-      "/projects/project-1/overview.webp",
-      "/projects/project-1/filters.webp",
-      "/projects/project-1/charts.png",
+      "/projects/zitro-ai/hero.png",
+      "/projects/zitro-ai/gallery-1.png",
+      "/projects/zitro-ai/gallery-2.png",
     ],
     technicalHighlights: [
-      "Designed multi-tenant architecture with row-level security for shared storage",
-      "Implemented real-time metric updates over WebSockets using a Node.js backend",
-      "Created reusable chart components with Next.js and Tailwind CSS for rapid iteration",
+      "AI-powered video generation pipeline with script analysis and scene composition",
+      "Real-time preview system with Next.js and TypeScript for instant feedback",
+      "Automated content optimization for different social media platforms and formats",
     ],
     challengesSolutions: [
-      "Complex permission model across tenants → Introduced a role/tenant mapping layer with SQL policies",
-      "Slow legacy reports → Pre-aggregated heavy queries and cached results at the API layer",
+      "Complex video generation → Built modular pipeline with AI-driven scene composition and transitions",
+      "Platform-specific optimization → Implemented adaptive rendering for different aspect ratios and durations",
     ],
-    links: [{ label: "Internal Demo", url: "#" }],
+    links: [
+      { label: "Live App", url: "https://zitro.ai" },
+    ],
+    categories: ["AI/ML", "Full-Stack Application"],
+    techStack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "AI/ML", "Git/GitHub"],
+    year: 2026,
+  },
+  {
+    title: "Open Recommender — Open Source AI Recommendation System for Videos & Articles",
+    slug: "open-recommender",
+    impact: "Self-hosted AI that learns your interests for timeless content",
+    description:
+      "Open source AI-powered recommendation system for YouTube videos and articles (Dec 2023 – Feb 2024). Uses LLMs to learn from your interests and surface timeless, learning-focused content. Self-hosted solution built with TypeScript and Python, featuring tRPC for type-safe APIs and Prisma for database management.",
+    defaultImage: "/projects/open-recommender/hero.png",
+    gallery: ["/projects/open-recommender/hero.png"],
+    technicalHighlights: [
+      "Backend built with Node.js, tRPC for end-to-end type safety, and Prisma ORM for database operations",
+      "Python workers for AI processing with Modelfusion, LangChain, and OpenAI-compatible APIs",
+      "React + TypeScript frontend with seamless integration to type-safe backend APIs",
+      "Content ingestion from YouTube (via yt-dlp), Twitter/X (optional), and web search",
+    ],
+    challengesSolutions: [
+      "Learning user preferences → Implemented LLM-based interest modeling that adapts to user behavior over time",
+      "Content quality filtering → Built AI pipeline to prioritize timeless, educational content over viral trends",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/open-recommender" },
+    ],
+    categories: ["AI/ML", "LLM Integration", "Full-Stack Application"],
+    techStack: ["Node.js", "TypeScript", "React", "tRPC", "Prisma", "Python", "LangChain", "OpenAI", "Git/GitHub"],
+    year: 2024,
+  },
+  {
+    title: "End-to-End Demand Forecasting and Inventory Optimization",
+    slug: "demand-forecasting-inventory",
+    impact: "Multi-modal ML pipeline with uncertainty-aware forecasting",
+    description:
+      "End-to-end demand forecasting and inventory optimization with Databricks (Nov 2024 – Jan 2025) - multi-modal ML (time series, images, tabular), LightGBM, MAPIE conformal prediction and MLOps for retail and fashion. Implements full pipeline on Databricks with uncertainty-aware forecasting, drift monitoring, and inventory dashboards.",
+    defaultImage: "/projects/demand-forecasting-inventory/hero.png",
+    gallery: [
+      "/projects/demand-forecasting-inventory/hero.png",
+      "/projects/demand-forecasting-inventory/forecast-error-monitoring.png",
+      "/projects/demand-forecasting-inventory/inventory-monitoring.png",
+      "/projects/demand-forecasting-inventory/dataset-drift.png",
+      "/projects/demand-forecasting-inventory/data-quality-tests.png",
+      "/projects/demand-forecasting-inventory/drift-tests.png",
+    ],
+    technicalHighlights: [
+      "Multi-modal ML pipeline: time series, images (imgbeddings), and tabular data on Databricks",
+      "Forecasting with Nixtla MLForecast and LightGBM; uncertainty quantification via MAPIE conformal prediction",
+      "MLOps: Evidently AI for drift monitoring, MLflow for model registry and serving, Unity Catalog",
+      "Bronze-Silver-Gold data architecture with Delta Lake for sales, price, weather, trends, and inventory",
+    ],
+    challengesSolutions: [
+      "Uncertainty in forecasts → Implemented MAPIE conformal prediction for prediction intervals",
+      "Multi-modal data integration → Built unified pipeline combining time series, images, and tabular features",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/End-to-end_Demand_forecasting_inventory_optimization" },
+    ],
+    categories: ["AI/ML", "Forecasting/Time-Series", "MLOps/Deployment"],
+    techStack: ["Python", "Databricks", "PySpark", "LightGBM", "MLflow", "Delta Lake", "Evidently AI", "Git/GitHub"],
+    year: 2025,
+  },
+  {
+    title: "UNMISSABLERP — FiveM GTA RP Community Website",
+    slug: "unmissablerp",
+    impact: "Modern community platform with live stats and whitelist system",
+    description:
+      "Official website for UNMISSABLERP - a FiveM GTA RP community (Oct 2025 – Nov 2025). Built with Next.js, TypeScript, and Tailwind CSS. Features whitelist applications with validation, live server stats dashboard with 10s polling, server assets management (scripts, MLOs, vehicles), Discord integration, and store placeholder. Designed for serious roleplay communities with curated whitelist and player-driven economy.",
+    defaultImage: "/projects/unmissablerp/hero.png",
+    gallery: [
+      "/projects/unmissablerp/hero.png",
+      "/projects/unmissablerp/store.png",
+      "/projects/unmissablerp/dashboard.png",
+    ],
+    technicalHighlights: [
+      "Next.js 14 App Router with TypeScript, Tailwind CSS, and Framer Motion animations",
+      "Whitelist application system with React Hook Form + Zod validation (client + server)",
+      "Live stats dashboard with SWR polling (10s intervals), Recharts visualizations, and real-time player count",
+      "Server assets management for scripts, MLOs, and vehicles with filtering and OneDrive sync placeholder",
+    ],
+    challengesSolutions: [
+      "Real-time data updates → Implemented SWR with 10-second polling for live player stats and server metrics",
+      "Form validation and security → Built dual-layer validation with Zod schemas on client and server",
+    ],
+    links: [
+      { label: "Live App", url: "https://unmissablerp.vercel.app" },
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/unmissablerp" },
+    ],
     categories: ["Full-Stack Application"],
-    techStack: ["Node.js", "Next.js", "Tailwind CSS", "SQL/NoSQL", "Git/GitHub"],
-    year: 2018,
+    techStack: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Framer Motion", "SWR", "Recharts", "Zod", "Vercel", "Git/GitHub"],
+    year: 2025,
   },
   {
-    title: "Operational Task Management Platform for Field Teams",
-    slug: "operational-task-management-platform-for-field-teams",
-    impact: "+14% on-time task completion",
+    title: "Customer Segmentation with KMeans Clustering",
+    slug: "customer-segmentation-kmeans",
+    impact: "Interactive ML pipeline for customer behavior analysis",
     description:
-      "Developed a responsive web app for coordinating field operations, replacing spreadsheet-based workflows. Added real-time status tracking and route-level summaries so managers could quickly resolve bottlenecks. Reduced manual coordination and improved SLA adherence.",
-    defaultImage: "/projects/project-2/hero.webp",
+      "Customer segmentation using KMeans clustering in Python (Nov 2024 – Mar 2025). Includes data preprocessing, Silhouette evaluation, PCA visualization and an interactive Streamlit dashboard. Complete unsupervised machine learning pipeline for segmenting customers with real-time cluster exploration and marketing analytics insights.",
+    defaultImage: "/projects/customer-segmentation-kmeans/dashboard.png",
     gallery: [
-      "/projects/project-2/kanban.webp",
-      "/projects/project-2/map.png",
+      "/projects/customer-segmentation-kmeans/dashboard.png",
+      "/projects/customer-segmentation-kmeans/dashboard1.png",
+      "/projects/customer-segmentation-kmeans/clustering.png",
     ],
     technicalHighlights: [
-      "Built RESTful APIs in Flask powering a Next.js front-end with server-side rendering",
-      "Implemented optimistic UI updates and WebSocket push notifications for status changes",
-      "Introduced role-based views tailored to dispatchers, supervisors, and field staff",
+      "Data preprocessing with StandardScaler and LabelEncoder for cleaning, encoding, and scaling customer data",
+      "KMeans clustering with Silhouette Score evaluation for optimal cluster quality assessment",
+      "PCA dimensionality reduction for 2D cluster visualization with Matplotlib and Seaborn",
+      "Interactive Streamlit dashboard for real-time data exploration and dynamic cluster count adjustment",
     ],
     challengesSolutions: [
-      "Unreliable network in the field → Added local caching and automatic sync with conflict resolution",
-      "High variation in device sizes → Adopted a mobile-first Tailwind CSS design system",
+      "Optimal cluster selection → Implemented Silhouette Score evaluation to measure cluster cohesion and separation",
+      "High-dimensional data visualization → Applied PCA for dimensionality reduction to create interpretable 2D plots",
     ],
-    links: [{ label: "Product Walkthrough", url: "#" }],
-    categories: ["Full-Stack Application"],
-    techStack: ["Python", "Flask", "Next.js", "Tailwind CSS", "SQL/NoSQL"],
-    year: 2018,
-  },
-  {
-    title: "Customer Feedback Aggregator with NLP Tagging",
-    slug: "customer-feedback-aggregator-with-nlp-tagging",
-    impact: "+20% faster insight discovery",
-    description:
-      "Centralized feedback from surveys, app stores, and support tickets into a unified dashboard. Added lightweight NLP tagging to automatically surface themes like performance, pricing, or UX issues. Helped product managers prioritize roadmap items with more signal and less manual reading.",
-    defaultImage: "/projects/project-3/hero.webp",
-    gallery: [
-      "/projects/project-3/ingestion.webp",
-      "/projects/project-3/themes.png",
-      "/projects/project-3/timeline.webp",
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/customer-segmentation-project" },
     ],
-    technicalHighlights: [
-      "Built ingestion pipelines in Python to normalize heterogeneous feedback formats",
-      "Exposed a FastAPI microservice that tagged text using pre-trained embeddings",
-      "Created a faceted search UI in Next.js for filtering by theme, product, and region",
-    ],
-    challengesSolutions: [
-      "No labeled data for themes → Bootstrapped weak labels via keyword heuristics, then refined using manual review",
-      "Slow full-text searches → Added text indexes and denormalized key fields into a search-optimized schema",
-    ],
-    links: [{ label: "GitHub Repo", url: "#" }],
-    categories: ["Full-Stack Application", "NLP/Chatbots"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "SQL/NoSQL", "Git/GitHub"],
-    year: 2019,
-  },
-  {
-    title: "Order Tracking Portal with Real-Time Shipment Updates",
-    slug: "order-tracking-portal-with-real-time-shipment-updates",
-    impact: "+16% reduction in support tickets",
-    description:
-      "Created a self-service order tracking portal that surfaces shipment events and delivery ETAs directly to customers. Integrated carrier webhooks and consolidated status logic in a single backend. Lowered inbound 'Where is my order?' contacts while improving transparency.",
-    defaultImage: "/projects/project-4/hero.webp",
-    gallery: [
-      "/projects/project-4/timeline.webp",
-      "/projects/project-4/mobile.png",
-    ],
-    technicalHighlights: [
-      "Normalized inconsistent carrier event payloads in a Python service layer",
-      "Implemented server-sent events for live UI updates without full refreshes",
-      "Designed responsive UI in Next.js with Tailwind CSS and reusable status components",
-    ],
-    challengesSolutions: [
-      "Out-of-order carrier events → Added idempotent upserts and event sequence checks in the database",
-      "Different SLA rules by region → Encapsulated SLA logic into configuration-driven policy modules",
-    ],
-    links: [],
-    categories: ["Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "SQL/NoSQL", "Docker"],
-    year: 2019,
-  },
-  {
-    title: "Internal API Gateway for Legacy Service Consolidation",
-    slug: "internal-api-gateway-for-legacy-service-consolidation",
-    impact: "+22% faster feature delivery",
-    description:
-      "Built an internal API gateway that wrapped multiple legacy services behind a modern, typed interface. Provided a consistent authentication and logging layer so front-end teams could integrate more quickly. Simplified the migration path from older monoliths to newer microservices.",
-    defaultImage: "/projects/project-5/hero.webp",
-    gallery: [
-      "/projects/project-5/gateway.png",
-      "/projects/project-5/logs.webp",
-      "/projects/project-5/diagram.png",
-    ],
-    technicalHighlights: [
-      "Implemented FastAPI gateway endpoints that orchestrated calls to multiple backends",
-      "Standardized error handling and structured logging for all upstream services",
-      "Added automated OpenAPI generation and client SDKs for Next.js consumers",
-    ],
-    challengesSolutions: [
-      "Inconsistent legacy payloads → Introduced strong pydantic-style validation with safe fallbacks",
-      "Debugging across systems → Correlated requests using shared trace IDs pushed into logs",
-    ],
-    links: [{ label: "Architecture Overview", url: "#" }],
-    categories: ["Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Node.js", "Docker", "Git/GitHub"],
-    year: 2020,
-  },
-  {
-    title: "Full-Stack Admin Console for Operational Workflows",
-    slug: "full-stack-admin-console-for-operational-workflows",
-    impact: "+12% reduction in manual ops time",
-    description:
-      "Designed and implemented an internal admin console that unified various back-office workflows. Replaced ad-hoc SQL scripts with safe, audited operations via web forms and bulk tools. Improved reliability and reduced risky manual database changes.",
-    defaultImage: "/projects/project-6/hero.webp",
-    gallery: [
-      "/projects/project-6/table.webp",
-      "/projects/project-6/forms.png",
-    ],
-    technicalHighlights: [
-      "Built a Next.js front-end with reusable table and form components styled via Tailwind CSS",
-      "Exposed idempotent admin APIs in FastAPI with fine-grained permissions",
-      "Implemented change audit logging with before/after snapshots in SQL/NoSQL storage",
-    ],
-    challengesSolutions: [
-      "Risk of destructive actions → Added guardrails, confirmation flows, and role approval steps",
-      "Performance on large tables → Implemented server-side pagination and indexed filter fields",
-    ],
-    links: [],
-    categories: ["Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "SQL/NoSQL", "Git/GitHub"],
-    year: 2020,
-  },
-  {
-    title: "E-Commerce Sales Forecasting API for Seasonal Campaigns",
-    slug: "e-commerce-sales-forecasting-api-for-seasonal-campaigns",
-    impact: "+19% forecasting accuracy improvement",
-    description:
-      "Delivered a forecasting API that predicted daily demand by product and channel for an e-commerce retailer. Included seasonality and promotion effects so planners could better allocate budget and stock. Reduced stockouts and overstock during peak campaigns.",
-    defaultImage: "/projects/project-7/hero.webp",
-    gallery: [
-      "/projects/project-7/forecast.webp",
-      "/projects/project-7/seasonality.png",
-      "/projects/project-7/api-docs.webp",
-    ],
-    technicalHighlights: [
-      "Implemented forecasting pipelines in Python combining classical and tree-based models",
-      "Wrapped models in a FastAPI service with batch and on-demand endpoints",
-      "Created automated backtesting scripts to compare models across multiple horizons",
-    ],
-    challengesSolutions: [
-      "Highly seasonal promotions → Engineered calendar, campaign, and price features per SKU",
-      "Data sparsity for long-tail items → Clustered similar products and shared model parameters",
-    ],
-    links: [{ label: "GitHub Repo", url: "#" }],
-    categories: ["AI/ML", "Predictive Modeling", "Forecasting/Time-Series"],
-    techStack: ["Python", "FastAPI", "SQL/NoSQL", "Docker", "Git/GitHub"],
-    year: 2021,
-  },
-  {
-    title: "Marketing Spend Optimizer with Time-Series Attribution",
-    slug: "marketing-spend-optimizer-with-time-series-attribution",
-    impact: "+13% ROI on ad budget",
-    description:
-      "Built a time-series attribution model that linked marketing spend to downstream revenue. Enabled marketing leaders to reallocate budget toward higher-performing channels based on forecasted impact. Provided weekly recommendations via an internal dashboard.",
-    defaultImage: "/projects/project-8/hero.webp",
-    gallery: [
-      "/projects/project-8/channels.webp",
-      "/projects/project-8/attribution.png",
-    ],
-    technicalHighlights: [
-      "Modeled channel impact using multivariate forecasting and lagged features in Python",
-      "Served optimization recommendations through a FastAPI endpoint consumed by a Next.js UI",
-      "Automated data refresh and model retraining on a daily cadence",
-    ],
-    challengesSolutions: [
-      "Delayed revenue realization → Introduced lag structures and decay functions in the model",
-      "Noisy spend data → Implemented data quality checks and anomaly filtering before training",
-    ],
-    links: [],
-    categories: ["AI/ML", "Predictive Modeling", "Forecasting/Time-Series"],
-    techStack: ["Python", "FastAPI", "SQL/NoSQL", "Docker", "Git/GitHub"],
-    year: 2021,
-  },
-  {
-    title: "Production-Grade Demand Forecasting Engine for Retail",
-    slug: "production-grade-demand-forecasting-engine-for-retail",
-    impact: "+21% reduction in stockouts",
-    description:
-      "Implemented a demand forecasting engine that generated SKU-level predictions across multiple regions. Integrated the predictions into replenishment workflows, reducing lost sales and excess inventory. Provided planners with visual drill-downs on forecast accuracy.",
-    defaultImage: "/projects/project-9/hero.webp",
-    gallery: [
-      "/projects/project-9/sku-chart.webp",
-      "/projects/project-9/regions.png",
-      "/projects/project-9/error-metrics.webp",
-    ],
-    technicalHighlights: [
-      "Used Python forecasting libraries to capture weekly seasonality and holiday effects",
-      "Exposed forecasts via a FastAPI microservice consumed by internal tools",
-      "Logged model runs and accuracy metrics to support continuous improvement",
-    ],
-    challengesSolutions: [
-      "Intermittent demand patterns → Adopted specialized models for slow-moving items",
-      "Stakeholder trust in forecasts → Added transparent feature importance and scenario comparisons",
-    ],
-    links: [{ label: "Case Study Summary", url: "#" }],
-    categories: ["AI/ML", "Predictive Modeling", "Forecasting/Time-Series"],
-    techStack: ["Python", "FastAPI", "SQL/NoSQL", "Docker", "AWS"],
-    year: 2022,
-  },
-  {
-    title: "Computer Vision Quality Control for Product Defects",
-    slug: "computer-vision-quality-control-for-product-defects",
-    impact: "+17% reduction in manual inspection time",
-    description:
-      "Delivered a computer vision system that flagged potential visual defects on a production line. Operators reviewed highlighted regions instead of scanning full images, speeding up verification. Helped standardize quality checks across shifts.",
-    defaultImage: "/projects/project-10/hero.webp",
-    gallery: [
-      "/projects/project-10/heatmap.webp",
-      "/projects/project-10/inspection.png",
-      "/projects/project-10/dashboard.webp",
-    ],
-    technicalHighlights: [
-      "Trained PyTorch models for classification and localization of common defect types",
-      "Deployed inference behind a FastAPI endpoint with Docker for reproducible environments",
-      "Surfaced review queues and metrics in a Next.js dashboard for supervisors",
-    ],
-    challengesSolutions: [
-      "Limited labeled defect data → Augmented examples with synthetic distortions and rotations",
-      "Variable lighting conditions → Normalized image inputs and applied augmentation during training",
-    ],
-    links: [{ label: "Demo Interface", url: "#" }],
-    categories: ["AI/ML", "Computer Vision"],
-    techStack: ["Python", "PyTorch", "FastAPI", "Docker", "Next.js", "Tailwind CSS"],
-    year: 2022,
-  },
-  {
-    title: "Intelligent Ticket Triage with NLP Classification",
-    slug: "intelligent-ticket-triage-with-nlp-classification",
-    impact: "+15% faster first-response time",
-    description:
-      "Introduced an NLP-based triage layer that auto-routed support tickets to the right teams. Classified priority, topic, and product line from free-text descriptions and metadata. Reduced time to first response and smoothed work distribution.",
-    defaultImage: "/projects/project-11/hero.webp",
-    gallery: [
-      "/projects/project-11/queue.webp",
-      "/projects/project-11/classes.png",
-    ],
-    technicalHighlights: [
-      "Fine-tuned text classification models in Python on historical support data",
-      "Served predictions from a FastAPI service used by the existing ticket system",
-      "Captured feedback from agents to continuously improve label accuracy",
-    ],
-    challengesSolutions: [
-      "Highly imbalanced classes → Applied class weighting and augmentation strategies",
-      "Evolving ticket taxonomy → Externalized label configuration and retraining schedules",
-    ],
-    links: [],
-    categories: ["AI/ML", "NLP/Chatbots"],
-    techStack: ["Python", "FastAPI", "SQL/NoSQL", "Docker", "Git/GitHub"],
-    year: 2022,
-  },
-  {
-    title: "Churn Risk Scoring Service for Subscription Users",
-    slug: "churn-risk-scoring-service-for-subscription-users",
-    impact: "+12% improvement in retention campaigns",
-    description:
-      "Built a churn risk scoring pipeline that combined product usage, billing history, and support interactions. Exposed scores to marketing tools so targeted offers could be triggered proactively. Improved efficiency of retention campaigns and reduced blind targeting.",
-    defaultImage: "/projects/project-12/hero.webp",
-    gallery: [
-      "/projects/project-12/risk-tiers.webp",
-      "/projects/project-12/features.png",
-      "/projects/project-12/campaigns.webp",
-    ],
-    technicalHighlights: [
-      "Engineered time-based features capturing recent product engagement and support sentiment",
-      "Trained predictive models in Python and exported them for FastAPI-based serving",
-      "Implemented batch scoring jobs and on-demand APIs for CRM integrations",
-    ],
-    challengesSolutions: [
-      "Label leakage in historical data → Carefully defined churn windows and feature cutoffs",
-      "Complex integration with marketing tools → Standardized outbound payloads and built retry logic",
-    ],
-    links: [{ label: "Architecture Diagram", url: "#" }],
     categories: ["AI/ML", "Predictive Modeling"],
-    techStack: ["Python", "FastAPI", "SQL/NoSQL", "Docker", "AWS"],
-    year: 2023,
+    techStack: ["Python", "scikit-learn", "Streamlit", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Git/GitHub"],
+    year: 2025,
   },
   {
-    title: "Computer Vision OCR Pipeline for Document Automation",
-    slug: "computer-vision-ocr-pipeline-for-document-automation",
-    impact: "+23% improvement in extraction accuracy",
+    title: "Argo CD Kubernetes Rollout Patterns — Blue-Green & Canary Deployments",
+    slug: "argocd-k8s-rollout-patterns",
+    impact: "Progressive delivery with automated rollbacks and traffic control",
     description:
-      "Developed an OCR pipeline that converted scanned invoices and forms into structured data. Combined pre-processing, text extraction, and layout-aware parsing for higher fidelity. Automated a large portion of manual data entry in back-office workflows.",
-    defaultImage: "/projects/project-13/hero.webp",
+      "Progressive delivery on Kubernetes with Argo CD and Argo Rollouts (Sep 2024 – Dec 2024): Blue-Green and Canary deployment examples and manifests. GitOps-driven deployment strategies with ready-to-use Kubernetes manifests for safe releases, automated rollbacks, and gradual traffic shifting. Production-ready patterns for modern cloud-native deployments.",
+    defaultImage: "/projects/argocd-k8s-rollout-patterns/hero.png",
     gallery: [
-      "/projects/project-13/input.webp",
-      "/projects/project-13/boxes.png",
-      "/projects/project-13/results.webp",
+      "/projects/argocd-k8s-rollout-patterns/hero.png",
+      "/projects/argocd-k8s-rollout-patterns/blue-green.png",
+      "/projects/argocd-k8s-rollout-patterns/canary.png",
     ],
     technicalHighlights: [
-      "Orchestrated image cleanup and segmentation using Python-based CV libraries",
-      "Wrapped OCR and post-processing logic in a FastAPI service deployed with Docker",
-      "Exposed a configurable rules engine so business teams could tune field mappings",
+      "Blue-Green deployments with active/preview services for instant rollback and zero-downtime releases",
+      "Canary deployments with gradual traffic shifting (20% → 50% → 100%) and configurable pause steps",
+      "GitOps workflow using Argo CD for declarative sync from Git with Argo Rollouts CRDs",
+      "Kubernetes-native manifests with Services, Ingress, and AnalysisTemplates for automated health checks",
     ],
     challengesSolutions: [
-      "Skewed and noisy scans → Implemented de-skewing, denoising, and contrast enhancement steps",
-      "Varied document templates → Combined template-based rules with machine-learned field detection",
+      "Safe production releases → Implemented progressive delivery patterns with automated rollback on failure",
+      "Traffic management complexity → Used Argo Rollouts for declarative traffic splitting with pause controls",
     ],
-    links: [{ label: "GitHub Repo", url: "#" }],
-    categories: ["AI/ML", "Computer Vision"],
-    techStack: ["Python", "FastAPI", "Docker", "AWS", "SQL/NoSQL"],
-    year: 2023,
-  },
-  {
-    title: "Real-Time Anomaly Detection for Time-Series Metrics",
-    slug: "real-time-anomaly-detection-for-time-series-metrics",
-    impact: "+18% reduction in undetected incidents",
-    description:
-      "Shipped an anomaly detection service that monitored key product and infrastructure metrics. Flagged unusual patterns in real time and pushed alerts into on-call workflows. Helped teams respond earlier to regressions and outages.",
-    defaultImage: "/projects/project-14/hero.webp",
-    gallery: [
-      "/projects/project-14/anomalies.webp",
-      "/projects/project-14/thresholds.png",
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/argocd-k8s-rollout-patterns" },
     ],
-    technicalHighlights: [
-      "Implemented streaming anomaly detection models in Python for multiple time-series",
-      "Built a FastAPI API that evaluated new points on ingestion and emitted alerts",
-      "Created visualization components in Next.js for investigating anomaly windows",
-    ],
-    challengesSolutions: [
-      "High false-positive rate at launch → Tuned thresholds and added seasonality-aware baselines",
-      "Scaling to many metrics → Introduced per-metric configuration and batched scoring paths",
-    ],
-    links: [],
-    categories: ["AI/ML", "Forecasting/Time-Series"],
-    techStack: ["Python", "FastAPI", "Docker", "SQL/NoSQL", "Git/GitHub"],
-    year: 2023,
-  },
-  {
-    title: "NLP-Powered Knowledge Base Search and FAQ Assistant",
-    slug: "nlp-powered-knowledge-base-search-and-faq-assistant",
-    impact: "+20% self-service resolution rate",
-    description:
-      "Created an NLP assistant that let users search documentation and FAQs in natural language. Combined semantic search with intent-specific templates to answer common questions quickly. Reduced load on human support agents for repetitive queries.",
-    defaultImage: "/projects/project-15/hero.webp",
-    gallery: [
-      "/projects/project-15/search.webp",
-      "/projects/project-15/answer.png",
-      "/projects/project-15/analytics.webp",
-    ],
-    technicalHighlights: [
-      "Indexed articles using Python-based embedding models with storage in SQL/NoSQL backends",
-      "Exposed a FastAPI endpoint consumed by a chat-style Next.js widget",
-      "Tracked click-through and resolution metrics to refine ranking logic over time",
-    ],
-    challengesSolutions: [
-      "Ambiguous queries → Blended keyword and semantic search signals",
-      "Stale content → Added freshness scoring and content-owner alerts for outdated articles",
-    ],
-    links: [{ label: "Live Demo", url: "#" }],
-    categories: ["AI/ML", "NLP/Chatbots"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "SQL/NoSQL", "Git/GitHub"],
+    categories: ["MLOps/Deployment"],
+    techStack: ["Kubernetes", "Argo CD", "Argo Rollouts", "Docker", "Git/GitHub"],
     year: 2024,
   },
   {
-    title: "LLM-Powered Customer Support Chatbot with Escalation",
-    slug: "llm-powered-customer-support-chatbot-with-escalation",
-    impact: "+22% deflection of Tier-1 tickets",
+    title: "E2E AI Chatbot — Document Q&A with Local LLM",
+    slug: "e2e-ai-chatbot",
+    impact: "Offline AI chatbot with 0.5s response time using Redis caching",
     description:
-      "Rolled out an LLM-backed chatbot that handled routine inquiries and collected structured information before human handoff. Added clear guardrails and escalation paths to maintain quality. Increased support capacity without sacrificing customer satisfaction.",
-    defaultImage: "/projects/project-16/hero.webp",
+      "End-to-end AI chatbot for document Q&A (Oct 2023 – Feb 2024). Local LLM (GPT4All), FastAPI, Gradio, MongoDB, Elasticsearch, Redis. RAG over your PDFs - runs completely offline. Production-ready system with full-text search, chat history caching, and document ingestion pipeline. Reduced response time from 97s to 0.5s with Redis caching.",
+    defaultImage: "/projects/e2e-ai-chatbot/hero.png",
     gallery: [
-      "/projects/project-16/conversation.webp",
-      "/projects/project-16/flow.png",
-      "/projects/project-16/escalation.webp",
+      "/projects/e2e-ai-chatbot/hero.png",
+      "/projects/e2e-ai-chatbot/architecture.png",
+      "/projects/e2e-ai-chatbot/chat-interface.png",
+      "/projects/e2e-ai-chatbot/mongo-express.png",
+      "/projects/e2e-ai-chatbot/mongo-compass.png",
     ],
     technicalHighlights: [
-      "Orchestrated prompt and context management in a Python service around external LLM APIs",
-      "Built a FastAPI backend that integrated with ticketing systems for seamless escalation",
-      "Implemented a Next.js chat front-end with streaming responses and typing indicators",
+      "Local LLM deployment with GPT4All for offline document Q&A without external API dependencies",
+      "RAG (Retrieval-Augmented Generation) pipeline with MongoDB for document storage and Elasticsearch for semantic search",
+      "Redis caching layer reducing response time from 97s to 0.5s per question (194x speedup)",
+      "Full-stack architecture: FastAPI backend, Gradio UI, Nginx reverse proxy, Docker containerization, and Kubernetes orchestration",
     ],
     challengesSolutions: [
-      "Risk of off-brand responses → Introduced strict system prompts and answer templates",
-      "Data privacy concerns → Redacted sensitive fields before sending to external LLMs",
+      "Slow inference time → Implemented Redis caching for chat history, achieving 194x speedup (97s → 0.5s)",
+      "Document ingestion at scale → Built ETL pipeline with Logstash for MongoDB to Elasticsearch data migration",
     ],
-    links: [{ label: "GitHub Repo", url: "#" }],
-    categories: ["LLM Integration", "NLP/Chatbots", "Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "Docker", "Git/GitHub"],
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/E2E-AI-Chatbot" },
+      { label: "Website", url: "https://khoivn.space" },
+    ],
+    categories: ["AI/ML", "LLM Integration", "Full-Stack Application"],
+    techStack: ["Python", "FastAPI", "Gradio", "GPT4All", "MongoDB", "Elasticsearch", "Redis", "Docker", "Kubernetes", "Nginx", "Git/GitHub"],
     year: 2024,
   },
   {
-    title: "End-to-End MLOps Pipeline for Forecasting Models",
-    slug: "end-to-end-mlops-pipeline-for-forecasting-models",
-    impact: "+25% faster model deployment cycles",
+    title: "Rule-based LLMs — AI Chatbot with IBM Decision Services",
+    slug: "rule-based-llms",
+    impact: "Accurate, policy-driven AI with rule engine integration",
     description:
-      "Led the design of an MLOps pipeline that automated training, evaluation, and deployment of forecasting models. Standardized how new models were pushed to production while preserving rollback safety. Empowered data scientists to ship improvements with minimal engineering friction.",
-    defaultImage: "/projects/project-17/hero.webp",
+      "Integrate Large Language Models with IBM ODM/ADS rule engines (Oct 2024 – Feb 2025). Chatbot demo combining LLM intelligence with business rules for reliable, compliant answers. Supports dual LLM backends (Ollama local, IBM Watsonx.ai cloud), LangChain orchestration, and Docker deployment. HR automation demo shows rule-based accuracy for vacation policies.",
+    defaultImage: "/projects/rule-based-llms/architecture.png",
     gallery: [
-      "/projects/project-17/pipeline.webp",
-      "/projects/project-17/ci.png",
-      "/projects/project-17/monitoring.webp",
+      "/projects/rule-based-llms/architecture.png",
+      "/projects/rule-based-llms/rancher-desktop.png",
+      "/projects/rule-based-llms/hr-policy.gif",
     ],
     technicalHighlights: [
-      "Packaged Python forecasting code into Docker images for consistent environments",
-      "Exposed FastAPI inference services behind load-balanced endpoints on AWS",
-      "Integrated CI/CD workflows in Git/GitHub for automated tests and promotion gates",
+      "Dual LLM backend support: Ollama (local) and IBM Watsonx.ai (cloud) with seamless switching",
+      "LangChain-based Python backend orchestrating LLM calls and IBM ODM/ADS decision service integration",
+      "React + TypeScript + Vite frontend with Carbon Design System for modern chatbot UI",
+      "Docker-based deployment with docker-compose for ODM, backend, and frontend services",
     ],
     challengesSolutions: [
-      "Manual, error-prone deployments → Codified promotion steps into pipelines with approvals",
-      "Lack of visibility into model health → Added monitoring dashboards and alert thresholds for drift",
+      "LLM hallucinations on policy questions → Integrated IBM ODM/ADS rule engines for accurate, compliant answers",
+      "Complex deployment → Containerized entire stack with Docker Compose for one-command setup",
     ],
-    links: [{ label: "Internal Docs", url: "#" }],
-    categories: ["MLOps/Deployment", "Forecasting/Time-Series", "AI/ML"],
-    techStack: ["Python", "FastAPI", "Docker", "AWS", "Git/GitHub", "SQL/NoSQL"],
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/rule-based-llms" },
+    ],
+    categories: ["AI/ML", "LLM Integration", "Full-Stack Application"],
+    techStack: ["Python", "LangChain", "React", "TypeScript", "Vite", "IBM ODM", "IBM ADS", "Ollama", "IBM Watsonx", "Docker", "Flask", "Git/GitHub"],
+    year: 2025,
+  },
+  {
+    title: "X (Twitter) Customer Support Chatbot — RAG-Powered AI Assistant",
+    slug: "x-customer-support-chatbot",
+    impact: "Sub-50ms retrieval with FAISS semantic search",
+    description:
+      "RAG-powered AI chatbot for Twitter/X customer support (Apr 2025 – Jun 2025). LangChain + FAISS + GPT-4 + Streamlit. Semantic search over support docs with 384-dim embeddings (all-MiniLM-L6-v2) for accurate, context-aware answers. Features conversation memory, multi-style prompts, and exponential backoff retry logic. Built for Twitter/X support automation with account access, security, and recovery assistance.",
+    defaultImage: "/projects/x-customer-support-chatbot/hero.png",
+    gallery: [
+      "/projects/x-customer-support-chatbot/hero.png",
+      "/projects/x-customer-support-chatbot/delete-account.png",
+      "/projects/x-customer-support-chatbot/recover-account.png",
+    ],
+    technicalHighlights: [
+      "Sub-50ms retrieval with FAISS IndexFlatL2 over 384-dimensional embeddings (all-MiniLM-L6-v2)",
+      "RAG pipeline: Retrieve relevant support docs → GPT-4 generates natural-language answers with conversation memory",
+      "LangChain orchestration with last 3 turns memory for follow-up questions and context awareness",
+      "Streamlit chat UI with session state, example questions sidebar, and multi-style prompts (expert, technical, concise)",
+    ],
+    challengesSolutions: [
+      "Slow retrieval performance → Implemented FAISS L2 search achieving sub-50ms response times",
+      "API rate limits → Added exponential backoff retry logic with hardware-aware batch sizing (CUDA/MPS/CPU)",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/X-CustomerSupport-Chatbot" },
+    ],
+    categories: ["AI/ML", "LLM Integration", "NLP/Chatbots"],
+    techStack: ["Python", "LangChain", "OpenAI", "GPT-4", "FAISS", "Streamlit", "SentenceTransformers", "spaCy", "Git/GitHub"],
+    year: 2025,
+  },
+  {
+    title: "AI Medical Chatbot — Healthcare Conversational AI with RAG & LLMs",
+    slug: "ai-medical-chatbot",
+    impact: "Production-ready healthcare AI with multi-model support",
+    description:
+      "Production-ready AI medical chatbot for healthcare (Aug 2023 – Nov 2023). IBM WatsonX, OpenAI, RAG, Llama 3, Mixtral. Open-source medical consultation assistant using Retrieval Augmented Generation with multiple foundation models (flan-ul2, mt0-xxl, gpt-neox, Llama 3, GPT-4). Features medical interviewer, fine-tuning pipelines, vector stores (Milvus, FAISS, ChromaDB), and Gradio web UIs. Production setup with pytest, type hints, and Makefile.",
+    defaultImage: "/projects/ai-medical-chatbot/watsonx.png",
+    gallery: [
+      "/projects/ai-medical-chatbot/watsonx.png",
+      "/projects/ai-medical-chatbot/consultation.png",
+      "/projects/ai-medical-chatbot/consultation-alt.png",
+    ],
+    technicalHighlights: [
+      "Multi-model support: IBM WatsonX (flan-ul2-20b, mt0-xxl-13b, gpt-neox-20b), OpenAI GPT-4/3.5, Meta Llama 3, Mixtral with fine-tuned variants",
+      "RAG-powered answers with vector stores (Milvus, FAISS, ChromaDB) for context-aware medical responses",
+      "Medical interviewer chatbot conducting structured medical interviews with Gradio web interface",
+      "Production-ready codebase with pytest tests, type hints, PEP 8 compliance, Makefile, and optional CI/CD",
+    ],
+    challengesSolutions: [
+      "Medical accuracy concerns → Implemented RAG with vector similarity search for context-grounded responses",
+      "Multiple model deployment → Built unified interface supporting WatsonX, OpenAI, and open-source LLMs with seamless switching",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/ai-medical-chatbot" },
+      { label: "IBM WatsonX.ai", url: "https://www.ibm.com/products/watsonx-ai" },
+    ],
+    categories: ["AI/ML", "LLM Integration", "NLP/Chatbots"],
+    techStack: ["Python", "IBM Watsonx", "OpenAI", "LangChain", "Llama 3", "Mixtral", "Gradio", "FAISS", "Milvus", "ChromaDB", "Hugging Face", "Git/GitHub"],
+    year: 2023,
+  },
+  {
+    title: "Moshi — Speech-Text Foundation Model for Real-Time Voice Dialogue",
+    slug: "moshi-voice-assistant",
+    impact: "~200ms end-to-end latency with full-duplex voice AI",
+    description:
+      "Open-source speech-text foundation model for real-time full-duplex voice dialogue (Sep 2024 – Dec 2024). Uses Mimi neural audio codec (24 kHz → 12.5 Hz, 1.1 kbps, 80 ms frames). PyTorch, MLX (Apple Silicon), and Rust backends. Features Moshika (female) and Moshiko (male) voices with multiple quantizations (bf16, int8, int4). 7B-parameter Temporal Transformer with theoretical 160ms latency, practical ~200ms on L4 GPU.",
+    defaultImage: "/projects/moshi-voice-assistant/architecture.png",
+    gallery: [
+      "/projects/moshi-voice-assistant/architecture.png",
+      "/projects/moshi-voice-assistant/mimi-codec.png",
+    ],
+    technicalHighlights: [
+      "Mimi neural audio codec: 24 kHz audio → 12.5 Hz representation at 1.1 kbps with 80ms frame latency, fully streaming",
+      "Dual audio streams: Models user input and Moshi output simultaneously with inner monologue text prediction for quality",
+      "7B-parameter architecture: Depth Transformer for inter-codebook dependencies + Temporal Transformer for time modeling",
+      "Multi-backend support: PyTorch, MLX (Apple Silicon M-series), and Rust/Candle with Web UI and CLI clients",
+    ],
+    challengesSolutions: [
+      "High latency in voice AI → Achieved ~200ms end-to-end latency with streaming codec and efficient transformer architecture",
+      "Platform compatibility → Built three backends (PyTorch, MLX, Rust) supporting CUDA, Metal, and CPU with quantization options",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/kyutai-labs/moshi" },
+      { label: "Hugging Face", url: "https://huggingface.co/kyutai" },
+      { label: "Paper", url: "http://kyutai.org/Moshi.pdf" },
+    ],
+    categories: ["AI/ML", "LLM Integration"],
+    techStack: ["Python", "PyTorch", "Rust", "MLX", "Hugging Face", "Transformers", "CUDA", "Metal", "Git/GitHub"],
     year: 2024,
   },
   {
-    title: "Real-Time Recommendation Engine for On-Site Personalization",
-    slug: "real-time-recommendation-engine-for-on-site-personalization",
-    impact: "+24% uplift in on-site engagement",
+    title: "Salty Dream Bot — Discord AI Image Generator with Stable Diffusion",
+    slug: "salty-dream-bot",
+    impact: "Async Discord bot with modular cogs architecture",
     description:
-      "Implemented a recommendation service that surfaced personalized products and content on key pages. Combined short-term session signals with longer-term user history. Delivered measurable gains in click-through and time-on-site metrics.",
-    defaultImage: "/projects/project-18/hero.webp",
+      "Python Discord bot for AI image generation via AUTOMATIC1111 Stable Diffusion (Dec 2022 – Mar 2023). Features txt2img, img2img, CLIP/DeepDanbooru interrogation, and PNG info extraction. Built with py-cord, async architecture, and modular cogs. Supports negative prompts, multiple samplers, hypernetworks, custom seeds, and image orientation presets (square, landscape, portrait).",
+    defaultImage: "/projects/salty-dream-bot/generated.png",
     gallery: [
-      "/projects/project-18/grid.webp",
-      "/projects/project-18/ranking.png",
+      "/projects/salty-dream-bot/generated.png",
+      "/projects/salty-dream-bot/interrogated.png",
     ],
     technicalHighlights: [
-      "Engineered feature pipelines in Python for user, item, and context features",
-      "Hosted a FastAPI ranking service with low-latency response times",
-      "Integrated with a Next.js front-end for dynamic, A/B-testable recommendation slots",
+      "AUTOMATIC1111 Web UI API integration for txt2img, img2img, and interrogation features",
+      "Async Discord bot with py-cord supporting negative prompts, samplers, hypernetworks, and seed control",
+      "Modular cogs architecture for maintainable code with separate command groups and error handling",
+      "Image generation features: orientation presets (square/landscape/portrait), size presets (small/normal/large), and PNG metadata extraction",
     ],
     challengesSolutions: [
-      "Cold-start users → Backfilled recommendations using popularity and content similarity",
-      "Latency-sensitive placements → Cached top candidates and applied lightweight re-ranking at request time",
+      "Bot responsiveness → Implemented async architecture with py-cord for non-blocking image generation",
+      "Code maintainability → Used modular cogs pattern for organized command structure and easy feature additions",
     ],
-    links: [],
-    categories: ["AI/ML", "Predictive Modeling", "Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "Docker", "AWS"],
-    year: 2025,
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/salty-dream-bot" },
+    ],
+    categories: ["AI/ML", "Full-Stack Application"],
+    techStack: ["Python", "Discord.py", "Stable Diffusion", "AUTOMATIC1111", "py-cord", "Git/GitHub"],
+    year: 2023,
   },
   {
-    title: "LLM Integration Layer for Internal Tools and Workflows",
-    slug: "llm-integration-layer-for-internal-tools-and-workflows",
-    impact: "+20% productivity in operations teams",
+    title: "VALL-E — Zero-Shot Text-to-Speech with Neural Codec Language Models",
+    slug: "vall-e-tts",
+    impact: "Zero-shot voice cloning from 3-second audio sample",
     description:
-      "Designed a centralized LLM integration layer that exposed reusable building blocks for summarization, drafting, and data extraction. Internal tools consumed these capabilities without each team managing prompts or providers separately. Enabled consistent governance and observability for AI usage.",
-    defaultImage: "/projects/project-19/hero.webp",
-    gallery: [
-      "/projects/project-19/endpoints.webp",
-      "/projects/project-19/monitoring.png",
-      "/projects/project-19/usage.webp",
-    ],
+      "Unofficial PyTorch implementation of VALL-E for zero-shot text-to-speech and voice cloning (Jan 2023 – Mar 2023). Uses neural codec language models with EnCodec tokenizer to generate high-quality speech matching any speaker's voice from a single 3-second reference audio. Features autoregressive (AR) and non-autoregressive (NAR) transformer architectures with DeepSpeed training for scalable model development.",
+    defaultImage: "/projects/vall-e-tts/architecture.png",
+    gallery: ["/projects/vall-e-tts/architecture.png"],
     technicalHighlights: [
-      "Created a Python and FastAPI service that abstracted prompts, providers, and retries",
-      "Implemented request logging, cost tracking, and safety filters for all LLM calls",
-      "Published a typed client library consumed by multiple Next.js and Node.js applications",
+      "Zero-shot TTS: Generate speech in any voice from a single 3-second reference audio without fine-tuning",
+      "Neural codec language modeling with EnCodec tokenizer for audio quantization and decoding",
+      "Dual architecture: Autoregressive (AR) model for first quantizer + Non-autoregressive (NAR) for remaining quantizers",
+      "DeepSpeed training integration for scalable distributed training with CUDA/ROCm support",
     ],
     challengesSolutions: [
-      "Fragmented experimentation across teams → Consolidated patterns into shared, versioned endpoints",
-      "Need for governance → Centralized audit logs and rate limits at the integration layer",
+      "Voice cloning without fine-tuning → Implemented neural codec language model approach for zero-shot synthesis",
+      "Scalable training → Integrated DeepSpeed for distributed training with efficient memory management",
     ],
-    links: [{ label: "Developer Guide", url: "#" }],
-    categories: ["LLM Integration", "MLOps/Deployment", "Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Node.js", "Next.js", "Docker", "Git/GitHub"],
-    year: 2025,
+    links: [
+      { label: "GitHub", url: "https://github.com/enhuiz/vall-e" },
+      { label: "Paper", url: "https://arxiv.org/abs/2301.02111" },
+    ],
+    categories: ["AI/ML", "LLM Integration"],
+    techStack: ["Python", "PyTorch", "EnCodec", "Transformers", "DeepSpeed", "CUDA", "Git/GitHub"],
+    year: 2023,
   },
   {
-    title: "End-to-End Computer Vision Pipeline for Visual Search",
-    slug: "end-to-end-computer-vision-pipeline-for-visual-search",
-    impact: "+18% increase in product discovery",
+    title: "Admin Issuer Portal — Certificate & Digital Signature Management UI",
+    slug: "admin-issuer-portal",
+    impact: "Complete certificate lifecycle management with audit trail",
     description:
-      "Launched a visual search feature that let users find similar products by uploading images. Built a full pipeline from feature extraction to nearest-neighbor retrieval and a polished UI. Improved discovery for visually-driven product categories.",
-    defaultImage: "/projects/project-20/hero.webp",
+      "React admin dashboard for certificate issuance and digital signature management (Dec 2025 – Jan 2026). Built for universities, academies, and professional institutes to manage certificate issuers, design signature layouts on PDF templates, and track signing activity with full audit trails. Features dashboard metrics, issuer verification, signature field editor with canvas, PDF preview with zoom/download, and document workflow management.",
+    defaultImage: "/projects/admin-issuer-portal/dashboard.png",
     gallery: [
-      "/projects/project-20/upload.webp",
-      "/projects/project-20/results.png",
-      "/projects/project-20/embedding.webp",
+      "/projects/admin-issuer-portal/dashboard.png",
+      "/projects/admin-issuer-portal/signature-editor.png",
     ],
     technicalHighlights: [
-      "Extracted embeddings with PyTorch-based CNN models and stored them in a vector-friendly layout",
-      "Served similarity search from a Python FastAPI service packaged with Docker",
-      "Implemented an intuitive Next.js interface with drag-and-drop uploads and responsive grids",
+      "React 18 + TypeScript with Vite for fast development and optimized production builds",
+      "Signature field editor: Canvas-based placement with zoom, grid, placeholders, and configurable properties (required, method, lock)",
+      "PDF preview system with zoom, pagination, download/print, signer info overlay, and complete audit trail (events, timestamps, IP, device)",
+      "Dashboard with real-time metrics (certificates issued, pending signatures, PDFs generated) and recent activity monitoring",
     ],
     challengesSolutions: [
-      "Large embedding sets → Implemented approximate nearest neighbor indexing",
-      "Inconsistent user images → Normalized input aspect ratios and brightness before encoding",
+      "Complex signature workflows → Built canvas-based editor for precise signature field placement with issuer/recipient assignment",
+      "Audit compliance → Implemented comprehensive audit trail tracking all signing events with timestamps, actors, IP addresses, and device info",
     ],
-    links: [{ label: "Visual Demo", url: "#" }],
-    categories: ["AI/ML", "Computer Vision", "Full-Stack Application"],
-    techStack: ["Python", "PyTorch", "FastAPI", "Docker", "Next.js", "Tailwind CSS"],
-    year: 2025,
-  },
-  {
-    title: "Forecasting-Driven Inventory Dashboard for Planners",
-    slug: "forecasting-driven-inventory-dashboard-for-planners",
-    impact: "+14% reduction in excess stock",
-    description:
-      "Delivered a planning dashboard that combined forecast outputs with current inventory, lead times, and constraints. Planners could simulate what-if scenarios before committing purchase orders. Helped balance service levels against carrying costs.",
-    defaultImage: "/projects/project-21/hero.webp",
-    gallery: [
-      "/projects/project-21/inventory.webp",
-      "/projects/project-21/scenario.png",
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/Admin_Issuer_Portal_UI" },
+      { label: "Figma Design", url: "https://www.figma.com/design/your-design-link" },
     ],
-    technicalHighlights: [
-      "Aggregated forecast and inventory data into planner-friendly SQL/NoSQL views",
-      "Exposed simulation endpoints from a Python FastAPI backend",
-      "Developed interactive charts and tables in Next.js with Tailwind CSS styling",
-    ],
-    challengesSolutions: [
-      "Complex business rules → Encapsulated constraints into configurable policy modules",
-      "Skepticism toward new tooling → Added side-by-side views of historical plan vs. actual outcomes",
-    ],
-    links: [],
-    categories: ["Forecasting/Time-Series", "Full-Stack Application", "AI/ML"],
-    techStack: ["Python", "FastAPI", "SQL/NoSQL", "Next.js", "Tailwind CSS"],
-    year: 2025,
-  },
-  {
-    title: "Interactive AI-Enhanced Portfolio with 3D Scenes",
-    slug: "interactive-ai-enhanced-portfolio-with-3d-scenes",
-    impact: "+11% increase in visitor engagement",
-    description:
-      "Built a personal portfolio highlighting AI and full-stack work with immersive visuals. Integrated subtle AI-generated content and interactions to demonstrate capabilities. Delivered a polished experience that loads quickly while showcasing advanced UI.",
-    defaultImage: "/projects/project-22/hero.webp",
-    gallery: [
-      "/projects/project-22/hero.webp",
-      "/projects/project-22/projects.png",
-      "/projects/project-22/details.webp",
-    ],
-    technicalHighlights: [
-      "Implemented 3D scenes using Three.js and animated transitions with Framer Motion",
-      "Structured content as reusable components in Next.js with Tailwind CSS styling",
-      "Optimized images and code-splitting to maintain fast performance scores",
-    ],
-    challengesSolutions: [
-      "Balancing visuals with performance → Used selective hydration and deferred heavy components",
-      "Ensuring accessibility → Added semantic markup and keyboard-friendly navigation",
-    ],
-    links: [{ label: "Live Site", url: "#" }],
     categories: ["Full-Stack Application"],
-    techStack: ["Next.js", "Three.js", "Framer Motion", "Tailwind CSS", "Git/GitHub"],
-    year: 2025,
+    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI", "React Hook Form", "Recharts", "Lucide React", "Git/GitHub"],
+    year: 2026,
   },
   {
-    title: "MLOps Monitoring Dashboard for Deployed Models",
-    slug: "mlops-monitoring-dashboard-for-deployed-models",
-    impact: "+19% faster incident detection for models",
+    title: "Rising Dot Agency — Full-Stack Web Development Agency Platform",
+    slug: "rising-dot-agency",
+    impact: "Complete agency platform with CMS, SEO tools, and admin dashboard",
     description:
-      "Created a monitoring dashboard focused on production ML services, tracking latency, error rates, and data drift. Provided unified views across forecasting, NLP, and CV models. Helped teams catch quality issues earlier and prioritize remediation.",
-    defaultImage: "/projects/project-23/hero.webp",
+      "Modern, high-performance web development agency website built with Next.js 14 (Dec 2025 – Jan 2026). Features stunning animations with Framer Motion and GSAP, 3D elements with Three.js, comprehensive admin dashboard with MongoDB-backed CMS, SEO optimization tools with keyword strategy and analytics integration, and production-ready API routes for blogs, portfolio, contact, and analytics. Showcases web design, Shopify development, SEO, chatbot development, and N8N automation services.",
+    defaultImage: "/projects/rising-dot-agency/hero.png",
     gallery: [
-      "/projects/project-23/overview.webp",
-      "/projects/project-23/drift.png",
+      "/projects/rising-dot-agency/hero.png",
+      "/projects/rising-dot-agency/portfolio.png",
+      "/projects/rising-dot-agency/seo-tools.png",
     ],
     technicalHighlights: [
-      "Ingested metrics and feature summaries from Python services into a central SQL/NoSQL store",
-      "Exposed a FastAPI backend for aggregations consumed by a Next.js dashboard",
-      "Built reusable chart components and alert configuration panels in Tailwind CSS",
+      "Next.js 14 App Router with TypeScript, Tailwind CSS, and MongoDB for full-stack content management",
+      "Advanced animations: Framer Motion, GSAP, and Lenis for butter-smooth scroll and fluid interactions",
+      "3D graphics integration with Three.js, React Three Fiber, and Spline for immersive visualizations",
+      "Admin dashboard: Content management, SEO tools (keyword cloud, importance scoring, PageSpeed integration), media library (Cloudinary), navigation editor, and user management with NextAuth.js 2FA",
     ],
     challengesSolutions: [
-      "Fragmented logging formats → Standardized log schemas and added structured logging adapters",
-      "Unclear ownership of incidents → Added model ownership metadata and on-call routing fields",
+      "Complex animations and performance → Optimized with code splitting, lazy loading, and efficient animation libraries (Framer Motion, GSAP)",
+      "Content management at scale → Built MongoDB-backed CMS with role-based access control and visual editors for non-technical users",
     ],
-    links: [{ label: "Internal Demo", url: "#" }],
-    categories: ["MLOps/Deployment", "AI/ML", "Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "SQL/NoSQL", "Git/GitHub"],
-    year: 2025,
+    links: [
+      { label: "GitHub", url: "https://github.com/KuchikiRenji/rising-dot-agency" },
+    ],
+    categories: ["Full-Stack Application"],
+    techStack: ["Next.js", "TypeScript", "React", "MongoDB", "Tailwind CSS", "Framer Motion", "GSAP", "Three.js", "NextAuth.js", "Cloudinary", "Vercel", "Git/GitHub"],
+    year: 2026,
   },
   {
-    title: "LLM-Assisted Code Search and Documentation Helper",
-    slug: "llm-assisted-code-search-and-documentation-helper",
-    impact: "+13% faster onboarding for engineers",
+    title: "Solana Bundler — Token Deployment & Multi-Wallet Management Platform",
+    slug: "solana-bundler",
+    impact: "Complete Solana token lifecycle with multi-wallet trading automation",
     description:
-      "Built an internal tool that let engineers search codebases and documentation using natural language. Combined static code search with LLM-based summaries of relevant files. Reduced the ramp-up time for new joiners and improved discoverability of patterns.",
-    defaultImage: "/projects/project-24/hero.webp",
+      "Powerful token deployment and management tool for Solana blockchain (Jul 2025 – Sep 2025). Deploy SPL tokens on pump.fun, letsbonk.fun, cook.meme, and other platforms with one-click deployment. Features comprehensive multi-wallet management (dev & fund wallets), batch trading operations, real-time charts via DEXTools integration, and local-only private key storage. Built with React, TypeScript, Tailwind CSS, and Solana Web3.js for secure, client-side token operations.",
+    defaultImage: "/projects/solana-bundler/wallet-management.png",
     gallery: [
-      "/projects/project-24/search.webp",
-      "/projects/project-24/summary.png",
-      "/projects/project-24/snippets.webp",
+      "/projects/solana-bundler/wallet-management.png",
+      "/projects/solana-bundler/fund-wallets.png",
+      "/projects/solana-bundler/token-deployment.png",
+      "/projects/solana-bundler/architecture.png",
     ],
     technicalHighlights: [
-      "Indexed repositories with Python workers and stored metadata in SQL/NoSQL",
-      "Provided a FastAPI backend that fused lexical code search with LLM-powered explanations",
-      "Implemented a Next.js front-end with keyboard-driven navigation and live previews",
+      "Multi-platform token deployment: pump.fun, letsbonk.fun, cook.meme, boop.fun, moon.it with custom configuration (name, symbol, supply, liquidity)",
+      "Advanced wallet management: Dev & fund wallet separation, bulk operations, wallet grouping, real-time SOL/token balances, import/export functionality",
+      "Batch trading engine: Execute buy/sell operations across multiple wallets simultaneously with performance analytics and transaction history",
+      "Security-first architecture: Local-only storage, encrypted private keys, no server communication, auto-logout, and secure backup/restore",
     ],
     challengesSolutions: [
-      "Large monorepos → Added incremental indexing and repository partitioning",
-      "Need to avoid leaking secrets → Integrated basic static analysis and allowlist rules before sending content to LLMs",
+      "Multi-wallet coordination → Built batch operation system for simultaneous trading across wallets with single-click execution",
+      "Private key security → Implemented local-only storage with optional encryption, ensuring keys never leave the browser",
     ],
-    links: [{ label: "GitHub Repo", url: "#" }],
-    categories: ["LLM Integration", "Full-Stack Application"],
-    techStack: ["Python", "FastAPI", "Next.js", "Tailwind CSS", "Docker", "Git/GitHub"],
+    links: [
+      { label: "Live App", url: "https://www.bundlerbot.fun/" },
+      { label: "GitHub", url: "https://github.com/0xBundlerBot/Solana_Bundler_Bot" },
+    ],
+    categories: ["Full-Stack Application"],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Solana Web3.js", "LocalStorage", "Git/GitHub"],
     year: 2025,
   },
 ];
 
-// Helper function to get project by slug
+// Helper functions
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return projects.find((project) => project.slug === slug);
 }
 
-// Helper function to get projects by category
-export function getProjectsByCategory(category: string): Project[] {
-  return projects.filter((p) => p.categories.includes(category));
-}
-
-// Helper function to get all unique categories
 export function getAllCategories(): string[] {
   const categories = new Set<string>();
-  projects.forEach((p) => p.categories.forEach((c) => categories.add(c)));
+  projects.forEach((project) => {
+    project.categories.forEach((category) => categories.add(category));
+  });
   return Array.from(categories).sort();
 }
 
-// Helper function to get all unique tech stack items
-export function getAllTechStack(): string[] {
-  const tech = new Set<string>();
-  projects.forEach((p) => p.techStack.forEach((t) => tech.add(t)));
-  return Array.from(tech).sort();
-}
-
-// Helper function to get projects sorted by year (descending)
-export function getProjectsByYear(): Map<number, Project[]> {
-  const byYear = new Map<number, Project[]>();
-  const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
-  
-  sortedProjects.forEach((project) => {
-    const existing = byYear.get(project.year) || [];
-    existing.push(project);
-    byYear.set(project.year, existing);
-  });
-  
-  return byYear;
-}
-
-// Helper function to get all unique years
 export function getAllYears(): number[] {
   const years = new Set<number>();
-  projects.forEach((p) => years.add(p.year));
+  projects.forEach((project) => years.add(project.year));
   return Array.from(years).sort((a, b) => b - a);
+}
+
+export function getProjectsByYear(): Map<number, Project[]> {
+  const projectsByYear = new Map<number, Project[]>();
+  projects.forEach((project) => {
+    const year = project.year;
+    if (!projectsByYear.has(year)) {
+      projectsByYear.set(year, []);
+    }
+    projectsByYear.get(year)!.push(project);
+  });
+  return projectsByYear;
 }
